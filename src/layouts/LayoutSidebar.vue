@@ -1,0 +1,92 @@
+<script setup lang="ts" name="LayoutSidebar">
+import type { MenuInfo } from '@/api/system/menu'
+import type { MenuOption } from 'naive-ui'
+
+import { RouterLink } from 'vue-router'
+
+import { DEFAULT_HOME_PATH } from '@/config/constants'
+import { $t } from '@/locales'
+import { transformationTree } from '@/utils'
+
+const route = useRoute()
+const userStore = useUserStore()
+const preferencesStore = usePreferencesStore()
+const expandedKeys = ref<string[]>([])
+
+const appName = computed(() => preferencesStore.state.app.name)
+const sidebar = computed(() => preferencesStore.state.sidebar)
+const theme = computed(() => preferencesStore.state.theme)
+const activeKey = computed(() => route.path)
+const renderIcon = (options: MenuInfo) => {
+  let iconName = options.icon
+  if (activeKey.value === options.path) {
+    iconName = options.activeIcon || options.icon
+  }
+  return () => h('i', { class: iconName })
+}
+const transformMenuOptions = (options: MenuInfo[]): MenuOption[] => {
+  return options.map((option) => {
+    const menuOption: MenuOption = {
+      key: option.path,
+      label: () =>
+        option.type === 'catalog'
+          ? h('span', null, option.title ? $t(`page.${option.title}`) : option.name)
+          : h(
+              RouterLink,
+              { to: option.path },
+              { default: () => (option.title ? $t(`page.${option.title}`) : option.name) },
+            ),
+      icon: renderIcon(option),
+      disabled: !option.status,
+    }
+    if (option.children?.length) {
+      // 判断子菜单中 type 是否为 B，如果是则不渲染
+      menuOption.children =
+        option.children.length === 0 ? undefined : transformMenuOptions(option.children)
+    } else {
+      menuOption.children = undefined
+    }
+    return menuOption
+  })
+}
+const menuOptions = computed<MenuOption[]>(() => {
+  const menusTree = transformationTree(userStore.accessMenus, null)
+  return transformMenuOptions(menusTree)
+})
+function handleUpdateExpandedKeys(keys: string[]) {
+  expandedKeys.value = keys
+}
+</script>
+
+<template>
+  <div class="h-full flex flex-col items-stretch">
+    <RouterLink
+      :to="DEFAULT_HOME_PATH"
+      class="w-full flex-center overflow-hidden whitespace-nowrap border-b-1 border-coolgray-200"
+    >
+      <img src="@/assets/logo.svg" width="40" height="40" />
+      <h2
+        v-show="!sidebar.collapsed"
+        class="pl-8px text-align-center text-16px text-primary font-bold transition duration-300 ease-in-out"
+      >
+        {{ appName }}
+      </h2>
+    </RouterLink>
+
+    <NScrollbar class="flex-1 overflow-hidden">
+      <NMenu
+        class="side-menu"
+        :value="activeKey"
+        :collapsed="sidebar.collapsed"
+        :collapsed-icon-size="22"
+        :options="menuOptions"
+        default-expand-all
+        :indent="18"
+        :inverted="theme.semiDarkSidebar"
+        @update:expanded-keys="handleUpdateExpandedKeys"
+      />
+    </NScrollbar>
+  </div>
+</template>
+
+<style lang="" scoped></style>
