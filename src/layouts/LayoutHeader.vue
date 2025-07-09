@@ -36,13 +36,7 @@ async function refresh() {
     </n-button>
     <n-button quaternary size="small" class="!h-8 !w-8" @click="refresh">
       <template #icon>
-        <i
-          :class="
-            sidebar.collapsed
-              ? 'i-ant-design:menu-unfold-outlined'
-              : 'i-ant-design:menu-fold-outlined'
-          "
-        ></i>
+        <i class="i-ant-design:reload-outlined"></i>
       </template>
     </n-button>
   </NCard>
