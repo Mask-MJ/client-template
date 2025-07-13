@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import LayoutContent from './LayoutContent.vue'
-import LayoutHeader from './LayoutHeader.vue'
-import LayoutSider from './LayoutSidebar.vue'
+import LayoutContent from './components/LayoutContent.vue'
+import LayoutHeader from './components/LayoutHeader.vue'
+import LayoutSider from './components/LayoutSidebar.vue'
 
 const preferencesStore = usePreferencesStore()
 // const header = computed(() => preferencesStore.state.header)

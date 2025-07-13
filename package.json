@@ -24,6 +24,7 @@
     "@unhead/vue": "^2.0.10",
     "@vueuse/core": "^13.4.0",
     "@vueuse/integrations": "^13.4.0",
+    "@vxe-ui/plugin-render-naive": "^4.0.11",
     "dayjs": "^1.11.13",
     "defu": "^6.1.4",
     "lodash-es": "^4.17.21",
@@ -34,7 +35,9 @@
     "theme-colors": "^0.1.0",
     "vue": "^3.5.13",
     "vue-i18n": "^11.1.7",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vxe-pc-ui": "^4.7.5",
+    "vxe-table": "^4.14.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",

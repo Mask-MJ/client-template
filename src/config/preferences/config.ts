@@ -25,7 +25,7 @@ const DEFAULT_PREFERENCES: Preferences = {
   breadcrumb: {
     enable: true,
     hideOnlyOne: false,
-    showHome: false,
+    showHome: true,
     showIcon: true,
     styleType: 'normal',
   },

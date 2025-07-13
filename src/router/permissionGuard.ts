@@ -56,7 +56,6 @@ function setupAccessGuard(router: Router) {
           replace: true,
         }
       }
-      return to
     }
 
     // 是否已经初始化权限
