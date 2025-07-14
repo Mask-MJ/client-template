@@ -1,6 +1,8 @@
 import type { paths } from '#/openapi' // 由openapi-typescript生成
 import type { Middleware } from 'openapi-fetch'
 
+import { LOGIN_PATH } from '@/config/constants'
+import { $t } from '@/locales'
 import createClient from 'openapi-fetch'
 import { storeToRefs } from 'pinia'
 
@@ -20,7 +22,22 @@ const authMiddleware: Middleware = {
   async onResponse({ response }) {
     const data = await response.clone().json()
     if (!response.status.toString().startsWith('2')) {
-      window.$message.error(data.message)
+      if (response.status === 401) {
+        // 令牌过期，刷新令牌
+        const userStore = useUserStore()
+        try {
+          await userStore.refreshToken()
+        } catch {
+          // 刷新令牌失败，清除登录状态
+          userStore.$reset()
+          window.$message.error($t('authentication.loginAgainSubTitle'))
+          // 跳转到登录页面
+          const router = useRouter()
+          await router.push({ path: LOGIN_PATH })
+        }
+      } else {
+        window.$message.error(data.error.message)
+      }
     }
     return new Response(JSON.stringify(data))
   },

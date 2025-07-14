@@ -34,7 +34,7 @@ export default defineConfig({
     ['flex-between', 'flex justify-between items-center'],
     ['flex-col', 'flex flex-col'],
     ['flex-col-center', 'flex justify-center items-center flex-col'],
-    ['text-primary', 'text-[var(--primary-color)]'],
+    ['text-primary', 'text-[rgb(var(--primary-color))]'],
   ],
   transformers: [transformerDirectives(), transformerVariantGroup()],
   safelist: [...'prose prose-sm m-auto text-left'.split(' '), ...IconNames],

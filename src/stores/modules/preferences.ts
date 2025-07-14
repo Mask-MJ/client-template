@@ -1,5 +1,6 @@
 import type {
   AuthPageLayoutType,
+  BuiltinThemePreset,
   Preferences,
   SupportedLanguagesType,
   ThemeColor,
@@ -42,12 +43,14 @@ export const usePreferencesStore = defineStore('preferences-store', () => {
   // 当前主题是否为暗黑模式
   const isDarkTheme = computed(() => state.value.theme.mode === 'dark')
   // 设置主题颜色
-  const setThemeColor = (color: string) => {
-    state.value.theme.primary = color
+  const setThemeColor = (preset: BuiltinThemePreset) => {
+    state.value.theme.primary = preset.color
+    state.value.theme.builtinType = preset.type
   }
   // 切换主题模式
   const setThemeMode = () => {
     state.value.theme.mode = isDarkTheme.value ? 'light' : 'dark'
+    useDark().value = isDarkTheme.value
   }
   // 设置认证页面布局
   const setAuthPageLayout = (value: AuthPageLayoutType) => {

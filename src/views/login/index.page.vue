@@ -17,9 +17,7 @@ const authPageLayout = computed(() => preferencesStore.state.app.authPageLayout)
   <div class="min-h-full flex flex-1 select-none overflow-x-hidden">
     <!-- 头部 Logo 和应用名称 -->
     <div v-if="logo || appName" class="absolute left-0 top-0 z-10 flex flex-1">
-      <div
-        class="text-foreground lg:text-foreground ml-4 mt-4 flex flex-1 items-center sm:left-6 sm:top-6"
-      >
+      <div class="ml-4 mt-4 flex flex-1 items-center sm:left-6 sm:top-6">
         <img v-if="logo" :alt="appName" :src="logo" class="mr-2" width="42" />
         <p v-if="appName" class="m-0 text-xl font-medium">
           {{ appName }}
@@ -81,7 +79,7 @@ meta:
 
 <style scoped>
 .login-background {
-  background: linear-gradient(154deg, #0707094d 30%, var(--primary-color) 48%, #0707094d 64%);
+  background: linear-gradient(154deg, #0707094d 30%, rgb(var(--primary-color)) 48%, #0707094d 64%);
   filter: blur(100px);
   opacity: 0.3;
 }

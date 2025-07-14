@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { DEFAULT_HOME_PATH } from '@/config/constants'
 import { $t } from '@/locales'
 
 defineOptions({
@@ -131,7 +132,7 @@ const { push } = useRouter()
 
 // 返回首页
 function back() {
-  push(props.homePath)
+  push(DEFAULT_HOME_PATH)
 }
 
 function refresh() {

@@ -160,12 +160,12 @@ export function getCssVarByTokens(tokens: Record<string, Record<string, string>>
 
       if (key === 'colors') {
         cssVarsKey = removeRgbPrefix(cssVarsKey)
-        cssValue = new TinyColor(cssValue).toRgbString()
+        const { r, g, b } = new TinyColor(cssValue).toRgb()
+        cssValue = `${r} ${g} ${b}`
       }
       styles.push(`${cssVarsKey}: ${cssValue}`)
     }
   }
-
   const styleStr = styles.join(';')
   return styleStr
 }

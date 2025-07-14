@@ -40,7 +40,7 @@ const authPageLayout = computed(() => state.app.authPageLayout)
               quaternary
               circle
               class="flex-center flex-shrink-0"
-              @click="setThemeColor(preset.color)"
+              @click="setThemeColor(preset)"
             >
               <div
                 :style="{ backgroundColor: preset.color }"
@@ -71,8 +71,8 @@ const authPageLayout = computed(() => state.app.authPageLayout)
           </template>
         </NButton>
       </div>
-      <n-dropdown :options="menus" trigger="click" @select="setAuthPageLayout">
-        <n-button quaternary circle>
+      <NDropdown :options="menus" trigger="click" @select="setAuthPageLayout">
+        <NButton quaternary circle>
           <template #icon>
             <i
               :class="{
@@ -83,16 +83,16 @@ const authPageLayout = computed(() => state.app.authPageLayout)
               class="size-4"
             ></i>
           </template>
-        </n-button>
-      </n-dropdown>
-      <n-dropdown :options="SUPPORT_LANGUAGES" trigger="click" @select="setLanguage">
-        <n-button quaternary circle>
+        </NButton>
+      </NDropdown>
+      <NDropdown :options="SUPPORT_LANGUAGES" trigger="click" @select="setLanguage">
+        <NButton quaternary circle>
           <template #icon>
             <i class="i-lucide:languages"></i>
           </template>
-        </n-button>
-      </n-dropdown>
-      <n-button quaternary circle @click="setThemeMode">
+        </NButton>
+      </NDropdown>
+      <NButton quaternary circle @click="setThemeMode">
         <template #icon>
           <i
             :class="{
@@ -101,7 +101,7 @@ const authPageLayout = computed(() => state.app.authPageLayout)
             }"
           ></i>
         </template>
-      </n-button>
+      </NButton>
     </NCard>
   </div>
 </template>

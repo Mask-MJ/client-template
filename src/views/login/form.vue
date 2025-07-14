@@ -2,6 +2,8 @@
 import type { SignInParams } from '@/api/system/user'
 import type { FormInst } from 'naive-ui'
 
+import { $t } from '@/locales'
+
 const userStore = useUserStore()
 const preferencesStore = usePreferencesStore()
 const router = useRouter()
@@ -28,7 +30,14 @@ async function handleSubmit(e: MouseEvent) {
       window.$message.error('Validation failed')
     } else {
       try {
-        await userStore.authLogin(model.value)
+        const userInfoData = await userStore.login(model.value)
+        if (userInfoData?.nickname) {
+          window.$notification.success({
+            content: $t('authentication.loginSuccess'),
+            description: `${$t('authentication.loginSuccessDesc')}:${userInfoData?.nickname}`,
+            duration: 3000,
+          })
+        }
       } catch (error) {
         window.$message.error(`登录失败, ${error}`)
       }

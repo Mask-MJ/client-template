@@ -62,10 +62,80 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取工厂列表 */
         get: operations["FactoryController_findAll"];
         put?: never;
+        /** 创建工厂 */
         post: operations["FactoryController_create"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/factory/import": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 导入阀门数据 */
+        post: operations["FactoryController_importValveData"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/factory/report": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 生成工厂中所有阀门报告 */
+        post: operations["FactoryController_generateReport"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/factory/chart/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 获取工厂工作台详情 */
+        get: operations["FactoryController_findChartData"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/factory/removeAll": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** 删除所有工厂 */
+        delete: operations["FactoryController_removeAll"];
         options?: never;
         head?: never;
         patch?: never;
@@ -78,12 +148,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取单个工厂 */
         get: operations["FactoryController_findOne"];
         put?: never;
         post?: never;
+        /** 删除工厂 */
         delete: operations["FactoryController_remove"];
         options?: never;
         head?: never;
+        /** 更新工厂 */
         patch: operations["FactoryController_update"];
         trace?: never;
     };
@@ -94,10 +167,29 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取装置列表 */
         get: operations["UnitController_findAll"];
         put?: never;
+        /** 创建装置 */
         post: operations["UnitController_create"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/unit/removeAll": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** 全部删除 */
+        delete: operations["UnitController_removeAll"];
         options?: never;
         head?: never;
         patch?: never;
@@ -110,12 +202,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取装置信息 */
         get: operations["UnitController_findOne"];
         put?: never;
         post?: never;
+        /** 删除装置 */
         delete: operations["UnitController_remove"];
         options?: never;
         head?: never;
+        /** 更新装置 */
         patch: operations["UnitController_update"];
         trace?: never;
     };
@@ -126,10 +221,114 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取阀门列表 */
         get: operations["ValveController_findAll"];
         put?: never;
+        /** 创建阀门 */
         post: operations["ValveController_create"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/valve/export": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 导出阀门列表 */
+        get: operations["ValveController_exportValveList"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/valve/history-data": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 获取阀门运行数据列表 */
+        get: operations["ValveController_findHistoryDataList"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/valve/history-data/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 获取阀门运行数据详情 */
+        get: operations["ValveController_findHistoryData"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/valve/score": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 获取阀门评分列表 */
+        get: operations["ValveController_findScoreList"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/valve/score/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 获取阀门评分详情 */
+        get: operations["ValveController_findScore"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/valve/removeAll": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** 删除所有阀门 */
+        delete: operations["ValveController_removeAll"];
         options?: never;
         head?: never;
         patch?: never;
@@ -142,12 +341,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取阀门信息 */
         get: operations["ValveController_findOne"];
         put?: never;
         post?: never;
+        /** 删除阀门 */
         delete: operations["ValveController_remove"];
         options?: never;
         head?: never;
+        /** 更新阀门信息 */
         patch: operations["ValveController_update"];
         trace?: never;
     };
@@ -158,10 +360,80 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取分析任务列表 */
         get: operations["AnalysisTaskController_findAll"];
         put?: never;
+        /** 创建分析任务 */
         post: operations["AnalysisTaskController_create"];
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/analysis-task/execute/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 执行分析任务 */
+        post: operations["AnalysisTaskController_execute"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/analysis-task/uploadPdf/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /** 上传PDF文件 */
+        post: operations["AnalysisTaskController_upload"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/analysis-task/result/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** 获取分析任务结果 */
+        get: operations["AnalysisTaskController_result"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/api/project/analysis-task/removeAll": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        post?: never;
+        /** 删除所有分析任务 */
+        delete: operations["AnalysisTaskController_removeAll"];
         options?: never;
         head?: never;
         patch?: never;
@@ -174,12 +446,15 @@ export interface paths {
             path?: never;
             cookie?: never;
         };
+        /** 获取分析任务详情 */
         get: operations["AnalysisTaskController_findOne"];
         put?: never;
         post?: never;
+        /** 删除分析任务 */
         delete: operations["AnalysisTaskController_remove"];
         options?: never;
         head?: never;
+        /** 获取分析任务详情 */
         patch: operations["AnalysisTaskController_update"];
         trace?: never;
     };
@@ -618,14 +893,1105 @@ export interface components {
         RefreshTokenDto: {
             refreshToken: string;
         };
-        CreateFactoryDto: Record<string, never>;
-        UpdateFactoryDto: Record<string, never>;
-        CreateUnitDto: Record<string, never>;
-        UpdateUnitDto: Record<string, never>;
-        CreateValveDto: Record<string, never>;
-        UpdateValveDto: Record<string, never>;
-        CreateAnalysisTaskDto: Record<string, never>;
-        UpdateAnalysisTaskDto: Record<string, never>;
+        CreateFactoryDto: {
+            /**
+             * @description 工厂名称
+             * @example 工厂1
+             */
+            name: string;
+            /**
+             * @description 状态 false: 禁用 true: 启用
+             * @default true
+             * @example true
+             */
+            status: boolean;
+            /**
+             * @description 行业
+             * @example 新能源
+             */
+            industry?: string;
+            /**
+             * @description 地址编码
+             * @example 130010
+             */
+            code?: string;
+            /**
+             * @description 省份
+             * @example 广东省
+             */
+            province?: string;
+            /**
+             * @description 城市
+             * @example 广州市
+             */
+            city?: string;
+            /**
+             * @description 区县
+             * @example 天河区
+             */
+            county?: string;
+            /**
+             * @description 工厂地址
+             * @example 地址1
+             */
+            address?: string;
+            /**
+             * @description 工厂坐标(经度)
+             * @default
+             * @example 1.1
+             */
+            longitude: string;
+            /**
+             * @description 工厂坐标(纬度)
+             * @default
+             * @example 1.1
+             */
+            latitude: string;
+            /**
+             * @description 工厂描述
+             * @default
+             * @example 描述1
+             */
+            remark: string;
+            /**
+             * @description 父级id
+             * @example 1
+             */
+            parentId?: number;
+        };
+        FactoryEntity: {
+            id: number;
+            name: string;
+            status: boolean;
+            code: string;
+            industry: string;
+            province: string;
+            city: string;
+            county: string;
+            address: string;
+            longitude: string;
+            latitude: string;
+            parentId: number | null;
+            remark: string;
+            createBy: string;
+            updateBy: string;
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: date-time */
+            updatedAt: string;
+        };
+        ImportValveDataDto: {
+            files: string[];
+            factoryId: number;
+            reportMode?: string;
+        };
+        ReportDto: {
+            /**
+             * @description 工厂id
+             * @example 1
+             */
+            factoryId?: number;
+            /**
+             * @description 分析任务id
+             * @example 1
+             */
+            analysisTaskId?: number;
+            /**
+             * @description 报告模式
+             * @example factory
+             */
+            reportMode?: string;
+            /**
+             * @description 阀门ids
+             * @example [
+             *       1,
+             *       2,
+             *       3
+             *     ]
+             */
+            valveTags?: string[];
+        };
+        UpdateFactoryDto: {
+            id: number;
+            /**
+             * @description 工厂名称
+             * @example 工厂1
+             */
+            name?: string;
+            /**
+             * @description 状态 false: 禁用 true: 启用
+             * @default true
+             * @example true
+             */
+            status: boolean;
+            /**
+             * @description 行业
+             * @example 新能源
+             */
+            industry?: string;
+            /**
+             * @description 地址编码
+             * @example 130010
+             */
+            code?: string;
+            /**
+             * @description 省份
+             * @example 广东省
+             */
+            province?: string;
+            /**
+             * @description 城市
+             * @example 广州市
+             */
+            city?: string;
+            /**
+             * @description 区县
+             * @example 天河区
+             */
+            county?: string;
+            /**
+             * @description 工厂地址
+             * @example 地址1
+             */
+            address?: string;
+            /**
+             * @description 工厂坐标(经度)
+             * @default
+             * @example 1.1
+             */
+            longitude: string;
+            /**
+             * @description 工厂坐标(纬度)
+             * @default
+             * @example 1.1
+             */
+            latitude: string;
+            /**
+             * @description 工厂描述
+             * @default
+             * @example 描述1
+             */
+            remark: string;
+            /**
+             * @description 父级id
+             * @example 1
+             */
+            parentId?: number;
+        };
+        CreateUnitDto: {
+            /**
+             * @description 装置名称
+             * @example 装置1
+             */
+            name: string;
+            /**
+             * @description 状态 false: 禁用 true: 启用
+             * @default true
+             * @example true
+             */
+            status: boolean;
+            /**
+             * @description 装置描述
+             * @default
+             * @example 这是一个装置
+             */
+            remark: string;
+            /**
+             * @description 工厂id
+             * @example 1
+             */
+            factoryId: number;
+            /**
+             * @description 阀门ids
+             * @example [
+             *       1,
+             *       2,
+             *       3
+             *     ]
+             */
+            valveIds?: number[];
+        };
+        UnitEntity: {
+            id: number;
+            name: string;
+            status: boolean;
+            remark: string;
+            factoryId: number;
+            factories: components["schemas"]["FactoryEntity"];
+            createBy: string;
+            updateBy: string;
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: date-time */
+            updatedAt: string;
+        };
+        PaginateResponse: {
+            /**
+             * @description 页码
+             * @default 1
+             * @example 1
+             */
+            page: number;
+            /**
+             * @description 每页数量
+             * @default 10
+             * @example 10
+             */
+            pageSize: number;
+        };
+        UpdateUnitDto: {
+            id: number;
+            /**
+             * @description 装置名称
+             * @example 装置1
+             */
+            name?: string;
+            /**
+             * @description 状态 false: 禁用 true: 启用
+             * @default true
+             * @example true
+             */
+            status: boolean;
+            /**
+             * @description 装置描述
+             * @default
+             * @example 这是一个装置
+             */
+            remark: string;
+            /**
+             * @description 工厂id
+             * @example 1
+             */
+            factoryId?: number;
+            /**
+             * @description 阀门ids
+             * @example [
+             *       1,
+             *       2,
+             *       3
+             *     ]
+             */
+            valveIds?: number[];
+        };
+        CreateValveDto: {
+            /**
+             * @description 阀门位号
+             * @example FV-3001B
+             */
+            tag: string;
+            /**
+             * @description 来源
+             * @example hart
+             */
+            source?: string;
+            /**
+             * @description 介质
+             * @example 氨水
+             */
+            fluidName?: string;
+            /**
+             * @description 关键应用
+             * @example 反应器
+             */
+            criticalApplication?: string;
+            /**
+             * @description 阀体序列号
+             * @example 123456
+             */
+            serialNumber?: string;
+            /**
+             * Format: date-time
+             * @description 投用时间
+             * @example 1714752000000
+             */
+            since?: string;
+            /**
+             * @description 阀体品牌
+             * @example Fisher
+             */
+            valveBrand?: string;
+            /**
+             * @description 系列
+             * @example 系列
+             */
+            valveSeries?: string;
+            /**
+             * @description 阀体类型
+             * @example 球阀
+             */
+            valveType?: string;
+            /**
+             * @description 阀体口径
+             * @example DN50
+             */
+            valveSize?: string;
+            /**
+             * @description 阀体流量系数
+             * @example DN50
+             */
+            valveCv?: string;
+            /**
+             * @description 阀体磅级
+             * @example DN50
+             */
+            valveRating?: string;
+            /**
+             * @description 阀体阀杆尺寸
+             * @example DN50
+             */
+            valveStemSize?: string;
+            /**
+             * @description 阀体连接形式
+             * @example 法兰
+             */
+            valveEndConnection?: string;
+            /**
+             * @description 阀体阀体材质
+             * @example 碳钢
+             */
+            valveBodyMaterial?: string;
+            /**
+             * @description 阀盖形式
+             * @example 法兰
+             */
+            valveBonnet?: string;
+            /**
+             * @description 流量特性
+             * @example 316
+             */
+            valveTrim?: string;
+            /**
+             * @description 阀体泄漏等级
+             * @example V
+             */
+            valveSeatLeakage?: string;
+            /**
+             * @description 阀体描述
+             * @example ...
+             */
+            valveDescription?: string;
+            /**
+             * @description 执行机构品牌
+             * @example Fisher
+             */
+            actuatorBrand?: string;
+            /**
+             * @description 执行机构系列
+             * @example 系列1
+             */
+            actuatorSeries?: string;
+            /**
+             * @description 执行机构尺寸
+             * @example DN50
+             */
+            actuatorSize?: string;
+            /**
+             * @description 故障位置
+             * @example DN50
+             */
+            actuatorFailurePosition?: string;
+            /**
+             * @description 手轮
+             * @example 有
+             */
+            handwheel?: string;
+            /**
+             * @description 执行机构描述
+             * @example ...
+             */
+            actuatorDescription?: string;
+            /**
+             * @description 定位器品牌
+             * @example Fisher
+             */
+            positionerBrand?: string;
+            /**
+             * @description 定位器类型
+             * @example 气动
+             */
+            positionerModel?: string;
+            /**
+             * @description 定位器描述
+             * @example ...
+             */
+            positionerDescription?: string;
+            /**
+             * @description 限位开关品牌
+             * @example LS BRAND
+             */
+            lsBrand?: string;
+            /**
+             * @description 限位开关型号
+             * @example LS MODEL
+             */
+            lsModel?: string;
+            /**
+             * @description 限位开关数量
+             * @example 10
+             */
+            lsQty?: number;
+            /**
+             * @description 限位开关描述
+             * @example ...
+             */
+            lsDescription?: string;
+            /**
+             * @description 气控阀品牌
+             * @example PILOT BRAND
+             */
+            pilotBrand?: string;
+            /**
+             * @description 气控阀型号
+             * @example PILOT MODEL
+             */
+            pilotModel?: string;
+            /**
+             * @description 气控阀数量
+             * @example 10
+             */
+            pilotQty?: number;
+            /**
+             * @description 气控阀描述
+             * @example ...
+             */
+            pilotDescription?: string;
+            /**
+             * @description 快排阀品牌
+             * @example QE BRAND
+             */
+            qeBrand?: string;
+            /**
+             * @description 快排阀型号
+             * @example QE MODEL
+             */
+            qeModel?: string;
+            /**
+             * @description 快排阀数量
+             * @example 10
+             */
+            qeQty?: number;
+            /**
+             * @description 快排阀描述
+             * @example ...
+             */
+            qeDescription?: string;
+            /**
+             * @description 过滤减压阀品牌
+             * @example REGULATOR BRAND
+             */
+            regulatorBrand?: string;
+            /**
+             * @description 过滤减压阀型号
+             * @example REGULATOR MODEL
+             */
+            regulatorModel?: string;
+            /**
+             * @description 过滤减压阀描述
+             * @example ...
+             */
+            regulatorDescription?: string;
+            /**
+             * @description 信号比较器品牌
+             * @example SIGNAL COMPARATOR BRAND
+             */
+            signalComparatorBrand?: string;
+            /**
+             * @description 信号比较器型号
+             * @example SIGNAL COMPARATOR MODEL
+             */
+            signalComparatorModel?: string;
+            /**
+             * @description 信号比较器描述
+             * @example ...
+             */
+            signalComparatorDescription?: string;
+            /**
+             * @description 电磁阀品牌
+             * @example SOV BRAND
+             */
+            sovBrand?: string;
+            /**
+             * @description 电磁阀型号
+             * @example SOV MODEL
+             */
+            sovModel?: string;
+            /**
+             * @description 电磁阀数量
+             * @example 10
+             */
+            sovQty?: number;
+            /**
+             * @description 电磁阀描述
+             * @example ...
+             */
+            sovDescription?: string;
+            /**
+             * @description 保位阀品牌
+             * @example TRIP VALVE BRAND
+             */
+            tripValveBrand?: string;
+            /**
+             * @description 保位阀型号
+             * @example TRIP VALVE MODEL
+             */
+            tripValveModel?: string;
+            /**
+             * @description 保位阀描述
+             * @example ...
+             */
+            tripValveDescription?: string;
+            /**
+             * @description 放大器品牌
+             * @example VB BRAND
+             */
+            vbBrand?: string;
+            /**
+             * @description 放大器型号
+             * @example VB MODEL
+             */
+            vbModel?: string;
+            /**
+             * @description 放大器数量
+             * @example 10
+             */
+            vbQty?: number;
+            /**
+             * @description 放大器描述
+             * @example ...
+             */
+            vbDescription?: string;
+            /**
+             * @description 附件种类
+             * @example ...
+             */
+            accessory?: string;
+            /**
+             * @description 附件品牌
+             * @example ...
+             */
+            accessoryBrand?: string;
+            /**
+             * @description 附件类型
+             * @example ...
+             */
+            accessoryType?: string;
+            /**
+             * @description 附件数量
+             * @example 1
+             */
+            accessoryQuantity?: number;
+            /**
+             * @description 附件描述
+             * @example ...
+             */
+            accessoryDescription?: string;
+            /**
+             * @description 备注
+             * @example ...
+             */
+            remark?: string;
+            /**
+             * @description 装置id
+             * @example 1
+             */
+            unitId?: number;
+            /**
+             * @description 工厂id
+             * @example 1
+             */
+            factoryId: number;
+            /**
+             * @description 分析任务id
+             * @example 1
+             */
+            analysisTaskId?: number;
+        };
+        ValveEntity: {
+            id: number;
+            source: string;
+            no: string;
+            tag: string;
+            fluidName: string;
+            criticalApplication: string;
+            /** Format: date-time */
+            since: string;
+            serialNumber: string;
+            valveBrand: string;
+            valveSeries: string;
+            valveSize: string;
+            valveCv: string;
+            valveRating: string;
+            valveEndConnection: string;
+            valveBodyMaterial: string;
+            valveBonnet: string;
+            valveTrim: string;
+            valveSeatLeakage: string;
+            valveDescription: string;
+            actuatorBrand: string;
+            actuatorSeries: string;
+            actuatorSize: string;
+            handwheel: string;
+            actuatorDescription: string;
+            actuatorFailurePosition: string;
+            regulatorBrand: string;
+            regulatorModel: string;
+            regulatorDescription: string;
+            positionerBrand: string;
+            positionerModel: string;
+            positionerDescription: string;
+            sovBrand: string;
+            sovModel: string;
+            sovQty: number;
+            sovDescription: string;
+            lsBrand: string;
+            lsModel: string;
+            lsQty: number;
+            lsDescription: string;
+            tripValveBrand: string;
+            tripValveModel: string;
+            tripValveDescription: string;
+            vbBrand: string;
+            vbModel: string;
+            vbQty: number;
+            vbDescription: string;
+            qeBrand: string;
+            qeModel: string;
+            qeQty: number;
+            qeDescription: string;
+            pilotBrand: string;
+            pilotModel: string;
+            pilotQty: number;
+            pilotDescription: string;
+            valveStemSize: string;
+            stroke: string;
+            signalComparatorBrand: string;
+            signalComparatorModel: string;
+            signalComparatorDescription: string;
+            parts: string;
+            analysisTaskId: number;
+            factoryId: number;
+            factory: components["schemas"]["FactoryEntity"];
+            unitId: number;
+            unit: components["schemas"]["UnitEntity"];
+            createBy: string;
+            updateBy: string;
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: date-time */
+            updatedAt: string;
+        };
+        ValveHistoryDataEntity: {
+            id: number;
+            tag: string;
+            valveId: number;
+            /** Format: date-time */
+            time: string;
+            data: Record<string, never>;
+        };
+        UpdateValveDto: {
+            id: number;
+            /**
+             * @description 阀门位号
+             * @example FV-3001B
+             */
+            tag?: string;
+            /**
+             * @description 来源
+             * @example hart
+             */
+            source?: string;
+            /**
+             * @description 介质
+             * @example 氨水
+             */
+            fluidName?: string;
+            /**
+             * @description 关键应用
+             * @example 反应器
+             */
+            criticalApplication?: string;
+            /**
+             * @description 阀体序列号
+             * @example 123456
+             */
+            serialNumber?: string;
+            /**
+             * Format: date-time
+             * @description 投用时间
+             * @example 1714752000000
+             */
+            since?: string;
+            /**
+             * @description 阀体品牌
+             * @example Fisher
+             */
+            valveBrand?: string;
+            /**
+             * @description 系列
+             * @example 系列
+             */
+            valveSeries?: string;
+            /**
+             * @description 阀体类型
+             * @example 球阀
+             */
+            valveType?: string;
+            /**
+             * @description 阀体口径
+             * @example DN50
+             */
+            valveSize?: string;
+            /**
+             * @description 阀体流量系数
+             * @example DN50
+             */
+            valveCv?: string;
+            /**
+             * @description 阀体磅级
+             * @example DN50
+             */
+            valveRating?: string;
+            /**
+             * @description 阀体阀杆尺寸
+             * @example DN50
+             */
+            valveStemSize?: string;
+            /**
+             * @description 阀体连接形式
+             * @example 法兰
+             */
+            valveEndConnection?: string;
+            /**
+             * @description 阀体阀体材质
+             * @example 碳钢
+             */
+            valveBodyMaterial?: string;
+            /**
+             * @description 阀盖形式
+             * @example 法兰
+             */
+            valveBonnet?: string;
+            /**
+             * @description 流量特性
+             * @example 316
+             */
+            valveTrim?: string;
+            /**
+             * @description 阀体泄漏等级
+             * @example V
+             */
+            valveSeatLeakage?: string;
+            /**
+             * @description 阀体描述
+             * @example ...
+             */
+            valveDescription?: string;
+            /**
+             * @description 执行机构品牌
+             * @example Fisher
+             */
+            actuatorBrand?: string;
+            /**
+             * @description 执行机构系列
+             * @example 系列1
+             */
+            actuatorSeries?: string;
+            /**
+             * @description 执行机构尺寸
+             * @example DN50
+             */
+            actuatorSize?: string;
+            /**
+             * @description 故障位置
+             * @example DN50
+             */
+            actuatorFailurePosition?: string;
+            /**
+             * @description 手轮
+             * @example 有
+             */
+            handwheel?: string;
+            /**
+             * @description 执行机构描述
+             * @example ...
+             */
+            actuatorDescription?: string;
+            /**
+             * @description 定位器品牌
+             * @example Fisher
+             */
+            positionerBrand?: string;
+            /**
+             * @description 定位器类型
+             * @example 气动
+             */
+            positionerModel?: string;
+            /**
+             * @description 定位器描述
+             * @example ...
+             */
+            positionerDescription?: string;
+            /**
+             * @description 限位开关品牌
+             * @example LS BRAND
+             */
+            lsBrand?: string;
+            /**
+             * @description 限位开关型号
+             * @example LS MODEL
+             */
+            lsModel?: string;
+            /**
+             * @description 限位开关数量
+             * @example 10
+             */
+            lsQty?: number;
+            /**
+             * @description 限位开关描述
+             * @example ...
+             */
+            lsDescription?: string;
+            /**
+             * @description 气控阀品牌
+             * @example PILOT BRAND
+             */
+            pilotBrand?: string;
+            /**
+             * @description 气控阀型号
+             * @example PILOT MODEL
+             */
+            pilotModel?: string;
+            /**
+             * @description 气控阀数量
+             * @example 10
+             */
+            pilotQty?: number;
+            /**
+             * @description 气控阀描述
+             * @example ...
+             */
+            pilotDescription?: string;
+            /**
+             * @description 快排阀品牌
+             * @example QE BRAND
+             */
+            qeBrand?: string;
+            /**
+             * @description 快排阀型号
+             * @example QE MODEL
+             */
+            qeModel?: string;
+            /**
+             * @description 快排阀数量
+             * @example 10
+             */
+            qeQty?: number;
+            /**
+             * @description 快排阀描述
+             * @example ...
+             */
+            qeDescription?: string;
+            /**
+             * @description 过滤减压阀品牌
+             * @example REGULATOR BRAND
+             */
+            regulatorBrand?: string;
+            /**
+             * @description 过滤减压阀型号
+             * @example REGULATOR MODEL
+             */
+            regulatorModel?: string;
+            /**
+             * @description 过滤减压阀描述
+             * @example ...
+             */
+            regulatorDescription?: string;
+            /**
+             * @description 信号比较器品牌
+             * @example SIGNAL COMPARATOR BRAND
+             */
+            signalComparatorBrand?: string;
+            /**
+             * @description 信号比较器型号
+             * @example SIGNAL COMPARATOR MODEL
+             */
+            signalComparatorModel?: string;
+            /**
+             * @description 信号比较器描述
+             * @example ...
+             */
+            signalComparatorDescription?: string;
+            /**
+             * @description 电磁阀品牌
+             * @example SOV BRAND
+             */
+            sovBrand?: string;
+            /**
+             * @description 电磁阀型号
+             * @example SOV MODEL
+             */
+            sovModel?: string;
+            /**
+             * @description 电磁阀数量
+             * @example 10
+             */
+            sovQty?: number;
+            /**
+             * @description 电磁阀描述
+             * @example ...
+             */
+            sovDescription?: string;
+            /**
+             * @description 保位阀品牌
+             * @example TRIP VALVE BRAND
+             */
+            tripValveBrand?: string;
+            /**
+             * @description 保位阀型号
+             * @example TRIP VALVE MODEL
+             */
+            tripValveModel?: string;
+            /**
+             * @description 保位阀描述
+             * @example ...
+             */
+            tripValveDescription?: string;
+            /**
+             * @description 放大器品牌
+             * @example VB BRAND
+             */
+            vbBrand?: string;
+            /**
+             * @description 放大器型号
+             * @example VB MODEL
+             */
+            vbModel?: string;
+            /**
+             * @description 放大器数量
+             * @example 10
+             */
+            vbQty?: number;
+            /**
+             * @description 放大器描述
+             * @example ...
+             */
+            vbDescription?: string;
+            /**
+             * @description 附件种类
+             * @example ...
+             */
+            accessory?: string;
+            /**
+             * @description 附件品牌
+             * @example ...
+             */
+            accessoryBrand?: string;
+            /**
+             * @description 附件类型
+             * @example ...
+             */
+            accessoryType?: string;
+            /**
+             * @description 附件数量
+             * @example 1
+             */
+            accessoryQuantity?: number;
+            /**
+             * @description 附件描述
+             * @example ...
+             */
+            accessoryDescription?: string;
+            /**
+             * @description 备注
+             * @example ...
+             */
+            remark?: string;
+            /**
+             * @description 装置id
+             * @example 1
+             */
+            unitId?: number;
+            /**
+             * @description 工厂id
+             * @example 1
+             */
+            factoryId?: number;
+            /**
+             * @description 分析任务id
+             * @example 1
+             */
+            analysisTaskId?: number;
+        };
+        CreateAnalysisTaskDto: {
+            /**
+             * @description 任务名称
+             * @example 分析任务1
+             */
+            name: string;
+            /**
+             * @description 状态 (0: 待执行, 1: 执行中, 2: 已完成, 3: 失败)
+             * @default 0
+             * @example 1
+             */
+            status: number;
+            /** @description 文件地址 */
+            files: string[];
+            /**
+             * @description 工厂ID
+             * @example 1
+             */
+            factoryId: number;
+            /**
+             * @description 备注
+             * @example 备注
+             */
+            remark?: string;
+        };
+        AnalysisTaskEntity: {
+            id: number;
+            name: string;
+            status: number;
+            remark: string;
+            files: string[];
+            factoryId: number;
+            result: number[];
+            ruleId: number;
+            createBy: string;
+            updateBy: string;
+            /** Format: date-time */
+            createdAt: string;
+            /** Format: date-time */
+            updatedAt: string;
+        };
+        UploadDto: {
+            files: string[];
+        };
+        UpdateAnalysisTaskDto: {
+            id: number;
+            /**
+             * @description 任务名称
+             * @example 分析任务1
+             */
+            name?: string;
+            /**
+             * @description 状态 (0: 待执行, 1: 执行中, 2: 已完成, 3: 失败)
+             * @default 0
+             * @example 1
+             */
+            status: number;
+            /** @description 文件地址 */
+            files?: string[];
+            /**
+             * @description 工厂ID
+             * @example 1
+             */
+            factoryId?: number;
+            /**
+             * @description 备注
+             * @example 备注
+             */
+            remark?: string;
+        };
         CreateUserDto: {
             /**
              * @description 账号
@@ -734,20 +2100,6 @@ export interface components {
             updatedAt: string;
             remark: string;
             role: components["schemas"]["RoleEntity"][];
-        };
-        PaginateResponse: {
-            /**
-             * @description 页码
-             * @default 1
-             * @example 1
-             */
-            page: number;
-            /**
-             * @description 每页数量
-             * @default 10
-             * @example 10
-             */
-            pageSize: number;
         };
         ChangePasswordDto: {
             id: number;
@@ -1662,6 +3014,14 @@ export interface operations {
             };
         };
         responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SignInEntity"];
+                };
+            };
             201: {
                 headers: {
                     [name: string]: unknown;
@@ -1672,7 +3032,15 @@ export interface operations {
     };
     FactoryController_findAll: {
         parameters: {
-            query?: never;
+            query?: {
+                filterId?: number;
+                /** @description 工厂名称 */
+                name?: string;
+                /** @description 开始时间 */
+                beginTime?: string;
+                /** @description 结束时间 */
+                endTime?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1684,7 +3052,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": Record<string, never>[];
                 };
             };
         };
@@ -1707,18 +3075,85 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    "application/json": components["schemas"]["FactoryEntity"];
+                };
+            };
+        };
+    };
+    FactoryController_importValveData: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ImportValveDataDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
                     "application/json": string;
                 };
             };
         };
     };
-    FactoryController_findOne: {
+    FactoryController_generateReport: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["ReportDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ReportDto"];
+                };
+            };
+        };
+    };
+    FactoryController_findChartData: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
             };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FactoryEntity"];
+                };
+            };
+        };
+    };
+    FactoryController_removeAll: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Real-IP": string;
+            };
+            path?: never;
             cookie?: never;
         };
         requestBody?: never;
@@ -1733,12 +3168,35 @@ export interface operations {
             };
         };
     };
-    FactoryController_remove: {
+    FactoryController_findOne: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FactoryEntity"];
+                };
+            };
+        };
+    };
+    FactoryController_remove: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Real-IP": string;
+            };
+            path: {
+                id: number;
             };
             cookie?: never;
         };
@@ -1759,7 +3217,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
             };
             cookie?: never;
         };
@@ -1774,14 +3232,27 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["FactoryEntity"];
                 };
             };
         };
     };
     UnitController_findAll: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description 装置名称 */
+                name?: string;
+                /** @description 工厂id */
+                factoryId?: number;
+                /** @description 页码 */
+                page?: number;
+                /** @description 每页数量 */
+                pageSize?: number;
+                /** @description 开始时间 */
+                beginTime?: string;
+                /** @description 结束时间 */
+                endTime?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1793,7 +3264,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["PaginateResponse"] & {
+                        rows?: components["schemas"]["UnitEntity"][];
+                    };
                 };
             };
         };
@@ -1816,18 +3289,18 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["UnitEntity"];
                 };
             };
         };
     };
-    UnitController_findOne: {
+    UnitController_removeAll: {
         parameters: {
             query?: never;
-            header?: never;
-            path: {
-                id: string;
+            header: {
+                "X-Real-IP": string;
             };
+            path?: never;
             cookie?: never;
         };
         requestBody?: never;
@@ -1842,12 +3315,35 @@ export interface operations {
             };
         };
     };
-    UnitController_remove: {
+    UnitController_findOne: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UnitEntity"];
+                };
+            };
+        };
+    };
+    UnitController_remove: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Real-IP": string;
+            };
+            path: {
+                id: number;
             };
             cookie?: never;
         };
@@ -1868,7 +3364,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
             };
             cookie?: never;
         };
@@ -1883,14 +3379,31 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["UnitEntity"];
                 };
             };
         };
     };
     ValveController_findAll: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description 阀门位号 */
+                tag?: string;
+                /** @description 工厂id */
+                factoryId?: number;
+                /** @description 装置id */
+                unitId?: number;
+                /** @description 分析任务id */
+                analysisTaskId?: number;
+                /** @description 页码 */
+                page?: number;
+                /** @description 每页数量 */
+                pageSize?: number;
+                /** @description 开始时间 */
+                beginTime?: string;
+                /** @description 结束时间 */
+                endTime?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -1902,7 +3415,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["PaginateResponse"] & {
+                        rows?: components["schemas"]["ValveEntity"][];
+                    };
                 };
             };
         };
@@ -1925,18 +3440,148 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["ValveEntity"];
                 };
             };
         };
     };
-    ValveController_findOne: {
+    ValveController_exportValveList: {
+        parameters: {
+            query?: {
+                /** @description 阀门位号 */
+                tag?: string;
+                /** @description 工厂id */
+                factoryId?: number;
+                /** @description 装置id */
+                unitId?: number;
+                /** @description 分析任务id */
+                analysisTaskId?: number;
+                /** @description 页码 */
+                page?: number;
+                /** @description 每页数量 */
+                pageSize?: number;
+                /** @description 开始时间 */
+                beginTime?: string;
+                /** @description 结束时间 */
+                endTime?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["PaginateResponse"] & {
+                        rows?: components["schemas"]["ValveEntity"][];
+                    };
+                };
+            };
+        };
+    };
+    ValveController_findHistoryDataList: {
+        parameters: {
+            query: {
+                valveId: number;
+                /** @description 开始时间 */
+                beginTime?: string;
+                /** @description 结束时间 */
+                endTime?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValveHistoryDataEntity"][];
+                };
+            };
+        };
+    };
+    ValveController_findHistoryData: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
             };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+        };
+    };
+    ValveController_findScoreList: {
+        parameters: {
+            query: {
+                valveId: number;
+                /** @description 开始时间 */
+                beginTime?: string;
+                /** @description 结束时间 */
+                endTime?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>[];
+                };
+            };
+        };
+    };
+    ValveController_findScore: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+        };
+    };
+    ValveController_removeAll: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Real-IP": string;
+            };
+            path?: never;
             cookie?: never;
         };
         requestBody?: never;
@@ -1951,12 +3596,35 @@ export interface operations {
             };
         };
     };
-    ValveController_remove: {
+    ValveController_findOne: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValveEntity"];
+                };
+            };
+        };
+    };
+    ValveController_remove: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Real-IP": string;
+            };
+            path: {
+                id: number;
             };
             cookie?: never;
         };
@@ -1977,7 +3645,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
             };
             cookie?: never;
         };
@@ -1992,14 +3660,29 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["ValveEntity"];
                 };
             };
         };
     };
     AnalysisTaskController_findAll: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description 任务名称 */
+                name?: string;
+                /** @description 状态 (0: 待执行, 1: 执行中, 2: 已完成, 3: 失败) */
+                status?: number;
+                /** @description 工厂ID */
+                factoryId?: number;
+                /** @description 页码 */
+                page?: number;
+                /** @description 每页数量 */
+                pageSize?: number;
+                /** @description 开始时间 */
+                beginTime?: string;
+                /** @description 结束时间 */
+                endTime?: string;
+            };
             header?: never;
             path?: never;
             cookie?: never;
@@ -2011,7 +3694,9 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["PaginateResponse"] & {
+                        rows?: components["schemas"]["AnalysisTaskEntity"][];
+                    };
                 };
             };
         };
@@ -2019,7 +3704,9 @@ export interface operations {
     AnalysisTaskController_create: {
         parameters: {
             query?: never;
-            header?: never;
+            header: {
+                "X-Real-IP": string;
+            };
             path?: never;
             cookie?: never;
         };
@@ -2034,18 +3721,86 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
+                    "application/json": components["schemas"]["AnalysisTaskEntity"];
+                };
+            };
+        };
+    };
+    AnalysisTaskController_execute: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
                     "application/json": string;
                 };
             };
         };
     };
-    AnalysisTaskController_findOne: {
+    AnalysisTaskController_upload: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
             };
+            cookie?: never;
+        };
+        /** @description 上传PDF文件 */
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["UploadDto"];
+            };
+        };
+        responses: {
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": string[];
+                };
+            };
+        };
+    };
+    AnalysisTaskController_result: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": Record<string, never>;
+                };
+            };
+        };
+    };
+    AnalysisTaskController_removeAll: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Real-IP": string;
+            };
+            path?: never;
             cookie?: never;
         };
         requestBody?: never;
@@ -2060,12 +3815,35 @@ export interface operations {
             };
         };
     };
-    AnalysisTaskController_remove: {
+    AnalysisTaskController_findOne: {
         parameters: {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["AnalysisTaskEntity"];
+                };
+            };
+        };
+    };
+    AnalysisTaskController_remove: {
+        parameters: {
+            query?: never;
+            header: {
+                "X-Real-IP": string;
+            };
+            path: {
+                id: number;
             };
             cookie?: never;
         };
@@ -2086,7 +3864,7 @@ export interface operations {
             query?: never;
             header?: never;
             path: {
-                id: string;
+                id: number;
             };
             cookie?: never;
         };
@@ -2101,7 +3879,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": string;
+                    "application/json": components["schemas"]["AnalysisTaskEntity"];
                 };
             };
         };

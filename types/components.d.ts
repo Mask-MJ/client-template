@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Copyright: typeof import('./../src/components/common/Copyright.vue')['default']
+    DarkModeContainer: typeof import('./../src/components/common/DarkModeContainer.vue')['default']
     Fallback: typeof import('./../src/components/common/Fallback.vue')['default']
     Icon403: typeof import('./../src/components/icons/icon-403.vue')['default']
     Icon404: typeof import('./../src/components/icons/icon-404.vue')['default']
@@ -29,6 +30,7 @@ declare module 'vue' {
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
     NDropdown: typeof import('naive-ui')['NDropdown']
+    NEmpty: typeof import('naive-ui')['NEmpty']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']

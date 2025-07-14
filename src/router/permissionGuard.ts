@@ -39,7 +39,7 @@ function setupCommonGuard(router: Router) {
 function setupAccessGuard(router: Router) {
   router.beforeEach(async (to, from) => {
     const userStore = useUserStore()
-    const { fetchUserInfo, fetchMenuList, setIsAccessChecked } = userStore
+    const { getUserInfoAction, fetchMenuList, setIsAccessChecked } = userStore
     const { token, isAccessChecked } = storeToRefs(userStore)
     // accessToken 检查
     if (!token.value.accessToken) {
@@ -65,10 +65,17 @@ function setupAccessGuard(router: Router) {
     // 生成路由表
     // 当前登录用户拥有的角色标识列表
     if (!userStore.userInfo) {
-      await fetchUserInfo()
+      await getUserInfoAction()
     }
     await fetchMenuList(router)
     setIsAccessChecked(true)
+
+    if (to.path === '/') return { path: DEFAULT_HOME_PATH, replace: true }
+
+    // 如果没有访问权限，则跳转到403页面
+    if (!userStore.hasAccess(to.path)) {
+      return { path: '/403', replace: true }
+    }
 
     const redirectPath = (from.query.redirect ??
       (to.path === DEFAULT_HOME_PATH ? DEFAULT_HOME_PATH : to.fullPath)) as string

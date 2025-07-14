@@ -60,18 +60,20 @@ function handleUpdateExpandedKeys(keys: string[]) {
 
 <template>
   <div class="h-full flex flex-col items-stretch">
-    <RouterLink
-      :to="DEFAULT_HOME_PATH"
-      class="w-full flex-center overflow-hidden whitespace-nowrap border-b-1 border-coolgray-200"
-    >
-      <img src="@/assets/logo.svg" width="40" height="40" />
-      <h2
-        v-show="!sidebar.collapsed"
-        class="pl-8px text-align-center text-16px text-primary font-bold transition duration-300 ease-in-out"
+    <NCard content-class="!p-0" :bordered="false">
+      <RouterLink
+        :to="DEFAULT_HOME_PATH"
+        class="h-12 w-full flex-center overflow-hidden whitespace-nowrap border-b-1 border-[var(--n-border-color)]"
       >
-        {{ appName }}
-      </h2>
-    </RouterLink>
+        <img src="@/assets/logo.svg" width="40" height="40" />
+        <h2
+          v-show="!sidebar.collapsed"
+          class="pl-8px text-align-center text-16px text-primary font-bold transition duration-300 ease-in-out"
+        >
+          {{ appName }}
+        </h2>
+      </RouterLink>
+    </NCard>
 
     <NScrollbar class="flex-1 overflow-hidden">
       <NMenu

@@ -44,7 +44,6 @@ export default defineConfig(async (config: ConfigEnv): Promise<UserConfig> => {
       VueJsx(),
       VueDevTools(),
       Mkcert(),
-      Unocss(),
       VueI18nPlugin({
         include: [path.resolve(process.cwd(), 'src/locales/lang/**')],
         runtimeOnly: true,
@@ -65,6 +64,7 @@ export default defineConfig(async (config: ConfigEnv): Promise<UserConfig> => {
         vueTemplate: true,
       }),
       Components({ dts: 'types/components.d.ts', resolvers: [NaiveUiResolver()] }),
+      Unocss(),
       createHtmlPlugin({ minify: true }),
       await viteInjectAppLoadingPlugin(VITE_GLOB_APP_TITLE),
     ],

@@ -5,7 +5,12 @@ import type { RemovableRef } from '@vueuse/core'
 import type { RouteMeta, Router } from 'vue-router'
 
 import { getMenuList } from '@/api/system/menu'
-import { getAccessCodesApi, getUserInfoApi, login } from '@/api/system/user'
+import {
+  getAccessCodes as getAccessCodesApi,
+  getUserInfo as getUserInfoApi,
+  login as loginApi,
+  refreshToken as refreshTokenApi,
+} from '@/api/system/user'
 import { DEFAULT_HOME_PATH } from '@/config/constants'
 import { $t } from '@/locales'
 import { router } from '@/router'
@@ -53,7 +58,11 @@ export const useUserStore = defineStore('user-store', () => {
     userRoles.value = roles
   }
 
-  const fetchUserInfo = async () => {
+  const hasAccess = (path: string) => {
+    return accessMenus.value.some((menu) => menu.path === path)
+  }
+
+  const getUserInfoAction = async () => {
     const { data } = await getUserInfoApi()
     if (data) {
       setUserInfo(data)
@@ -61,36 +70,37 @@ export const useUserStore = defineStore('user-store', () => {
     return data || null
   }
 
-  const authLogin = async (params: SignInParams, onSuccess?: () => Promise<void> | void) => {
-    let userInfoData: null | UserInfo = null
+  const login = async (params: SignInParams, onSuccess?: () => Promise<void> | void) => {
     try {
       loginLoading.value = true
-      const { data } = await login(params)
+      const { data } = await loginApi(params)
       if (data && data.accessToken) {
         setToken(data)
 
         const { data: accessCodesData = [] } = await getAccessCodesApi()
 
-        userInfoData = await fetchUserInfo()
-
         setAccessCodes(accessCodesData)
         await (onSuccess ? onSuccess() : router.push(DEFAULT_HOME_PATH))
-
-        if (userInfoData?.nickname) {
-          window.$notification.success({
-            content: $t('authentication.loginSuccess'),
-            description: `${$t('authentication.loginSuccessDesc')}:${userInfoData?.nickname}`,
-            duration: 3000,
-          })
-        }
       }
     } finally {
       loginLoading.value = false
     }
 
-    return {
-      userInfo: userInfoData,
+    return getUserInfoAction()
+  }
+
+  const refreshToken = async () => {
+    const { data } = await refreshTokenApi({ refreshToken: token.value.refreshToken })
+    if (data && data.accessToken) {
+      setToken(data)
+      window.$message.success($t('authentication.loginSuccess'))
+
+      const { data: accessCodesData = [] } = await getAccessCodesApi()
+
+      setAccessCodes(accessCodesData)
+      await router.push(DEFAULT_HOME_PATH)
     }
+    return data || null
   }
 
   const fetchMenuList = async (router: Router) => {
@@ -146,8 +156,9 @@ export const useUserStore = defineStore('user-store', () => {
     userRoles,
 
     $reset: resetState,
-
-    authLogin,
+    hasAccess,
+    login,
+    refreshToken,
     fetchMenuList,
     getMenuByPath,
     setAccessCodes,
@@ -155,7 +166,7 @@ export const useUserStore = defineStore('user-store', () => {
     setToken,
     setIsAccessChecked,
     setUserInfo,
-    fetchUserInfo,
+    getUserInfoAction,
     setUserRoles,
   }
 })

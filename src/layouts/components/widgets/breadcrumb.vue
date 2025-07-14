@@ -11,7 +11,7 @@ const breadcrumbs = computed(() => {
   const matched = userStore.accessMenus.filter((menu) => {
     return !menu.hideInBreadcrumb && menu.path
   })
-  const resultBreadcrumb: { icon: null | string; name: string; path: string }[] = []
+  const resultBreadcrumb: MenuInfo[] = []
 
   function getBreadcrumbPath(path: string, routes: MenuInfo[]): MenuInfo[] {
     // 获取完整的面包屑路径
@@ -54,7 +54,7 @@ const breadcrumbs = computed(() => {
       <NIcon>
         <i class="inline-block" :class="breadcrumb.icon"></i>
       </NIcon>
-      {{ breadcrumb.name }}
+      {{ $t(`page.${breadcrumb.title}`) }}
     </NBreadcrumbItem>
   </NBreadcrumb>
 </template>

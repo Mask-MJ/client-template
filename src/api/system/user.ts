@@ -6,6 +6,7 @@ export type UserInfo = components['schemas']['UserEntity']
 export type SearchParams = operations['UserController_findAll']['parameters']['query']
 export type SignInParams = components['schemas']['SignInDto']
 export type SignInEntity = components['schemas']['SignInEntity']
+export type RefreshTokenParams = components['schemas']['RefreshTokenDto']
 
 // 注册
 export function register(body: components['schemas']['SignUpDto']) {
@@ -18,11 +19,15 @@ export function login(body: SignInParams) {
     body,
   })
 }
+// 刷新令牌
+export function refreshToken(body: RefreshTokenParams) {
+  return client.POST('/api/auth/authentication/refresh-token', { body })
+}
 // 获取自身用户信息
-export const getUserInfoApi = () => client.GET('/api/system/user/info')
+export const getUserInfo = () => client.GET('/api/system/user/info')
 
 // 获取用户权限码
-export const getAccessCodesApi = () => client.GET('/api/system/user/code')
+export const getAccessCodes = () => client.GET('/api/system/user/code')
 
 // 获取用户列表
 export function getUserList(query?: SearchParams) {
