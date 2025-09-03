@@ -59,6 +59,10 @@ export const useUserStore = defineStore('user-store', () => {
   }
 
   const hasAccess = (path: string) => {
+    // 判断 path 最后是否以 '/' 加数字结尾，如果是，则把 / 和数字替换为 /:id
+    path = path.replace(/\/\d+$/, '/:id')
+    // 如果是根路径，直接返回 true
+    if (path === '/') return true
     return accessMenus.value.some((menu) => menu.path === path)
   }
 

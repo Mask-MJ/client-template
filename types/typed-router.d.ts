@@ -22,5 +22,13 @@ declare module 'vue-router/auto-routes' {
     '/403': RouteRecordInfo<'/403', '/403', Record<never, never>, Record<never, never>>,
     '/dashboard/analytics': RouteRecordInfo<'/dashboard/analytics', '/dashboard/analytics', Record<never, never>, Record<never, never>>,
     '/login/': RouteRecordInfo<'/login/', '/login', Record<never, never>, Record<never, never>>,
+    '/system/dept/': RouteRecordInfo<'/system/dept/', '/system/dept', Record<never, never>, Record<never, never>>,
+    '/system/dict/': RouteRecordInfo<'/system/dict/', '/system/dict', Record<never, never>, Record<never, never>>,
+    '/system/document/[id]': RouteRecordInfo<'/system/document/[id]', '/system/document/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
+    '/system/knowledgeBase/': RouteRecordInfo<'/system/knowledgeBase/', '/system/knowledgeBase', Record<never, never>, Record<never, never>>,
+    '/system/menu/': RouteRecordInfo<'/system/menu/', '/system/menu', Record<never, never>, Record<never, never>>,
+    '/system/post/': RouteRecordInfo<'/system/post/', '/system/post', Record<never, never>, Record<never, never>>,
+    '/system/role/': RouteRecordInfo<'/system/role/', '/system/role', Record<never, never>, Record<never, never>>,
+    '/system/user/': RouteRecordInfo<'/system/user/', '/system/user', Record<never, never>, Record<never, never>>,
   }
 }

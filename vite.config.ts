@@ -16,7 +16,6 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
-import Mkcert from 'vite-plugin-mkcert'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts-next'
 
@@ -43,7 +42,7 @@ export default defineConfig(async (config: ConfigEnv): Promise<UserConfig> => {
       Vue(),
       VueJsx(),
       VueDevTools(),
-      Mkcert(),
+      // Mkcert(),
       VueI18nPlugin({
         include: [path.resolve(process.cwd(), 'src/locales/lang/**')],
         runtimeOnly: true,
