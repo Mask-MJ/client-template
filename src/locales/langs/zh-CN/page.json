@@ -13,18 +13,111 @@
   },
   "system": {
     "title": "系统管理",
-    "user": "用户管理",
-    "role": "角色管理",
-    "menu": "菜单管理",
-    "dept": "部门管理",
-    "post": "岗位管理",
-    "dict": "字典管理",
-    "knowledgeBase": "知识库",
-    "document": "文档管理",
-    "param": "参数管理",
-    "log": "日志管理",
-    "loginLog": "登录日志",
-    "operateLog": "操作日志",
+    "user": {
+      "title": "用户列表",
+      "username": "用户名",
+      "nickname": "用户昵称",
+      "sex": "性别",
+      "email": "邮箱",
+      "phoneNumber": "手机号",
+      "password": "密码",
+      "resetPassword": "重置密码",
+      "oldPassword": "旧密码",
+      "newPassword": "新密码",
+      "roles": "所属角色",
+      "addUser": "新增用户",
+      "editUser": "编辑用户",
+      "invalidEmail": "请输入有效的邮箱地址"
+    },
+    "role": {
+      "title": "角色列表",
+      "name": "角色名称",
+      "description": "角色描述",
+      "permissions": "角色权限",
+      "addRole": "新增角色",
+      "editRole": "编辑角色"
+    },
+    "menu": {
+      "title": "菜单管理",
+      "name": "菜单名称",
+      "path": "菜单路径",
+      "component": "菜单组件",
+      "icon": "菜单图标",
+      "addMenu": "新增菜单",
+      "editMenu": "编辑菜单"
+    },
+    "dept": {
+      "title": "部门管理",
+      "name": "部门名称",
+      "parent": "上级部门",
+      "sort": "排序",
+      "addDept": "新增部门",
+      "editDept": "编辑部门"
+    },
+    "post": {
+      "title": "岗位管理",
+      "name": "岗位名称",
+      "sort": "排序",
+      "addPost": "新增岗位",
+      "editPost": "编辑岗位"
+    },
+    "dict": {
+      "title": "字典管理",
+      "name": "字典名称",
+      "type": "字典类型",
+      "value": "字典值",
+      "sort": "排序",
+      "addDict": "新增字典",
+      "editDict": "编辑字典"
+    },
+    "knowledgeBase": {
+      "title": "知识库",
+      "name": "知识名称",
+      "category": "知识分类",
+      "content": "知识内容",
+      "addKnowledge": "新增知识",
+      "editKnowledge": "编辑知识"
+    },
+    "document": {
+      "title": "文档管理",
+      "name": "文档名称",
+      "category": "文档分类",
+      "content": "文档内容",
+      "addDocument": "新增文档",
+      "editDocument": "编辑文档"
+    },
+    "param": {
+      "title": "参数管理",
+      "name": "参数名称",
+      "value": "参数值",
+      "sort": "排序",
+      "addParam": "新增参数",
+      "editParam": "编辑参数"
+    },
+    "log": {
+      "title": "日志管理",
+      "name": "日志名称",
+      "type": "日志类型",
+      "content": "日志内容",
+      "addLog": "新增日志",
+      "editLog": "编辑日志"
+    },
+    "loginLog": {
+      "title": "登录日志",
+      "name": "用户名称",
+      "ip": "登录IP",
+      "time": "登录时间",
+      "addLoginLog": "新增登录日志",
+      "editLoginLog": "编辑登录日志"
+    },
+    "operateLog": {
+      "title": "操作日志",
+      "name": "用户名称",
+      "ip": "操作IP",
+      "time": "操作时间",
+      "addOperateLog": "新增操作日志",
+      "editOperateLog": "编辑操作日志"
+    },
     "notice": "通知公告",
     "config": "参数设置",
     "oss": "文件上传",
@@ -59,9 +152,38 @@
   },
   "monitor": {
     "title": "监控管理",
-    "online": "在线用户",
-    "loginLog": "登录日志",
-    "operationLog": "操作日志",
-    "info": "系统信息"
+    "online": {
+      "title": "在线用户",
+      "username": "用户名",
+      "ip": "登录IP",
+      "loginTime": "登录时间",
+      "status": "状态",
+      "forceLogout": "强制下线"
+    },
+    "loginLog": {
+      "title": "登录日志",
+      "name": "用户名称",
+      "ip": "登录IP",
+      "time": "登录时间",
+      "addLoginLog": "新增登录日志",
+      "editLoginLog": "编辑登录日志"
+    },
+    "operationLog": {
+      "title": "操作日志",
+      "name": "用户名称",
+      "ip": "操作IP",
+      "time": "操作时间",
+      "addOperationLog": "新增操作日志",
+      "editOperationLog": "编辑操作日志"
+    },
+    "info": {
+      "title": "系统信息",
+      "os": "操作系统",
+      "cpu": "CPU",
+      "memory": "内存",
+      "jvm": "JVM",
+      "disk": "磁盘",
+      "network": "网络"
+    }
   }
 }

@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "^4.1.0",
+    "@tanstack/vue-store": "^0.7.4",
     "@unhead/vue": "^2.0.10",
     "@unocss/reset": "^66.3.3",
     "@vueuse/core": "^13.4.0",
@@ -33,6 +34,7 @@
     "nprogress": "^0.2.0",
     "openapi-fetch": "^0.14.0",
     "pinia": "^3.0.3",
+    "pro-naive-ui": "^3.0.4",
     "theme-colors": "^0.1.0",
     "vue": "^3.5.13",
     "vue-i18n": "^11.1.7",
@@ -82,6 +84,7 @@
     "npm-run-all2": "^7.0.2",
     "openapi-typescript": "^7.8.0",
     "prettier": "3.5.3",
+    "pro-naive-ui-resolver": "^1.0.2",
     "type-fest": "^4.41.0",
     "typescript": "~5.8.0",
     "unocss": "^66.2.3",

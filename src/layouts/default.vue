@@ -32,7 +32,7 @@ const sidebar = computed(() => preferencesStore.state.sidebar)
         content-style="height: 100%"
         :native-scrollbar="false"
       >
-        <LayoutContent />
+        <LayoutContent class="h-full flex flex-col" />
       </NLayoutContent>
     </NLayout>
   </NLayout>

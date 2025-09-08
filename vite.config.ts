@@ -8,6 +8,7 @@ import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import { unheadVueComposablesImports } from '@unhead/vue'
 import Vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
+import { ProNaiveUIResolver } from 'pro-naive-ui-resolver'
 import Unocss from 'unocss/vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
@@ -16,6 +17,7 @@ import { VueRouterAutoImports } from 'unplugin-vue-router'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import Mkcert from 'vite-plugin-mkcert'
 import VueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts-next'
 
@@ -42,7 +44,10 @@ export default defineConfig(async (config: ConfigEnv): Promise<UserConfig> => {
       Vue(),
       VueJsx(),
       VueDevTools(),
-      // Mkcert(),
+      Mkcert({
+        // force: true,
+        // source: 'coding',
+      }),
       VueI18nPlugin({
         include: [path.resolve(process.cwd(), 'src/locales/lang/**')],
         runtimeOnly: true,
@@ -62,7 +67,10 @@ export default defineConfig(async (config: ConfigEnv): Promise<UserConfig> => {
         ],
         vueTemplate: true,
       }),
-      Components({ dts: 'types/components.d.ts', resolvers: [NaiveUiResolver()] }),
+      Components({
+        dts: 'types/components.d.ts',
+        resolvers: [NaiveUiResolver(), ProNaiveUIResolver()],
+      }),
       Unocss(),
       createHtmlPlugin({ minify: true }),
       await viteInjectAppLoadingPlugin(VITE_GLOB_APP_TITLE),

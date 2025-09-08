@@ -8,6 +8,7 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
+    Action: typeof import('../src/components/common/TableAction.vue')['default']
     Copyright: typeof import('./../src/components/common/Copyright.vue')['default']
     DarkModeContainer: typeof import('./../src/components/common/DarkModeContainer.vue')['default']
     Fallback: typeof import('./../src/components/common/Fallback.vue')['default']
@@ -28,9 +29,11 @@ declare module 'vue' {
     NCard: typeof import('naive-ui')['NCard']
     NCheckbox: typeof import('naive-ui')['NCheckbox']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
+    NDataTable: typeof import('naive-ui')['NDataTable']
     NDialogProvider: typeof import('naive-ui')['NDialogProvider']
     NDropdown: typeof import('naive-ui')['NDropdown']
     NEmpty: typeof import('naive-ui')['NEmpty']
+    NFlex: typeof import('naive-ui')['NFlex']
     NForm: typeof import('naive-ui')['NForm']
     NFormItem: typeof import('naive-ui')['NFormItem']
     NGlobalStyle: typeof import('naive-ui')['NGlobalStyle']
@@ -46,8 +49,18 @@ declare module 'vue' {
     NModal: typeof import('naive-ui')['NModal']
     NNotificationProvider: typeof import('naive-ui')['NNotificationProvider']
     NScrollbar: typeof import('naive-ui')['NScrollbar']
+    NSpace: typeof import('naive-ui')['NSpace']
     NWatermark: typeof import('naive-ui')['NWatermark']
+    ProConfigProvider: typeof import('pro-naive-ui')['ProConfigProvider']
+    ProDataTable: typeof import('pro-naive-ui')['ProDataTable']
+    ProInput: typeof import('pro-naive-ui')['ProInput']
+    ProModalForm: typeof import('pro-naive-ui')['ProModalForm']
+    ProPassword: typeof import('pro-naive-ui')['ProPassword']
+    ProRadioGroup: typeof import('pro-naive-ui')['ProRadioGroup']
+    ProSearchForm: typeof import('pro-naive-ui')['ProSearchForm']
+    ProSelect: typeof import('pro-naive-ui')['ProSelect']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TableAction: typeof import('./../src/components/common/TableAction.vue')['default']
   }
 }

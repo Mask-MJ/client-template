@@ -63,9 +63,9 @@ function handleUpdateExpandedKeys(keys: string[]) {
     <NCard content-class="!p-0" :bordered="false">
       <RouterLink
         :to="DEFAULT_HOME_PATH"
-        class="h-12 w-full flex-center overflow-hidden whitespace-nowrap border-b-1 border-[var(--n-border-color)]"
+        class="h-12 w-full flex items-center overflow-hidden whitespace-nowrap border-b-1 border-[var(--n-border-color)]"
       >
-        <img src="@/assets/logo.svg" width="40" height="40" />
+        <img src="@/assets/logo.png" width="30" height="30" class="ml-4 mr-2" />
         <h2
           v-show="!sidebar.collapsed"
           class="pl-8px text-align-center text-16px text-primary font-bold transition duration-300 ease-in-out"

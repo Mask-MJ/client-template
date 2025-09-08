@@ -3,6 +3,8 @@ import type { Middleware } from 'openapi-fetch'
 
 import { LOGIN_PATH } from '@/config/constants'
 import { $t } from '@/locales'
+import dayjs from 'dayjs'
+import { has } from 'lodash-es'
 import createClient from 'openapi-fetch'
 import { storeToRefs } from 'pinia'
 
@@ -36,9 +38,30 @@ const authMiddleware: Middleware = {
           await router.push({ path: LOGIN_PATH })
         }
       } else {
-        window.$message.error(data.error.message)
+        console.error('API Error:', data)
+        const errorMessage = data.error?.message || []
+        if (Array.isArray(errorMessage)) {
+          errorMessage.forEach((msg) => {
+            window.$message.error(msg)
+          })
+        } else if (typeof errorMessage === 'string') {
+          window.$message.error(errorMessage)
+        }
       }
     }
+
+    if (has(data, 'list')) {
+      data.list = data.list.map((item: any) => {
+        if (has(item, 'createdAt'))
+          item.createdAt = dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
+        if (has(item, 'updatedAt'))
+          item.updatedAt = dayjs(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')
+        return item
+      })
+    }
+    if (has(data, 'createdAt')) data.createdAt = dayjs(data.createdAt).format('YYYY-MM-DD HH:mm:ss')
+    if (has(data, 'updatedAt')) data.updatedAt = dayjs(data.updatedAt).format('YYYY-MM-DD HH:mm:ss')
+
     return new Response(JSON.stringify(data))
   },
 }

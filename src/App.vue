@@ -3,8 +3,9 @@ import type { WatermarkProps } from 'naive-ui'
 
 import { RouterView } from 'vue-router'
 
-import { darkTheme, dateEnUS, dateZhCN, enUS, zhCN } from 'naive-ui'
+import { darkTheme, dateEnUS, dateZhCN } from 'naive-ui'
 import { storeToRefs } from 'pinia'
+import { enUS, zhCN } from 'pro-naive-ui'
 
 import { getNaiveTheme } from './config/preferences'
 
@@ -38,7 +39,7 @@ const watermarkProps = computed<WatermarkProps>(() => {
 </script>
 
 <template>
-  <NConfigProvider
+  <pro-config-provider
     :theme="naiveDarkTheme"
     :theme-overrides="naiveTheme"
     :locale="naiveLocale"
@@ -50,7 +51,7 @@ const watermarkProps = computed<WatermarkProps>(() => {
       <NWatermark v-if="state.app.watermark" v-bind="watermarkProps" />
     </NaiveProvider>
     <NGlobalStyle />
-  </NConfigProvider>
+  </pro-config-provider>
 </template>
 
 <style scoped></style>

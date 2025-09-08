@@ -13,18 +13,111 @@
   },
   "system": {
     "title": "System",
-    "user": "User",
-    "role": "Role",
-    "menu": "Menu",
-    "dept": "Dept",
-    "post": "Post",
-    "dict": "Dict",
-    "knowledgeBase": "Knowledge Base",
-    "document": "Document",
-    "param": "Param",
-    "log": "Log",
-    "loginLog": "Login Log",
-    "operateLog": "Operate Log",
+    "user": {
+      "title": "User",
+      "username": "username",
+      "nickname": "nickname",
+      "sex": "sex",
+      "email": "email",
+      "phoneNumber": "phoneNumber",
+      "password": "password",
+      "resetPassword": "Reset Pwd",
+      "oldPassword": "Old Pwd",
+      "newPassword": "New Pwd",
+      "roles": "roles",
+      "addUser": "Add User",
+      "editUser": "Edit User",
+      "invalidEmail": "Please enter a valid email address"
+    },
+    "role": {
+      "title": "Role",
+      "name": "name",
+      "description": "description",
+      "permissions": "permissions",
+      "addRole": "Add Role",
+      "editRole": "Edit Role"
+    },
+    "menu": {
+      "title": "Menu",
+      "name": "name",
+      "path": "path",
+      "component": "component",
+      "icon": "icon",
+      "addMenu": "Add Menu",
+      "editMenu": "Edit Menu"
+    },
+    "dept": {
+      "title": "Dept",
+      "name": "name",
+      "parent": "parent",
+      "sort": "sort",
+      "addDept": "Add Dept",
+      "editDept": "Edit Dept"
+    },
+    "post": {
+      "title": "Post",
+      "name": "name",
+      "sort": "sort",
+      "addPost": "Add Post",
+      "editPost": "Edit Post"
+    },
+    "dict": {
+      "title": "Dict",
+      "name": "name",
+      "type": "type",
+      "value": "value",
+      "sort": "sort",
+      "addDict": "Add Dict",
+      "editDict": "Edit Dict"
+    },
+    "knowledgeBase": {
+      "title": "Knowledge Base",
+      "name": "name",
+      "category": "category",
+      "content": "content",
+      "addKnowledge": "Add Knowledge",
+      "editKnowledge": "Edit Knowledge"
+    },
+    "document": {
+      "title": "Document",
+      "name": "name",
+      "category": "category",
+      "content": "content",
+      "addDocument": "Add Document",
+      "editDocument": "Edit Document"
+    },
+    "param": {
+      "title": "Param",
+      "name": "name",
+      "value": "value",
+      "sort": "sort",
+      "addParam": "Add Param",
+      "editParam": "Edit Param"
+    },
+    "log": {
+      "title": "Log",
+      "name": "name",
+      "type": "type",
+      "content": "content",
+      "addLog": "Add Log",
+      "editLog": "Edit Log"
+    },
+    "loginLog": {
+      "title": "Login Log",
+      "name": "name",
+      "ip": "ip",
+      "time": "time",
+      "addLoginLog": "Add Login Log",
+      "editLoginLog": "Edit Login Log"
+    },
+    "operateLog": {
+      "title": "Operate Log",
+      "name": "name",
+      "ip": "ip",
+      "time": "time",
+      "addOperateLog": "Add Operate Log",
+      "editOperateLog": "Edit Operate Log"
+    },
     "notice": "Notice",
     "config": "Config",
     "oss": "Oss",
@@ -59,9 +152,38 @@
   },
   "monitor": {
     "title": "Monitor",
-    "online": "Online Users",
-    "loginLog": "Login Log",
-    "operationLog": "Operation Log",
-    "info": "System Info"
+    "online": {
+      "title": "Online User",
+      "username": "username",
+      "ip": "ip",
+      "loginTime": "loginTime",
+      "status": "status",
+      "forceLogout": "forceLogout"
+    },
+    "loginLog": {
+      "title": "Login Log",
+      "name": "name",
+      "ip": "ip",
+      "time": "time",
+      "addLoginLog": "Add Login Log",
+      "editLoginLog": "Edit Login Log"
+    },
+    "operationLog": {
+      "title": "Operation Log",
+      "name": "name",
+      "ip": "ip",
+      "time": "time",
+      "addOperationLog": "Add Operation Log",
+      "editOperationLog": "Edit Operation Log"
+    },
+    "info": {
+      "title": "System Info",
+      "os": "OS",
+      "cpu": "CPU",
+      "memory": "Memory",
+      "jvm": "JVM",
+      "disk": "Disk",
+      "network": "Network"
+    }
   }
 }

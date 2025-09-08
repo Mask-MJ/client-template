@@ -10,5 +10,12 @@
   "refresh": "Refresh",
   "loadingMenu": "Loading Menu",
   "query": "Search",
-  "search": "Search"
+  "search": "Search",
+  "status": "Status",
+  "action": "Action",
+  "edit": "Edit",
+  "delete": "Delete",
+  "detail": "Detail",
+  "add": "Add",
+  "index": "Index"
 }

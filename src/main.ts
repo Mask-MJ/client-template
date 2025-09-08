@@ -4,6 +4,7 @@ import { DEFAULT_PREFERENCES } from '@/config/preferences'
 import { $t, setupI18n } from '@/locales'
 import { initRouter, router } from '@/router'
 import { initStores } from '@/stores'
+import proNaive from 'pro-naive-ui'
 
 import App from './App.vue'
 import { unmountGlobalLoading } from './utils'
@@ -12,7 +13,7 @@ import './style'
 
 async function bootstrap() {
   const app = createApp(App)
-
+  app.use(proNaive)
   // 国际化 i18n 配置
   await setupI18n(app)
   // 初始化全局状态管理
