@@ -4,7 +4,7 @@ import type { Middleware } from 'openapi-fetch'
 import { LOGIN_PATH } from '@/config/constants'
 import { $t } from '@/locales'
 import dayjs from 'dayjs'
-import { has } from 'lodash-es'
+import { has, isString } from 'lodash-es'
 import createClient from 'openapi-fetch'
 import { storeToRefs } from 'pinia'
 
@@ -27,9 +27,10 @@ const authMiddleware: Middleware = {
       if (response.status === 401) {
         // 令牌过期，刷新令牌
         const userStore = useUserStore()
-        try {
-          await userStore.refreshToken()
-        } catch {
+
+        if (response.url.includes('/api/authentication/refresh-token')) {
+          // console.warn('Refreshing token...')
+          // 刷新令牌接口返回401，说明刷新令牌也过期了，清除登录状态，跳转到登录页面
           // 刷新令牌失败，清除登录状态
           userStore.$reset()
           window.$message.error($t('authentication.loginAgainSubTitle'))
@@ -37,16 +38,23 @@ const authMiddleware: Middleware = {
           const router = useRouter()
           await router.push({ path: LOGIN_PATH })
         }
+        await userStore.refreshToken()
       } else {
         console.error('API Error:', data)
-        const errorMessage = data.error?.message || []
-        if (Array.isArray(errorMessage)) {
-          errorMessage.forEach((msg) => {
-            window.$message.error(msg)
-          })
-        } else if (typeof errorMessage === 'string') {
-          window.$message.error(errorMessage)
+        if (isString(data.error)) {
+          window.$message.error(data.error)
+        } else {
+          const errorMessage = data.error.message || []
+          if (Array.isArray(errorMessage)) {
+            errorMessage.forEach((msg) => {
+              window.$message.error(msg)
+            })
+          } else if (typeof errorMessage === 'string') {
+            window.$message.error(errorMessage)
+          }
         }
+        // 抛出错误，方便调用接口的地方捕获
+        throw new Error(data.error || 'Error')
       }
     }
 

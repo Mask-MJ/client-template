@@ -583,44 +583,7 @@ export interface paths {
     patch: operations['DeptController_update']
     trace?: never
   }
-  '/api/system/dict-data': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取字典数据列表 */
-    get: operations['DictDataController_findAll']
-    put?: never
-    /** 创建字典数据 */
-    post: operations['DictDataController_create']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/system/dict-data/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取字典数据详情 */
-    get: operations['DictDataController_findOne']
-    put?: never
-    post?: never
-    /** 删除字典数据 */
-    delete: operations['DictDataController_remove']
-    options?: never
-    head?: never
-    /** 更新字典数据 */
-    patch: operations['DictDataController_update']
-    trace?: never
-  }
-  '/api/system/dict-type': {
+  '/api/system/dict': {
     parameters: {
       query?: never
       header?: never
@@ -628,17 +591,54 @@ export interface paths {
       cookie?: never
     }
     /** 获取字典列表 */
-    get: operations['DictTypeController_findAll']
+    get: operations['DictController_findAll']
     put?: never
     /** 创建字典 */
-    post: operations['DictTypeController_create']
+    post: operations['DictController_create']
     delete?: never
     options?: never
     head?: never
     patch?: never
     trace?: never
   }
-  '/api/system/dict-type/{id}': {
+  '/api/system/dict/data': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取字典数据列表 */
+    get: operations['DictController_findAllData']
+    put?: never
+    /** 创建字典数据 */
+    post: operations['DictController_createData']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/system/dict/data/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取字典数据详情 */
+    get: operations['DictController_findOneData']
+    put?: never
+    post?: never
+    /** 删除字典数据 */
+    delete: operations['DictController_removeData']
+    options?: never
+    head?: never
+    /** 更新字典数据 */
+    patch: operations['DictController_updateData']
+    trace?: never
+  }
+  '/api/system/dict/{id}': {
     parameters: {
       query?: never
       header?: never
@@ -646,15 +646,15 @@ export interface paths {
       cookie?: never
     }
     /** 获取字典详情 */
-    get: operations['DictTypeController_findOne']
+    get: operations['DictController_findOne']
     put?: never
     post?: never
     /** 删除字典 */
-    delete: operations['DictTypeController_remove']
+    delete: operations['DictController_remove']
     options?: never
     head?: never
     /** 更新字典 */
-    patch: operations['DictTypeController_update']
+    patch: operations['DictController_update']
     trace?: never
   }
   '/api/system/menu': {
@@ -2100,6 +2100,7 @@ export interface components {
       updatedAt: string
       remark: string
       roles: components['schemas']['RoleEntity'][]
+      roleIds: number[]
     }
     ChangePasswordDto: {
       id: number
@@ -2260,6 +2261,41 @@ export interface components {
       /** @description 上级部门ID */
       parentId?: number
     }
+    CreateDictDto: {
+      /**
+       * @description 字典名称
+       * @example 性别
+       */
+      name: string
+      /**
+       * @description 字典值
+       * @example 1
+       */
+      value: string
+      /**
+       * @description 状态
+       * @example true
+       */
+      status?: boolean
+      /**
+       * @description 备注
+       * @example 备注
+       */
+      remark?: string
+    }
+    DictEntity: {
+      id: number
+      name: string
+      value: string
+      status: boolean
+      createBy: string
+      updateBy: string | null
+      remark: string
+      /** Format: date-time */
+      createdAt: string
+      /** Format: date-time */
+      updatedAt: string
+    }
     CreateDictDataDto: {
       /**
        * @description 字典数据名称
@@ -2277,31 +2313,21 @@ export interface components {
        */
       order?: number
       /**
-       * @description 类型 0: 配置 1: 参数 2: 诊断
-       * @example 0
-       */
-      type?: string
-      /**
        * @description 状态 false: 禁用 true: 启用
        * @default true
        * @example true
        */
       status: boolean
       /**
-       * @description 字典类型ID
+       * @description 字典ID
        * @example 1
        */
-      dictTypeId: number
+      dictId: number
       /**
        * @description 备注
        * @example 备注
        */
       remark?: string
-      /**
-       * @description 父级菜单id
-       * @example 0
-       */
-      parentId?: number
     }
     DictDataEntity: {
       id: number
@@ -2309,15 +2335,7 @@ export interface components {
       value: string
       order: number
       status: boolean
-      type: string
-      cnTitle: string | null
-      enTitle: string | null
-      isChart: boolean
-      chartType: string
-      upperLimit: string | null
-      lowerLimit: string | null
-      dictTypeId: number
-      treeId: number | null
+      dictId: number
       createBy: string
       updateBy: string | null
       remark: string
@@ -2344,68 +2362,23 @@ export interface components {
        */
       order?: number
       /**
-       * @description 类型 0: 配置 1: 参数 2: 诊断
-       * @example 0
-       */
-      type?: string
-      /**
        * @description 状态 false: 禁用 true: 启用
        * @default true
        * @example true
        */
       status: boolean
       /**
-       * @description 字典类型ID
+       * @description 字典ID
        * @example 1
        */
-      dictTypeId?: number
-      /**
-       * @description 备注
-       * @example 备注
-       */
-      remark?: string
-      /**
-       * @description 父级菜单id
-       * @example 0
-       */
-      parentId?: number
-    }
-    CreateDictTypeDto: {
-      /**
-       * @description 字典名称
-       * @example 性别
-       */
-      name: string
-      /**
-       * @description 字典值
-       * @example 1
-       */
-      value: string
-      /**
-       * @description 状态
-       * @example true
-       */
-      status?: boolean
+      dictId?: number
       /**
        * @description 备注
        * @example 备注
        */
       remark?: string
     }
-    DictTypeEntity: {
-      id: number
-      name: string
-      value: string
-      status: boolean
-      createBy: string
-      updateBy: string | null
-      remark: string
-      /** Format: date-time */
-      createdAt: string
-      /** Format: date-time */
-      updatedAt: string
-    }
-    UpdateDictTypeDto: {
+    UpdateDictDto: {
       id: number
       /**
        * @description 字典名称
@@ -4202,25 +4175,13 @@ export interface operations {
       }
     }
   }
-  DictDataController_findAll: {
+  DictController_findAll: {
     parameters: {
       query?: {
-        /** @description 字典类型值 */
-        dictTypeValue?: string
-        /** @description 字典数据名称 */
+        /** @description 字典名称 */
         name?: string
-        /** @description 字典数据值 */
+        /** @description 字典值 */
         value?: string
-        /** @description 字典类型ID */
-        dictTypeId?: number
-        /** @description 页码 */
-        current?: number
-        /** @description 每页数量 */
-        pageSize?: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
       }
       header?: never
       path?: never
@@ -4233,17 +4194,63 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['PaginateResponse'] & {
-            /** @default 0 */
-            total: number
-            /** @default [] */
-            list: components['schemas']['DictDataEntity'][]
-          }
+          'application/json': components['schemas']['DictEntity'][]
         }
       }
     }
   }
-  DictDataController_create: {
+  DictController_create: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateDictDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DictEntity']
+        }
+      }
+    }
+  }
+  DictController_findAllData: {
+    parameters: {
+      query?: {
+        /** @description 字典名称 */
+        dictName?: string
+        /** @description 字典数据名称 */
+        name?: string
+        /** @description 字典数据值 */
+        value?: string
+        /** @description 字典ID */
+        dictId?: number
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DictDataEntity'][]
+        }
+      }
+    }
+  }
+  DictController_createData: {
     parameters: {
       query?: never
       header?: never
@@ -4266,7 +4273,7 @@ export interface operations {
       }
     }
   }
-  DictDataController_findOne: {
+  DictController_findOneData: {
     parameters: {
       query?: never
       header?: never
@@ -4287,7 +4294,7 @@ export interface operations {
       }
     }
   }
-  DictDataController_remove: {
+  DictController_removeData: {
     parameters: {
       query?: never
       header?: never
@@ -4306,7 +4313,7 @@ export interface operations {
       }
     }
   }
-  DictDataController_update: {
+  DictController_updateData: {
     parameters: {
       query?: never
       header?: never
@@ -4331,67 +4338,7 @@ export interface operations {
       }
     }
   }
-  DictTypeController_findAll: {
-    parameters: {
-      query?: {
-        /** @description 字典名称 */
-        name?: string
-        /** @description 字典值 */
-        value?: string
-        /** @description 页码 */
-        current?: number
-        /** @description 每页数量 */
-        pageSize?: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['PaginateResponse'] & {
-            /** @default 0 */
-            total: number
-            /** @default [] */
-            list: components['schemas']['DictTypeEntity'][]
-          }
-        }
-      }
-    }
-  }
-  DictTypeController_create: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateDictTypeDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DictTypeEntity']
-        }
-      }
-    }
-  }
-  DictTypeController_findOne: {
+  DictController_findOne: {
     parameters: {
       query?: never
       header?: never
@@ -4407,12 +4354,12 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['DictTypeEntity']
+          'application/json': components['schemas']['DictEntity']
         }
       }
     }
   }
-  DictTypeController_remove: {
+  DictController_remove: {
     parameters: {
       query?: never
       header?: never
@@ -4431,7 +4378,7 @@ export interface operations {
       }
     }
   }
-  DictTypeController_update: {
+  DictController_update: {
     parameters: {
       query?: never
       header?: never
@@ -4442,7 +4389,7 @@ export interface operations {
     }
     requestBody: {
       content: {
-        'application/json': components['schemas']['UpdateDictTypeDto']
+        'application/json': components['schemas']['UpdateDictDto']
       }
     }
     responses: {
@@ -4451,7 +4398,7 @@ export interface operations {
           [name: string]: unknown
         }
         content: {
-          'application/json': components['schemas']['DictTypeEntity']
+          'application/json': components['schemas']['DictEntity']
         }
       }
     }

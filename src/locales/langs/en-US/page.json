@@ -68,7 +68,12 @@
       "value": "value",
       "sort": "sort",
       "addDict": "Add Dict",
-      "editDict": "Edit Dict"
+      "editDict": "Edit Dict",
+      "dictType": "Dict Type",
+      "dictData": "Dict Data",
+      "addDictData": "Add Dict Data",
+      "editDictData": "Edit Dict Data",
+      "remark": "Remark"
     },
     "knowledgeBase": {
       "title": "Knowledge Base",
