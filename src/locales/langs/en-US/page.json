@@ -42,6 +42,13 @@
       "name": "name",
       "path": "path",
       "component": "component",
+      "permission": "permission",
+      "type": "type",
+      "menu": "menu",
+      "link": "link",
+      "catalog": "catalog",
+      "embedded": "embedded",
+      "button": "button",
       "icon": "icon",
       "addMenu": "Add Menu",
       "editMenu": "Edit Menu"

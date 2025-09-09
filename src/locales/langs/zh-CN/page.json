@@ -42,6 +42,13 @@
       "name": "菜单名称",
       "path": "菜单路径",
       "component": "菜单组件",
+      "permission": "权限标识",
+      "type": "类型",
+      "menu": "菜单",
+      "link": "外链",
+      "catalog": "目录",
+      "embedded": "内嵌菜单",
+      "button": "按钮",
       "icon": "菜单图标",
       "addMenu": "新增菜单",
       "editMenu": "编辑菜单"

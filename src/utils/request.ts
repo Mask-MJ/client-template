@@ -27,16 +27,17 @@ const authMiddleware: Middleware = {
       if (response.status === 401) {
         // 令牌过期，刷新令牌
         const userStore = useUserStore()
-
-        if (response.url.includes('/api/authentication/refresh-token')) {
+        if (response.url.includes('/api/auth/authentication/refresh-token')) {
           // console.warn('Refreshing token...')
           // 刷新令牌接口返回401，说明刷新令牌也过期了，清除登录状态，跳转到登录页面
           // 刷新令牌失败，清除登录状态
           userStore.$reset()
           window.$message.error($t('authentication.loginAgainSubTitle'))
           // 跳转到登录页面
-          const router = useRouter()
-          await router.push({ path: LOGIN_PATH })
+          setTimeout(() => {
+            window.location.href = LOGIN_PATH
+          }, 1000)
+          return response
         }
         await userStore.refreshToken()
       } else {
