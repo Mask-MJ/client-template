@@ -2432,7 +2432,7 @@ export interface components {
        * @description 激活菜单图标
        * @example i-line-md:external-link
        */
-      actionIcon?: string
+      activeIcon?: string
       /**
        * @description 状态 false: 禁用 true: 启用
        * @default true
@@ -2603,7 +2603,7 @@ export interface components {
        * @description 菜单名称
        * @example 系统管理
        */
-      name?: string
+      name: string
       /**
        * @description 菜单路径
        * @example /system
@@ -2623,7 +2623,7 @@ export interface components {
        * @description 激活菜单图标
        * @example i-line-md:external-link
        */
-      actionIcon?: string
+      activeIcon?: string
       /**
        * @description 状态 false: 禁用 true: 启用
        * @default true

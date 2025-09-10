@@ -34,7 +34,7 @@ const columns = computed<ProDataTableColumns<DictDataInfo>>(() => [
     width: 100,
     render: (rowData) =>
       h(NTag, { type: rowData.status ? 'success' : 'error' }, () =>
-        rowData.status ? '启用' : '停用',
+        rowData.status ? $t('common.enable') : $t('common.disable'),
       ),
   },
   {
