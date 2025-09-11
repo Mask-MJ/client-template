@@ -19,5 +19,8 @@
   "add": "新增",
   "index": "序号",
   "enable": "启用",
-  "disable": "禁用"
+  "disable": "禁用",
+  "createdAt": "创建时间",
+  "updatedAt": "更新时间",
+  "remark": "备注"
 }

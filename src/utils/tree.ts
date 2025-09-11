@@ -103,14 +103,17 @@ function mapTree<T, V extends Record<string, any>>(
 function transformationTree<T extends TransformationTreeData>(
   data: T[],
   parentId: null | number,
-): (T & { children: T[] })[] {
+): (T & { children: T[] | undefined })[] {
   return data
     .filter((dept) => dept.parentId === parentId)
     .sort((a, b) => (a.sort ?? 0) - (b.sort ?? 0))
-    .map((dept) => ({
-      ...dept,
-      children: transformationTree(data, dept.id),
-    }))
+    .map((dept) => {
+      const children = transformationTree(data, dept.id)
+      return {
+        ...dept,
+        children: children.length > 0 ? children : undefined,
+      }
+    })
 }
 
 export { filterTree, mapTree, transformationTree, traverseTreeValues }

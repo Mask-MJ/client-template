@@ -32,8 +32,10 @@
     "role": {
       "title": "角色列表",
       "name": "角色名称",
-      "description": "角色描述",
-      "permissions": "角色权限",
+      "value": "权限字符",
+      "order": "角色排序",
+      "authorization": "授权",
+      "remark": "角色描述",
       "addRole": "新增角色",
       "editRole": "编辑角色"
     },
