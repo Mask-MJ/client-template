@@ -466,10 +466,27 @@ export interface paths {
       cookie?: never
     }
     /** 获取用户列表 */
-    get: operations['UserController_findAll']
+    get: operations['UserController_findWithPagination']
     put?: never
     /** 创建用户 */
     post: operations['UserController_create']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/system/user/all': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取所有用户列表 */
+    get: operations['UserController_findAll']
+    put?: never
+    post?: never
     delete?: never
     options?: never
     head?: never
@@ -2004,6 +2021,12 @@ export interface components {
        */
       password: string
       /**
+       * @description 是否是部门管理员
+       * @default false
+       * @example true
+       */
+      isDeptAdmin: boolean
+      /**
        * @description 昵称
        * @example 管理员
        */
@@ -2086,6 +2109,7 @@ export interface components {
     UserEntity: {
       id: number
       isAdmin: boolean
+      isDeptAdmin: boolean
       username: string
       nickname: string
       avatar: string
@@ -2093,6 +2117,7 @@ export interface components {
       phoneNumber: string
       sex: number
       status: boolean
+      deptId: number | null
       createBy: string
       /** Format: date-time */
       createdAt: string
@@ -2120,6 +2145,12 @@ export interface components {
        * @example 123456
        */
       password?: string
+      /**
+       * @description 是否是部门管理员
+       * @default false
+       * @example true
+       */
+      isDeptAdmin: boolean
       /**
        * @description 昵称
        * @example 管理员
@@ -2198,10 +2229,10 @@ export interface components {
        */
       order?: number
       /**
-       * @description 负责人
-       * @example 张三
+       * @description 负责人id
+       * @example 1
        */
-      leader?: string
+      leaderId?: number
       /**
        * @description 负责人电话
        * @example 13000000000
@@ -2219,7 +2250,8 @@ export interface components {
       id: number
       name: string
       order: number
-      leader: string
+      leader: string | null
+      leaderId: number | null
       phone: string
       email: string
       parentId: number | null
@@ -2244,10 +2276,10 @@ export interface components {
        */
       order?: number
       /**
-       * @description 负责人
-       * @example 张三
+       * @description 负责人id
+       * @example 1
        */
-      leader?: string
+      leaderId?: number
       /**
        * @description 负责人电话
        * @example 13000000000
@@ -3869,7 +3901,7 @@ export interface operations {
       }
     }
   }
-  UserController_findAll: {
+  UserController_findWithPagination: {
     parameters: {
       query?: {
         /** @description 账号 */
@@ -3931,6 +3963,44 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['UserEntity']
+        }
+      }
+    }
+  }
+  UserController_findAll: {
+    parameters: {
+      query?: {
+        /** @description 账号 */
+        username?: string
+        /** @description 昵称 */
+        nickname?: string
+        /** @description 邮箱 */
+        email?: string
+        /** @description 手机号 */
+        phoneNumber?: string
+        /** @description 性别 0: 女 1: 男 */
+        sex?: number
+        /** @description 页码 */
+        current?: number
+        /** @description 每页数量 */
+        pageSize?: number
+        /** @description 开始时间 */
+        beginTime?: string
+        /** @description 结束时间 */
+        endTime?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['UserEntity'][]
         }
       }
     }

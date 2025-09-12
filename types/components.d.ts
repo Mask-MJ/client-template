@@ -69,6 +69,7 @@ declare module 'vue' {
     ProField: typeof import('pro-naive-ui')['ProField']
     ProIconifyIcons: typeof import('pro-naive-ui')['ProIconifyIcons']
     ProInput: typeof import('pro-naive-ui')['ProInput']
+    ProModalContent: typeof import('pro-naive-ui')['ProModalContent']
     ProModalForm: typeof import('pro-naive-ui')['ProModalForm']
     ProPassword: typeof import('pro-naive-ui')['ProPassword']
     ProRadioGroup: typeof import('pro-naive-ui')['ProRadioGroup']

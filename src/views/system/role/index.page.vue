@@ -116,7 +116,7 @@ onMounted(async () => {
     </n-card>
     <pro-data-table
       class="h-full"
-      :title="$t('page.system.user.title')"
+      :title="$t('page.system.role.title')"
       flex-height
       row-key="id"
       :columns="columns"
@@ -155,7 +155,7 @@ onMounted(async () => {
             ],
           }"
         />
-        <pro-textarea :title="$t('page.system.dict.remark')" path="remark" />
+        <pro-textarea :title="$t('common.remark')" path="remark" />
         <pro-field
           :title="$t('page.system.role.authorization')"
           path="menuIds"

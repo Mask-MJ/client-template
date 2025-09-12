@@ -22,5 +22,6 @@
   "disable": "禁用",
   "createdAt": "创建时间",
   "updatedAt": "更新时间",
-  "remark": "备注"
+  "remark": "备注",
+  "sort": "排序"
 }

@@ -4,7 +4,7 @@ import type { Middleware } from 'openapi-fetch'
 import { LOGIN_PATH } from '@/config/constants'
 import { $t } from '@/locales'
 import dayjs from 'dayjs'
-import { has, isString } from 'lodash-es'
+import { has, isArray, isString } from 'lodash-es'
 import createClient from 'openapi-fetch'
 import { storeToRefs } from 'pinia'
 
@@ -66,6 +66,14 @@ const authMiddleware: Middleware = {
         if (has(item, 'updatedAt'))
           item.updatedAt = dayjs(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')
         return item
+      })
+    }
+    if (isArray(data)) {
+      data.forEach((item: any) => {
+        if (has(item, 'createdAt'))
+          item.createdAt = dayjs(item.createdAt).format('YYYY-MM-DD HH:mm:ss')
+        if (has(item, 'updatedAt'))
+          item.updatedAt = dayjs(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')
       })
     }
     if (has(data, 'createdAt')) data.createdAt = dayjs(data.createdAt).format('YYYY-MM-DD HH:mm:ss')

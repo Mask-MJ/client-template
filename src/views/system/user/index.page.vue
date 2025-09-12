@@ -2,6 +2,7 @@
 import type { SearchParams, UserInfo } from '@/api/system/user'
 import type { ProDataTableColumns, ProSearchFormColumns } from 'pro-naive-ui'
 
+import { getDeptList } from '@/api/system/dept'
 import { getRoleList } from '@/api/system/role'
 import {
   changePassword,
@@ -53,6 +54,7 @@ const columns = computed<ProDataTableColumns<UserInfo>>(() => [
     render: (row) => row.roles.map((role) => role.name).join(', '),
   },
   { title: $t('page.system.user.email'), key: 'email' },
+  { title: $t('page.system.user.dept'), key: 'dept.name' },
   {
     title: $t('common.status'),
     key: 'status',
@@ -131,13 +133,19 @@ const resetPassword = async (row: UserInfo) => {
 }
 
 const roleOptions = ref<{ label: string; value: number }[]>([])
-
+const deptOptions = ref<{ label: string; value: number }[]>([])
 onMounted(async () => {
-  const { data } = await getRoleList()
+  const { data: roleData } = await getRoleList()
+  const { data: deptData } = await getDeptList()
   roleOptions.value =
-    data?.list.map((role) => ({
+    roleData?.list.map((role) => ({
       label: role.name,
       value: role.id,
+    })) || []
+  deptOptions.value =
+    deptData?.map((dept) => ({
+      label: dept.name,
+      value: dept.id,
     })) || []
 })
 </script>
@@ -190,6 +198,11 @@ onMounted(async () => {
           options: roleOptions,
           multiple: true,
         }"
+      />
+      <pro-select
+        :title="$t('page.system.user.dept')"
+        path="deptId"
+        :field-props="{ options: deptOptions }"
       />
       <pro-radio-group
         :title="$t('common.status')"

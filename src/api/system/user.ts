@@ -33,6 +33,9 @@ export const getAccessCodes = () => client.GET('/api/system/user/code')
 export function getUserList(query?: SearchParams) {
   return client.GET('/api/system/user', { params: { query } })
 }
+export function getAllUserList(query?: SearchParams) {
+  return client.GET('/api/system/user/all', { params: { query } })
+}
 // 创建用户
 export function createUser(body: components['schemas']['CreateUserDto']) {
   return client.POST('/api/system/user', { body })

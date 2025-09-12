@@ -255,7 +255,7 @@ onMounted(async () => {
         }"
       />
       <pro-digit :title="$t('page.system.dict.sort')" path="order" />
-      <pro-textarea :title="$t('page.system.dict.remark')" path="remark" />
+      <pro-textarea :title="$t('common.remark')" path="remark" />
     </pro-modal-form>
   </div>
 </template>
