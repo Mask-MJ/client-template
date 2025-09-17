@@ -785,6 +785,132 @@ export interface paths {
     patch: operations['PostController_update']
     trace?: never
   }
+  '/api/system/knowledge-base': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取知识库列表 */
+    get: operations['KnowledgeBaseController_findAll']
+    put?: never
+    /** 创建知识库 */
+    post: operations['KnowledgeBaseController_create']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/system/knowledge-base/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取知识库详情 */
+    get: operations['KnowledgeBaseController_findOne']
+    put?: never
+    post?: never
+    /** 删除知识库 */
+    delete: operations['KnowledgeBaseController_remove']
+    options?: never
+    head?: never
+    /** 更新知识库 */
+    patch: operations['KnowledgeBaseController_update']
+    trace?: never
+  }
+  '/api/system/knowledge-base/{id}/documents': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /** 上传文件到指定知识库 */
+    post: operations['KnowledgeBaseController_uploadDocument']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/system/knowledge-base/{id}/documents/{document_id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 下载知识库文件 */
+    get: operations['KnowledgeBaseController_downloadDocument']
+    put?: never
+    post?: never
+    /** 删除知识库文件 */
+    delete: operations['KnowledgeBaseController_removeDocument']
+    options?: never
+    head?: never
+    /** 更新知识库文件 */
+    patch: operations['KnowledgeBaseController_updateDocument']
+    trace?: never
+  }
+  '/api/system/document/upload': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /** 上传文件 */
+    post: operations['DocumentController_upload']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/system/document': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取文件列表 */
+    get: operations['DocumentController_findAll']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/system/document/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 下载文件 */
+    get: operations['DocumentController_download']
+    put?: never
+    post?: never
+    /** 删除文件 */
+    delete: operations['DocumentController_remove']
+    options?: never
+    head?: never
+    /** 更新文件信息 */
+    patch: operations['DocumentController_update']
+    trace?: never
+  }
   '/api/monitor/operation-log': {
     parameters: {
       query?: never
@@ -2232,7 +2358,7 @@ export interface components {
        * @description 负责人id
        * @example 1
        */
-      leaderId?: number
+      leaderId: number
       /**
        * @description 负责人电话
        * @example 13000000000
@@ -2899,6 +3025,174 @@ export interface components {
        * @example 这是一个技术部
        */
       remark?: string
+    }
+    CreateKnowledgeBaseDto: {
+      /**
+       * @description 解析方法
+       * @example naive
+       * @enum {string}
+       */
+      chunk_method:
+        | 'naive'
+        | 'book'
+        | 'email'
+        | 'laws'
+        | 'manual'
+        | 'one'
+        | 'paper'
+        | 'picture'
+        | 'presentation'
+        | 'qa'
+        | 'table'
+        | 'tag'
+      /**
+       * @description 知识库名称
+       * @example 知识库1
+       */
+      name: string
+      /**
+       * @description 排序
+       * @example 1
+       */
+      order?: number
+      /**
+       * @description 知识库头像
+       * @example https://example.com/avatar.png
+       */
+      avatar?: string
+      /**
+       * @description 描述
+       * @example 这是一个知识库
+       */
+      description?: string
+      /**
+       * @description 嵌入模型
+       * @example text-embedding-ada-002
+       */
+      embedding_model: string
+      /**
+       * @description 权限标识
+       * @example "me" | "team
+       */
+      permission?: string
+    }
+    KnowledgeBaseEntity: {
+      id: number
+      name: string
+      avatar: string
+      description: string
+      embedding_model: string
+      permission: string
+      chunk_method: Record<string, never>
+      parser_config: string
+      datasetId: string | null
+      deptId: number | null
+      order: number
+      createBy: string
+      updateBy: string | null
+      /** Format: date-time */
+      createdAt: string
+      /** Format: date-time */
+      updatedAt: string
+    }
+    UpdateKnowledgeBaseDto: {
+      /**
+       * @description 解析方法
+       * @example naive
+       * @enum {string}
+       */
+      chunk_method?:
+        | 'naive'
+        | 'book'
+        | 'email'
+        | 'laws'
+        | 'manual'
+        | 'one'
+        | 'paper'
+        | 'picture'
+        | 'presentation'
+        | 'qa'
+        | 'table'
+        | 'tag'
+      id: number
+      /**
+       * @description 知识库名称
+       * @example 知识库1
+       */
+      name?: string
+      /**
+       * @description 排序
+       * @example 1
+       */
+      order?: number
+      /**
+       * @description 知识库头像
+       * @example https://example.com/avatar.png
+       */
+      avatar?: string
+      /**
+       * @description 描述
+       * @example 这是一个知识库
+       */
+      description?: string
+      /**
+       * @description 权限标识
+       * @example "me" | "team
+       */
+      permission?: string
+    }
+    DocumentEntity: {
+      id: string
+      chunk_num: number
+      create_date: string
+      create_time: number
+      created_by: string
+      kb_id: string
+      location: string
+      meta_fields: Record<string, never>
+      name: string
+      parser_config: {
+        auto_keywords: number
+        auto_questions: number
+        chunk_token_num: number
+        delimiter: string
+        graphrag: {
+          use_graphrag?: boolean
+        }
+        html4excel: boolean
+        layout_recognize: string
+        raptor: {
+          use_raptor?: boolean
+        }
+        topn_tags: number
+      }
+      parser_id: string
+      process_begin_at: string | null
+      process_duration: number
+      progress: number
+      progress_msg: string
+      run: string
+      size: number
+      source_type: string
+      status: string
+      suffix: string
+      thumbnail: string
+      token_num: number
+      type: string
+      update_date: string
+      update_time: number
+    }
+    UpdateDocumentDto: {
+      /**
+       * @description 文件名称
+       * @example 技术文档
+       */
+      name?: string
+      /**
+       * @description 知识库ID
+       * @example 78e5ae6691db11f084d3fa341edb7c4d
+       */
+      kb_id: string
     }
     OperationLogEntity: {
       id: number
@@ -4837,6 +5131,323 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['PostEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_findAll: {
+    parameters: {
+      query?: {
+        /** @description 知识库名称 */
+        name?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity'][]
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_create: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateKnowledgeBaseDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_findOne: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_remove: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  KnowledgeBaseController_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateKnowledgeBaseDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_uploadDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description 上传文件 */
+    requestBody: {
+      content: {
+        'multipart/form-data': components['schemas']['UploadDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity'][]
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_downloadDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+        document_id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  KnowledgeBaseController_removeDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+        document_id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_updateDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+        document_id: string
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateDocumentDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity']
+        }
+      }
+    }
+  }
+  DocumentController_upload: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** @description 上传文件 */
+    requestBody: {
+      content: {
+        'multipart/form-data': components['schemas']['UploadDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity'][]
+        }
+      }
+    }
+  }
+  DocumentController_findAll: {
+    parameters: {
+      query: {
+        /** @description 文件名称 */
+        name?: string
+        /** @description 知识库ID */
+        kb_id: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity'][]
+        }
+      }
+    }
+  }
+  DocumentController_download: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity']
+        }
+      }
+    }
+  }
+  DocumentController_remove: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  DocumentController_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateDocumentDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity']
         }
       }
     }

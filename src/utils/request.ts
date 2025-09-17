@@ -18,11 +18,11 @@ const authMiddleware: Middleware = {
     if (UNPROTECTED_ROUTES.some((pathname) => schemaPath.startsWith(pathname))) {
       return undefined // don’t modify request for certain paths
     }
+
     request.headers.set('Authorization', `Bearer ${token.value.accessToken}`)
   },
 
   async onResponse({ response }) {
-    const data = await response.clone().json()
     if (!response.status.toString().startsWith('2')) {
       if (response.status === 401) {
         // 令牌过期，刷新令牌
@@ -41,7 +41,7 @@ const authMiddleware: Middleware = {
         }
         await userStore.refreshToken()
       } else {
-        console.error('API Error:', data)
+        const data = await response.clone().json()
         if (isString(data.error)) {
           window.$message.error(data.error)
         } else {
@@ -58,7 +58,11 @@ const authMiddleware: Middleware = {
         throw new Error(data.error || 'Error')
       }
     }
-
+    const kbDocRegex = /\/system\/knowledge-base\/[^/]+\/documents\/[^/]+$/
+    if (kbDocRegex.test(response.url)) {
+      return undefined // 不要修改某些路径的请求
+    }
+    const data = await response.clone().json()
     if (has(data, 'list')) {
       data.list = data.list.map((item: any) => {
         if (has(item, 'createdAt'))

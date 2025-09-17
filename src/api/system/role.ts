@@ -25,9 +25,3 @@ export function updateRole(body: components['schemas']['UpdateRoleDto']) {
 export function deleteRole(id: number) {
   return client.DELETE('/api/system/role/{id}', { params: { path: { id } } })
 }
-
-/**
- * 1. 获取列表 用params
- * 2. 创建、更新(先通过id找到)用body
- * 3. 单个详情 | 删除 (先通过id找到)再操作
- */

@@ -25,6 +25,7 @@
     "**/dist/**",
     "**/*-dist/**",
     "**/icons/**",
+    "**/types/**",
     "pnpm-lock.yaml",
     "**/*.log",
     "**/*.test.ts",
