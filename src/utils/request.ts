@@ -58,7 +58,7 @@ const authMiddleware: Middleware = {
         throw new Error(data.error || 'Error')
       }
     }
-    const kbDocRegex = /\/system\/knowledge-base\/[^/]+\/documents\/[^/]+$/
+    const kbDocRegex = /\/knowledge-base\/[^/]+\/documents\/[^/]+$/
     if (kbDocRegex.test(response.url)) {
       return undefined // 不要修改某些路径的请求
     }

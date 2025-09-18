@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { downloadKnowledgeBaseFile } from '@/api/system/knowledgeBase'
+import { downloadKnowledgeBaseFile } from '@/api/knowledgeBase'
 import { downloadFileFromBlobPart } from '@/utils'
 
 async function download() {

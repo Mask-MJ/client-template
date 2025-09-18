@@ -18,7 +18,7 @@ const DEFAULT_PREFERENCES: Preferences = {
     layout: 'sidebar-nav',
     locale: 'zh-CN',
     loginExpiredMode: 'page',
-    name: 'Saas Admin',
+    name: '中石化知识库',
     preferencesButtonPosition: 'auto',
     watermark: false,
   },
@@ -87,7 +87,7 @@ const DEFAULT_PREFERENCES: Preferences = {
     wheelable: true,
   },
   theme: {
-    primary: '#18A058FF',
+    primary: '#2080F0FF',
     info: '#2080F0FF',
     success: '#18A058FF',
     warning: '#F0A020FF',

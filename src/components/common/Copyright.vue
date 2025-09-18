@@ -10,7 +10,7 @@ interface Props {
 defineOptions({ name: 'Copyright' })
 
 withDefaults(defineProps<Props>(), {
-  companyName: 'Saas Admin',
+  companyName: '中石化知识库',
   companySiteLink: '',
   date: '2025',
   icp: '',

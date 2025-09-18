@@ -25,29 +25,30 @@ const renderIcon = (options: MenuInfo) => {
   return () => h('i', { class: iconName })
 }
 const transformMenuOptions = (options: MenuInfo[]): MenuOption[] => {
-  return options.map((option) => {
-    const menuOption: MenuOption = {
-      key: option.path,
-      label: () =>
-        option.type === 'catalog'
-          ? h('span', null, option.title ? $t(`page.${option.title}`) : option.name)
-          : h(
-              RouterLink,
-              { to: option.path },
-              { default: () => (option.title ? $t(`page.${option.title}`) : option.name) },
-            ),
-      icon: renderIcon(option),
-      disabled: !option.status,
-    }
-    if (option.children?.length) {
-      // 判断子菜单中 type 是否为 B，如果是则不渲染
-      menuOption.children =
-        option.children.length === 0 ? undefined : transformMenuOptions(option.children)
-    } else {
-      menuOption.children = undefined
-    }
-    return menuOption
-  })
+  return options
+    .filter((option) => option.status && !option.hideInMenu)
+    .map((option) => {
+      const menuOption: MenuOption = {
+        key: option.path,
+        label: () =>
+          option.type === 'catalog'
+            ? h('span', null, option.title ? $t(`page.${option.title}`) : option.name)
+            : h(
+                RouterLink,
+                { to: option.path },
+                { default: () => (option.title ? $t(`page.${option.title}`) : option.name) },
+              ),
+        icon: renderIcon(option),
+        disabled: !option.status,
+      }
+      if (option.children?.length) {
+        menuOption.children =
+          option.children.length === 0 || option.hideChildrenInMenu
+            ? undefined
+            : transformMenuOptions(option.children)
+      }
+      return menuOption
+    })
 }
 const menuOptions = computed<MenuOption[]>(() => {
   const menusTree = transformationTree(userStore.accessMenus, null)

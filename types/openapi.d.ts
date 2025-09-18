@@ -55,409 +55,6 @@ export interface paths {
     patch?: never
     trace?: never
   }
-  '/api/project/factory': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取工厂列表 */
-    get: operations['FactoryController_findAll']
-    put?: never
-    /** 创建工厂 */
-    post: operations['FactoryController_create']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/factory/import': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** 导入阀门数据 */
-    post: operations['FactoryController_importValveData']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/factory/report': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** 生成工厂中所有阀门报告 */
-    post: operations['FactoryController_generateReport']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/factory/chart/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取工厂工作台详情 */
-    get: operations['FactoryController_findChartData']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/factory/removeAll': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    post?: never
-    /** 删除所有工厂 */
-    delete: operations['FactoryController_removeAll']
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/factory/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取单个工厂 */
-    get: operations['FactoryController_findOne']
-    put?: never
-    post?: never
-    /** 删除工厂 */
-    delete: operations['FactoryController_remove']
-    options?: never
-    head?: never
-    /** 更新工厂 */
-    patch: operations['FactoryController_update']
-    trace?: never
-  }
-  '/api/project/unit': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取装置列表 */
-    get: operations['UnitController_findAll']
-    put?: never
-    /** 创建装置 */
-    post: operations['UnitController_create']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/unit/removeAll': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    post?: never
-    /** 全部删除 */
-    delete: operations['UnitController_removeAll']
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/unit/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取装置信息 */
-    get: operations['UnitController_findOne']
-    put?: never
-    post?: never
-    /** 删除装置 */
-    delete: operations['UnitController_remove']
-    options?: never
-    head?: never
-    /** 更新装置 */
-    patch: operations['UnitController_update']
-    trace?: never
-  }
-  '/api/project/valve': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取阀门列表 */
-    get: operations['ValveController_findAll']
-    put?: never
-    /** 创建阀门 */
-    post: operations['ValveController_create']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/valve/export': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 导出阀门列表 */
-    get: operations['ValveController_exportValveList']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/valve/history-data': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取阀门运行数据列表 */
-    get: operations['ValveController_findHistoryDataList']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/valve/history-data/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取阀门运行数据详情 */
-    get: operations['ValveController_findHistoryData']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/valve/score': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取阀门评分列表 */
-    get: operations['ValveController_findScoreList']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/valve/score/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取阀门评分详情 */
-    get: operations['ValveController_findScore']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/valve/removeAll': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    post?: never
-    /** 删除所有阀门 */
-    delete: operations['ValveController_removeAll']
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/valve/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取阀门信息 */
-    get: operations['ValveController_findOne']
-    put?: never
-    post?: never
-    /** 删除阀门 */
-    delete: operations['ValveController_remove']
-    options?: never
-    head?: never
-    /** 更新阀门信息 */
-    patch: operations['ValveController_update']
-    trace?: never
-  }
-  '/api/project/analysis-task': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取分析任务列表 */
-    get: operations['AnalysisTaskController_findAll']
-    put?: never
-    /** 创建分析任务 */
-    post: operations['AnalysisTaskController_create']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/analysis-task/execute/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** 执行分析任务 */
-    post: operations['AnalysisTaskController_execute']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/analysis-task/uploadPdf/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** 上传PDF文件 */
-    post: operations['AnalysisTaskController_upload']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/analysis-task/result/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取分析任务结果 */
-    get: operations['AnalysisTaskController_result']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/analysis-task/removeAll': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    post?: never
-    /** 删除所有分析任务 */
-    delete: operations['AnalysisTaskController_removeAll']
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/project/analysis-task/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取分析任务详情 */
-    get: operations['AnalysisTaskController_findOne']
-    put?: never
-    post?: never
-    /** 删除分析任务 */
-    delete: operations['AnalysisTaskController_remove']
-    options?: never
-    head?: never
-    /** 获取分析任务详情 */
-    patch: operations['AnalysisTaskController_update']
-    trace?: never
-  }
   '/api/system/user': {
     parameters: {
       query?: never
@@ -785,132 +382,6 @@ export interface paths {
     patch: operations['PostController_update']
     trace?: never
   }
-  '/api/system/knowledge-base': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取知识库列表 */
-    get: operations['KnowledgeBaseController_findAll']
-    put?: never
-    /** 创建知识库 */
-    post: operations['KnowledgeBaseController_create']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/system/knowledge-base/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取知识库详情 */
-    get: operations['KnowledgeBaseController_findOne']
-    put?: never
-    post?: never
-    /** 删除知识库 */
-    delete: operations['KnowledgeBaseController_remove']
-    options?: never
-    head?: never
-    /** 更新知识库 */
-    patch: operations['KnowledgeBaseController_update']
-    trace?: never
-  }
-  '/api/system/knowledge-base/{id}/documents': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** 上传文件到指定知识库 */
-    post: operations['KnowledgeBaseController_uploadDocument']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/system/knowledge-base/{id}/documents/{document_id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 下载知识库文件 */
-    get: operations['KnowledgeBaseController_downloadDocument']
-    put?: never
-    post?: never
-    /** 删除知识库文件 */
-    delete: operations['KnowledgeBaseController_removeDocument']
-    options?: never
-    head?: never
-    /** 更新知识库文件 */
-    patch: operations['KnowledgeBaseController_updateDocument']
-    trace?: never
-  }
-  '/api/system/document/upload': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    get?: never
-    put?: never
-    /** 上传文件 */
-    post: operations['DocumentController_upload']
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/system/document': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 获取文件列表 */
-    get: operations['DocumentController_findAll']
-    put?: never
-    post?: never
-    delete?: never
-    options?: never
-    head?: never
-    patch?: never
-    trace?: never
-  }
-  '/api/system/document/{id}': {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** 下载文件 */
-    get: operations['DocumentController_download']
-    put?: never
-    post?: never
-    /** 删除文件 */
-    delete: operations['DocumentController_remove']
-    options?: never
-    head?: never
-    /** 更新文件信息 */
-    patch: operations['DocumentController_update']
-    trace?: never
-  }
   '/api/monitor/operation-log': {
     parameters: {
       query?: never
@@ -996,6 +467,98 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/knowledge-base': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取知识库列表 */
+    get: operations['KnowledgeBaseController_findAll']
+    put?: never
+    /** 创建知识库 */
+    post: operations['KnowledgeBaseController_create']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/knowledge-base/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取知识库详情 */
+    get: operations['KnowledgeBaseController_findOne']
+    put?: never
+    post?: never
+    /** 删除知识库 */
+    delete: operations['KnowledgeBaseController_remove']
+    options?: never
+    head?: never
+    /** 更新知识库 */
+    patch: operations['KnowledgeBaseController_update']
+    trace?: never
+  }
+  '/api/knowledge-base/{id}/documents': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取知识库文件列表 */
+    get: operations['KnowledgeBaseController_findAllDocument']
+    put?: never
+    /** 上传文件到指定知识库 */
+    post: operations['KnowledgeBaseController_uploadDocument']
+    /** 删除知识库文件 */
+    delete: operations['KnowledgeBaseController_removeDocument']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/knowledge-base/{id}/documents/{document_id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 下载知识库文件 */
+    get: operations['KnowledgeBaseController_downloadDocument']
+    put?: never
+    post?: never
+    delete?: never
+    options?: never
+    head?: never
+    /** 更新知识库文件 */
+    patch: operations['KnowledgeBaseController_updateDocument']
+    trace?: never
+  }
+  '/api/knowledge-base/{id}/parse': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /** 解析指定知识库中的文件 */
+    post: operations['KnowledgeBaseController_parseChunks']
+    /** 停止解析指定知识库中的文件 */
+    delete: operations['KnowledgeBaseController_stopParseChunks']
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
 }
 export type webhooks = Record<string, never>
 export interface components {
@@ -1035,1105 +598,6 @@ export interface components {
     }
     RefreshTokenDto: {
       refreshToken: string
-    }
-    CreateFactoryDto: {
-      /**
-       * @description 工厂名称
-       * @example 工厂1
-       */
-      name: string
-      /**
-       * @description 状态 false: 禁用 true: 启用
-       * @default true
-       * @example true
-       */
-      status: boolean
-      /**
-       * @description 行业
-       * @example 新能源
-       */
-      industry?: string
-      /**
-       * @description 地址编码
-       * @example 130010
-       */
-      code?: string
-      /**
-       * @description 省份
-       * @example 广东省
-       */
-      province?: string
-      /**
-       * @description 城市
-       * @example 广州市
-       */
-      city?: string
-      /**
-       * @description 区县
-       * @example 天河区
-       */
-      county?: string
-      /**
-       * @description 工厂地址
-       * @example 地址1
-       */
-      address?: string
-      /**
-       * @description 工厂坐标(经度)
-       * @default
-       * @example 1.1
-       */
-      longitude: string
-      /**
-       * @description 工厂坐标(纬度)
-       * @default
-       * @example 1.1
-       */
-      latitude: string
-      /**
-       * @description 工厂描述
-       * @default
-       * @example 描述1
-       */
-      remark: string
-      /**
-       * @description 父级id
-       * @example 1
-       */
-      parentId?: number
-    }
-    FactoryEntity: {
-      id: number
-      name: string
-      status: boolean
-      code: string
-      industry: string
-      province: string
-      city: string
-      county: string
-      address: string
-      longitude: string
-      latitude: string
-      parentId: number | null
-      remark: string
-      createBy: string
-      updateBy: string
-      /** Format: date-time */
-      createdAt: string
-      /** Format: date-time */
-      updatedAt: string
-    }
-    ImportValveDataDto: {
-      files: string[]
-      factoryId: number
-      reportMode?: string
-    }
-    ReportDto: {
-      /**
-       * @description 工厂id
-       * @example 1
-       */
-      factoryId?: number
-      /**
-       * @description 分析任务id
-       * @example 1
-       */
-      analysisTaskId?: number
-      /**
-       * @description 报告模式
-       * @example factory
-       */
-      reportMode?: string
-      /**
-       * @description 阀门ids
-       * @example [
-       *       1,
-       *       2,
-       *       3
-       *     ]
-       */
-      valveTags?: string[]
-    }
-    UpdateFactoryDto: {
-      id: number
-      /**
-       * @description 工厂名称
-       * @example 工厂1
-       */
-      name?: string
-      /**
-       * @description 状态 false: 禁用 true: 启用
-       * @default true
-       * @example true
-       */
-      status: boolean
-      /**
-       * @description 行业
-       * @example 新能源
-       */
-      industry?: string
-      /**
-       * @description 地址编码
-       * @example 130010
-       */
-      code?: string
-      /**
-       * @description 省份
-       * @example 广东省
-       */
-      province?: string
-      /**
-       * @description 城市
-       * @example 广州市
-       */
-      city?: string
-      /**
-       * @description 区县
-       * @example 天河区
-       */
-      county?: string
-      /**
-       * @description 工厂地址
-       * @example 地址1
-       */
-      address?: string
-      /**
-       * @description 工厂坐标(经度)
-       * @default
-       * @example 1.1
-       */
-      longitude: string
-      /**
-       * @description 工厂坐标(纬度)
-       * @default
-       * @example 1.1
-       */
-      latitude: string
-      /**
-       * @description 工厂描述
-       * @default
-       * @example 描述1
-       */
-      remark: string
-      /**
-       * @description 父级id
-       * @example 1
-       */
-      parentId?: number
-    }
-    CreateUnitDto: {
-      /**
-       * @description 装置名称
-       * @example 装置1
-       */
-      name: string
-      /**
-       * @description 状态 false: 禁用 true: 启用
-       * @default true
-       * @example true
-       */
-      status: boolean
-      /**
-       * @description 装置描述
-       * @default
-       * @example 这是一个装置
-       */
-      remark: string
-      /**
-       * @description 工厂id
-       * @example 1
-       */
-      factoryId: number
-      /**
-       * @description 阀门ids
-       * @example [
-       *       1,
-       *       2,
-       *       3
-       *     ]
-       */
-      valveIds?: number[]
-    }
-    UnitEntity: {
-      id: number
-      name: string
-      status: boolean
-      remark: string
-      factoryId: number
-      factories: components['schemas']['FactoryEntity']
-      createBy: string
-      updateBy: string
-      /** Format: date-time */
-      createdAt: string
-      /** Format: date-time */
-      updatedAt: string
-    }
-    PaginateResponse: {
-      /**
-       * @description 页码
-       * @default 1
-       * @example 1
-       */
-      current: number
-      /**
-       * @description 每页数量
-       * @default 10
-       * @example 10
-       */
-      pageSize: number
-    }
-    UpdateUnitDto: {
-      id: number
-      /**
-       * @description 装置名称
-       * @example 装置1
-       */
-      name?: string
-      /**
-       * @description 状态 false: 禁用 true: 启用
-       * @default true
-       * @example true
-       */
-      status: boolean
-      /**
-       * @description 装置描述
-       * @default
-       * @example 这是一个装置
-       */
-      remark: string
-      /**
-       * @description 工厂id
-       * @example 1
-       */
-      factoryId?: number
-      /**
-       * @description 阀门ids
-       * @example [
-       *       1,
-       *       2,
-       *       3
-       *     ]
-       */
-      valveIds?: number[]
-    }
-    CreateValveDto: {
-      /**
-       * @description 阀门位号
-       * @example FV-3001B
-       */
-      tag: string
-      /**
-       * @description 来源
-       * @example hart
-       */
-      source?: string
-      /**
-       * @description 介质
-       * @example 氨水
-       */
-      fluidName?: string
-      /**
-       * @description 关键应用
-       * @example 反应器
-       */
-      criticalApplication?: string
-      /**
-       * @description 阀体序列号
-       * @example 123456
-       */
-      serialNumber?: string
-      /**
-       * Format: date-time
-       * @description 投用时间
-       * @example 1714752000000
-       */
-      since?: string
-      /**
-       * @description 阀体品牌
-       * @example Fisher
-       */
-      valveBrand?: string
-      /**
-       * @description 系列
-       * @example 系列
-       */
-      valveSeries?: string
-      /**
-       * @description 阀体类型
-       * @example 球阀
-       */
-      valveType?: string
-      /**
-       * @description 阀体口径
-       * @example DN50
-       */
-      valveSize?: string
-      /**
-       * @description 阀体流量系数
-       * @example DN50
-       */
-      valveCv?: string
-      /**
-       * @description 阀体磅级
-       * @example DN50
-       */
-      valveRating?: string
-      /**
-       * @description 阀体阀杆尺寸
-       * @example DN50
-       */
-      valveStemSize?: string
-      /**
-       * @description 阀体连接形式
-       * @example 法兰
-       */
-      valveEndConnection?: string
-      /**
-       * @description 阀体阀体材质
-       * @example 碳钢
-       */
-      valveBodyMaterial?: string
-      /**
-       * @description 阀盖形式
-       * @example 法兰
-       */
-      valveBonnet?: string
-      /**
-       * @description 流量特性
-       * @example 316
-       */
-      valveTrim?: string
-      /**
-       * @description 阀体泄漏等级
-       * @example V
-       */
-      valveSeatLeakage?: string
-      /**
-       * @description 阀体描述
-       * @example ...
-       */
-      valveDescription?: string
-      /**
-       * @description 执行机构品牌
-       * @example Fisher
-       */
-      actuatorBrand?: string
-      /**
-       * @description 执行机构系列
-       * @example 系列1
-       */
-      actuatorSeries?: string
-      /**
-       * @description 执行机构尺寸
-       * @example DN50
-       */
-      actuatorSize?: string
-      /**
-       * @description 故障位置
-       * @example DN50
-       */
-      actuatorFailurePosition?: string
-      /**
-       * @description 手轮
-       * @example 有
-       */
-      handwheel?: string
-      /**
-       * @description 执行机构描述
-       * @example ...
-       */
-      actuatorDescription?: string
-      /**
-       * @description 定位器品牌
-       * @example Fisher
-       */
-      positionerBrand?: string
-      /**
-       * @description 定位器类型
-       * @example 气动
-       */
-      positionerModel?: string
-      /**
-       * @description 定位器描述
-       * @example ...
-       */
-      positionerDescription?: string
-      /**
-       * @description 限位开关品牌
-       * @example LS BRAND
-       */
-      lsBrand?: string
-      /**
-       * @description 限位开关型号
-       * @example LS MODEL
-       */
-      lsModel?: string
-      /**
-       * @description 限位开关数量
-       * @example 10
-       */
-      lsQty?: number
-      /**
-       * @description 限位开关描述
-       * @example ...
-       */
-      lsDescription?: string
-      /**
-       * @description 气控阀品牌
-       * @example PILOT BRAND
-       */
-      pilotBrand?: string
-      /**
-       * @description 气控阀型号
-       * @example PILOT MODEL
-       */
-      pilotModel?: string
-      /**
-       * @description 气控阀数量
-       * @example 10
-       */
-      pilotQty?: number
-      /**
-       * @description 气控阀描述
-       * @example ...
-       */
-      pilotDescription?: string
-      /**
-       * @description 快排阀品牌
-       * @example QE BRAND
-       */
-      qeBrand?: string
-      /**
-       * @description 快排阀型号
-       * @example QE MODEL
-       */
-      qeModel?: string
-      /**
-       * @description 快排阀数量
-       * @example 10
-       */
-      qeQty?: number
-      /**
-       * @description 快排阀描述
-       * @example ...
-       */
-      qeDescription?: string
-      /**
-       * @description 过滤减压阀品牌
-       * @example REGULATOR BRAND
-       */
-      regulatorBrand?: string
-      /**
-       * @description 过滤减压阀型号
-       * @example REGULATOR MODEL
-       */
-      regulatorModel?: string
-      /**
-       * @description 过滤减压阀描述
-       * @example ...
-       */
-      regulatorDescription?: string
-      /**
-       * @description 信号比较器品牌
-       * @example SIGNAL COMPARATOR BRAND
-       */
-      signalComparatorBrand?: string
-      /**
-       * @description 信号比较器型号
-       * @example SIGNAL COMPARATOR MODEL
-       */
-      signalComparatorModel?: string
-      /**
-       * @description 信号比较器描述
-       * @example ...
-       */
-      signalComparatorDescription?: string
-      /**
-       * @description 电磁阀品牌
-       * @example SOV BRAND
-       */
-      sovBrand?: string
-      /**
-       * @description 电磁阀型号
-       * @example SOV MODEL
-       */
-      sovModel?: string
-      /**
-       * @description 电磁阀数量
-       * @example 10
-       */
-      sovQty?: number
-      /**
-       * @description 电磁阀描述
-       * @example ...
-       */
-      sovDescription?: string
-      /**
-       * @description 保位阀品牌
-       * @example TRIP VALVE BRAND
-       */
-      tripValveBrand?: string
-      /**
-       * @description 保位阀型号
-       * @example TRIP VALVE MODEL
-       */
-      tripValveModel?: string
-      /**
-       * @description 保位阀描述
-       * @example ...
-       */
-      tripValveDescription?: string
-      /**
-       * @description 放大器品牌
-       * @example VB BRAND
-       */
-      vbBrand?: string
-      /**
-       * @description 放大器型号
-       * @example VB MODEL
-       */
-      vbModel?: string
-      /**
-       * @description 放大器数量
-       * @example 10
-       */
-      vbQty?: number
-      /**
-       * @description 放大器描述
-       * @example ...
-       */
-      vbDescription?: string
-      /**
-       * @description 附件种类
-       * @example ...
-       */
-      accessory?: string
-      /**
-       * @description 附件品牌
-       * @example ...
-       */
-      accessoryBrand?: string
-      /**
-       * @description 附件类型
-       * @example ...
-       */
-      accessoryType?: string
-      /**
-       * @description 附件数量
-       * @example 1
-       */
-      accessoryQuantity?: number
-      /**
-       * @description 附件描述
-       * @example ...
-       */
-      accessoryDescription?: string
-      /**
-       * @description 备注
-       * @example ...
-       */
-      remark?: string
-      /**
-       * @description 装置id
-       * @example 1
-       */
-      unitId?: number
-      /**
-       * @description 工厂id
-       * @example 1
-       */
-      factoryId: number
-      /**
-       * @description 分析任务id
-       * @example 1
-       */
-      analysisTaskId?: number
-    }
-    ValveEntity: {
-      id: number
-      source: string
-      no: string
-      tag: string
-      fluidName: string
-      criticalApplication: string
-      /** Format: date-time */
-      since: string
-      serialNumber: string
-      valveBrand: string
-      valveSeries: string
-      valveSize: string
-      valveCv: string
-      valveRating: string
-      valveEndConnection: string
-      valveBodyMaterial: string
-      valveBonnet: string
-      valveTrim: string
-      valveSeatLeakage: string
-      valveDescription: string
-      actuatorBrand: string
-      actuatorSeries: string
-      actuatorSize: string
-      handwheel: string
-      actuatorDescription: string
-      actuatorFailurePosition: string
-      regulatorBrand: string
-      regulatorModel: string
-      regulatorDescription: string
-      positionerBrand: string
-      positionerModel: string
-      positionerDescription: string
-      sovBrand: string
-      sovModel: string
-      sovQty: number
-      sovDescription: string
-      lsBrand: string
-      lsModel: string
-      lsQty: number
-      lsDescription: string
-      tripValveBrand: string
-      tripValveModel: string
-      tripValveDescription: string
-      vbBrand: string
-      vbModel: string
-      vbQty: number
-      vbDescription: string
-      qeBrand: string
-      qeModel: string
-      qeQty: number
-      qeDescription: string
-      pilotBrand: string
-      pilotModel: string
-      pilotQty: number
-      pilotDescription: string
-      valveStemSize: string
-      stroke: string
-      signalComparatorBrand: string
-      signalComparatorModel: string
-      signalComparatorDescription: string
-      parts: string
-      analysisTaskId: number
-      factoryId: number
-      factory: components['schemas']['FactoryEntity']
-      unitId: number
-      unit: components['schemas']['UnitEntity']
-      createBy: string
-      updateBy: string
-      /** Format: date-time */
-      createdAt: string
-      /** Format: date-time */
-      updatedAt: string
-    }
-    ValveHistoryDataEntity: {
-      id: number
-      tag: string
-      valveId: number
-      /** Format: date-time */
-      time: string
-      data: Record<string, never>
-    }
-    UpdateValveDto: {
-      id: number
-      /**
-       * @description 阀门位号
-       * @example FV-3001B
-       */
-      tag?: string
-      /**
-       * @description 来源
-       * @example hart
-       */
-      source?: string
-      /**
-       * @description 介质
-       * @example 氨水
-       */
-      fluidName?: string
-      /**
-       * @description 关键应用
-       * @example 反应器
-       */
-      criticalApplication?: string
-      /**
-       * @description 阀体序列号
-       * @example 123456
-       */
-      serialNumber?: string
-      /**
-       * Format: date-time
-       * @description 投用时间
-       * @example 1714752000000
-       */
-      since?: string
-      /**
-       * @description 阀体品牌
-       * @example Fisher
-       */
-      valveBrand?: string
-      /**
-       * @description 系列
-       * @example 系列
-       */
-      valveSeries?: string
-      /**
-       * @description 阀体类型
-       * @example 球阀
-       */
-      valveType?: string
-      /**
-       * @description 阀体口径
-       * @example DN50
-       */
-      valveSize?: string
-      /**
-       * @description 阀体流量系数
-       * @example DN50
-       */
-      valveCv?: string
-      /**
-       * @description 阀体磅级
-       * @example DN50
-       */
-      valveRating?: string
-      /**
-       * @description 阀体阀杆尺寸
-       * @example DN50
-       */
-      valveStemSize?: string
-      /**
-       * @description 阀体连接形式
-       * @example 法兰
-       */
-      valveEndConnection?: string
-      /**
-       * @description 阀体阀体材质
-       * @example 碳钢
-       */
-      valveBodyMaterial?: string
-      /**
-       * @description 阀盖形式
-       * @example 法兰
-       */
-      valveBonnet?: string
-      /**
-       * @description 流量特性
-       * @example 316
-       */
-      valveTrim?: string
-      /**
-       * @description 阀体泄漏等级
-       * @example V
-       */
-      valveSeatLeakage?: string
-      /**
-       * @description 阀体描述
-       * @example ...
-       */
-      valveDescription?: string
-      /**
-       * @description 执行机构品牌
-       * @example Fisher
-       */
-      actuatorBrand?: string
-      /**
-       * @description 执行机构系列
-       * @example 系列1
-       */
-      actuatorSeries?: string
-      /**
-       * @description 执行机构尺寸
-       * @example DN50
-       */
-      actuatorSize?: string
-      /**
-       * @description 故障位置
-       * @example DN50
-       */
-      actuatorFailurePosition?: string
-      /**
-       * @description 手轮
-       * @example 有
-       */
-      handwheel?: string
-      /**
-       * @description 执行机构描述
-       * @example ...
-       */
-      actuatorDescription?: string
-      /**
-       * @description 定位器品牌
-       * @example Fisher
-       */
-      positionerBrand?: string
-      /**
-       * @description 定位器类型
-       * @example 气动
-       */
-      positionerModel?: string
-      /**
-       * @description 定位器描述
-       * @example ...
-       */
-      positionerDescription?: string
-      /**
-       * @description 限位开关品牌
-       * @example LS BRAND
-       */
-      lsBrand?: string
-      /**
-       * @description 限位开关型号
-       * @example LS MODEL
-       */
-      lsModel?: string
-      /**
-       * @description 限位开关数量
-       * @example 10
-       */
-      lsQty?: number
-      /**
-       * @description 限位开关描述
-       * @example ...
-       */
-      lsDescription?: string
-      /**
-       * @description 气控阀品牌
-       * @example PILOT BRAND
-       */
-      pilotBrand?: string
-      /**
-       * @description 气控阀型号
-       * @example PILOT MODEL
-       */
-      pilotModel?: string
-      /**
-       * @description 气控阀数量
-       * @example 10
-       */
-      pilotQty?: number
-      /**
-       * @description 气控阀描述
-       * @example ...
-       */
-      pilotDescription?: string
-      /**
-       * @description 快排阀品牌
-       * @example QE BRAND
-       */
-      qeBrand?: string
-      /**
-       * @description 快排阀型号
-       * @example QE MODEL
-       */
-      qeModel?: string
-      /**
-       * @description 快排阀数量
-       * @example 10
-       */
-      qeQty?: number
-      /**
-       * @description 快排阀描述
-       * @example ...
-       */
-      qeDescription?: string
-      /**
-       * @description 过滤减压阀品牌
-       * @example REGULATOR BRAND
-       */
-      regulatorBrand?: string
-      /**
-       * @description 过滤减压阀型号
-       * @example REGULATOR MODEL
-       */
-      regulatorModel?: string
-      /**
-       * @description 过滤减压阀描述
-       * @example ...
-       */
-      regulatorDescription?: string
-      /**
-       * @description 信号比较器品牌
-       * @example SIGNAL COMPARATOR BRAND
-       */
-      signalComparatorBrand?: string
-      /**
-       * @description 信号比较器型号
-       * @example SIGNAL COMPARATOR MODEL
-       */
-      signalComparatorModel?: string
-      /**
-       * @description 信号比较器描述
-       * @example ...
-       */
-      signalComparatorDescription?: string
-      /**
-       * @description 电磁阀品牌
-       * @example SOV BRAND
-       */
-      sovBrand?: string
-      /**
-       * @description 电磁阀型号
-       * @example SOV MODEL
-       */
-      sovModel?: string
-      /**
-       * @description 电磁阀数量
-       * @example 10
-       */
-      sovQty?: number
-      /**
-       * @description 电磁阀描述
-       * @example ...
-       */
-      sovDescription?: string
-      /**
-       * @description 保位阀品牌
-       * @example TRIP VALVE BRAND
-       */
-      tripValveBrand?: string
-      /**
-       * @description 保位阀型号
-       * @example TRIP VALVE MODEL
-       */
-      tripValveModel?: string
-      /**
-       * @description 保位阀描述
-       * @example ...
-       */
-      tripValveDescription?: string
-      /**
-       * @description 放大器品牌
-       * @example VB BRAND
-       */
-      vbBrand?: string
-      /**
-       * @description 放大器型号
-       * @example VB MODEL
-       */
-      vbModel?: string
-      /**
-       * @description 放大器数量
-       * @example 10
-       */
-      vbQty?: number
-      /**
-       * @description 放大器描述
-       * @example ...
-       */
-      vbDescription?: string
-      /**
-       * @description 附件种类
-       * @example ...
-       */
-      accessory?: string
-      /**
-       * @description 附件品牌
-       * @example ...
-       */
-      accessoryBrand?: string
-      /**
-       * @description 附件类型
-       * @example ...
-       */
-      accessoryType?: string
-      /**
-       * @description 附件数量
-       * @example 1
-       */
-      accessoryQuantity?: number
-      /**
-       * @description 附件描述
-       * @example ...
-       */
-      accessoryDescription?: string
-      /**
-       * @description 备注
-       * @example ...
-       */
-      remark?: string
-      /**
-       * @description 装置id
-       * @example 1
-       */
-      unitId?: number
-      /**
-       * @description 工厂id
-       * @example 1
-       */
-      factoryId?: number
-      /**
-       * @description 分析任务id
-       * @example 1
-       */
-      analysisTaskId?: number
-    }
-    CreateAnalysisTaskDto: {
-      /**
-       * @description 任务名称
-       * @example 分析任务1
-       */
-      name: string
-      /**
-       * @description 状态 (0: 待执行, 1: 执行中, 2: 已完成, 3: 失败)
-       * @default 0
-       * @example 1
-       */
-      status: number
-      /** @description 文件地址 */
-      files: string[]
-      /**
-       * @description 工厂ID
-       * @example 1
-       */
-      factoryId: number
-      /**
-       * @description 备注
-       * @example 备注
-       */
-      remark?: string
-    }
-    AnalysisTaskEntity: {
-      id: number
-      name: string
-      status: number
-      remark: string
-      files: string[]
-      factoryId: number
-      result: number[]
-      ruleId: number
-      createBy: string
-      updateBy: string
-      /** Format: date-time */
-      createdAt: string
-      /** Format: date-time */
-      updatedAt: string
-    }
-    UploadDto: {
-      files: string[]
-    }
-    UpdateAnalysisTaskDto: {
-      id: number
-      /**
-       * @description 任务名称
-       * @example 分析任务1
-       */
-      name?: string
-      /**
-       * @description 状态 (0: 待执行, 1: 执行中, 2: 已完成, 3: 失败)
-       * @default 0
-       * @example 1
-       */
-      status: number
-      /** @description 文件地址 */
-      files?: string[]
-      /**
-       * @description 工厂ID
-       * @example 1
-       */
-      factoryId?: number
-      /**
-       * @description 备注
-       * @example 备注
-       */
-      remark?: string
     }
     CreateUserDto: {
       /**
@@ -2252,6 +716,20 @@ export interface components {
       remark: string
       roles: components['schemas']['RoleEntity'][]
       roleIds: number[]
+    }
+    PaginateResponse: {
+      /**
+       * @description 页码
+       * @default 1
+       * @example 1
+       */
+      current: number
+      /**
+       * @description 每页数量
+       * @default 10
+       * @example 10
+       */
+      pageSize: number
     }
     ChangePasswordDto: {
       id: number
@@ -3026,174 +1504,6 @@ export interface components {
        */
       remark?: string
     }
-    CreateKnowledgeBaseDto: {
-      /**
-       * @description 解析方法
-       * @example naive
-       * @enum {string}
-       */
-      chunk_method:
-        | 'naive'
-        | 'book'
-        | 'email'
-        | 'laws'
-        | 'manual'
-        | 'one'
-        | 'paper'
-        | 'picture'
-        | 'presentation'
-        | 'qa'
-        | 'table'
-        | 'tag'
-      /**
-       * @description 知识库名称
-       * @example 知识库1
-       */
-      name: string
-      /**
-       * @description 排序
-       * @example 1
-       */
-      order?: number
-      /**
-       * @description 知识库头像
-       * @example https://example.com/avatar.png
-       */
-      avatar?: string
-      /**
-       * @description 描述
-       * @example 这是一个知识库
-       */
-      description?: string
-      /**
-       * @description 嵌入模型
-       * @example text-embedding-ada-002
-       */
-      embedding_model: string
-      /**
-       * @description 权限标识
-       * @example "me" | "team
-       */
-      permission?: string
-    }
-    KnowledgeBaseEntity: {
-      id: number
-      name: string
-      avatar: string
-      description: string
-      embedding_model: string
-      permission: string
-      chunk_method: Record<string, never>
-      parser_config: string
-      datasetId: string | null
-      deptId: number | null
-      order: number
-      createBy: string
-      updateBy: string | null
-      /** Format: date-time */
-      createdAt: string
-      /** Format: date-time */
-      updatedAt: string
-    }
-    UpdateKnowledgeBaseDto: {
-      /**
-       * @description 解析方法
-       * @example naive
-       * @enum {string}
-       */
-      chunk_method?:
-        | 'naive'
-        | 'book'
-        | 'email'
-        | 'laws'
-        | 'manual'
-        | 'one'
-        | 'paper'
-        | 'picture'
-        | 'presentation'
-        | 'qa'
-        | 'table'
-        | 'tag'
-      id: number
-      /**
-       * @description 知识库名称
-       * @example 知识库1
-       */
-      name?: string
-      /**
-       * @description 排序
-       * @example 1
-       */
-      order?: number
-      /**
-       * @description 知识库头像
-       * @example https://example.com/avatar.png
-       */
-      avatar?: string
-      /**
-       * @description 描述
-       * @example 这是一个知识库
-       */
-      description?: string
-      /**
-       * @description 权限标识
-       * @example "me" | "team
-       */
-      permission?: string
-    }
-    DocumentEntity: {
-      id: string
-      chunk_num: number
-      create_date: string
-      create_time: number
-      created_by: string
-      kb_id: string
-      location: string
-      meta_fields: Record<string, never>
-      name: string
-      parser_config: {
-        auto_keywords: number
-        auto_questions: number
-        chunk_token_num: number
-        delimiter: string
-        graphrag: {
-          use_graphrag?: boolean
-        }
-        html4excel: boolean
-        layout_recognize: string
-        raptor: {
-          use_raptor?: boolean
-        }
-        topn_tags: number
-      }
-      parser_id: string
-      process_begin_at: string | null
-      process_duration: number
-      progress: number
-      progress_msg: string
-      run: string
-      size: number
-      source_type: string
-      status: string
-      suffix: string
-      thumbnail: string
-      token_num: number
-      type: string
-      update_date: string
-      update_time: number
-    }
-    UpdateDocumentDto: {
-      /**
-       * @description 文件名称
-       * @example 技术文档
-       */
-      name?: string
-      /**
-       * @description 知识库ID
-       * @example 78e5ae6691db11f084d3fa341edb7c4d
-       */
-      kb_id: string
-    }
     OperationLogEntity: {
       id: number
       title: string
@@ -3238,6 +1548,177 @@ export interface components {
         arch: string
         hostname: string
       }
+    }
+    CreateKnowledgeBaseDto: {
+      /**
+       * @description 知识库名称
+       * @example 知识库1
+       */
+      name: string
+      /**
+       * @description 排序
+       * @example 1
+       */
+      order?: number
+      /**
+       * @description 知识库头像
+       * @example https://example.com/avatar.png
+       */
+      avatar?: string
+      /**
+       * @description 描述
+       * @default
+       * @example 这是一个知识库
+       */
+      description: string
+      /**
+       * @description 嵌入模型
+       * @default text-embedding-v4@Tongyi-Qianwen
+       * @example text-embedding-ada-002
+       */
+      embedding_model: string
+      /**
+       * @description 权限标识
+       * @example "me" | "team
+       */
+      permission?: string
+      /**
+       * @description 解析方法
+       * @default naive
+       * @example naive
+       */
+      chunk_method: string
+    }
+    KnowledgeBaseEntity: {
+      id: number
+      name: string
+      avatar: string
+      description: string
+      embedding_model: string
+      permission: string
+      chunk_method: string
+      parser_config: string
+      datasetId: string | null
+      deptId: number | null
+      order: number
+      createBy: string
+      updateBy: string | null
+      /** Format: date-time */
+      createdAt: string
+      /** Format: date-time */
+      updatedAt: string
+    }
+    UpdateKnowledgeBaseDto: {
+      id: number
+      /**
+       * @description 知识库名称
+       * @example 知识库1
+       */
+      name?: string
+      /**
+       * @description 排序
+       * @example 1
+       */
+      order?: number
+      /**
+       * @description 知识库头像
+       * @example https://example.com/avatar.png
+       */
+      avatar?: string
+      /**
+       * @description 描述
+       * @default
+       * @example 这是一个知识库
+       */
+      description: string
+      /**
+       * @description 权限标识
+       * @example "me" | "team
+       */
+      permission?: string
+      /**
+       * @description 解析方法
+       * @default naive
+       * @example naive
+       */
+      chunk_method: string
+    }
+    DocumentEntity: {
+      id: string
+      chunk_num: number
+      create_date: string
+      create_time: number
+      created_by: string
+      kb_id: string
+      location: string
+      meta_fields: Record<string, never>
+      name: string
+      parser_config: {
+        auto_keywords: number
+        auto_questions: number
+        chunk_token_num: number
+        delimiter: string
+        graphrag: {
+          use_graphrag?: boolean
+        }
+        html4excel: boolean
+        layout_recognize: string
+        raptor: {
+          use_raptor?: boolean
+        }
+        topn_tags: number
+      }
+      parser_id: string
+      process_begin_at: string | null
+      process_duration: number
+      progress: number
+      progress_msg: string
+      run: string
+      size: number
+      source_type: string
+      status: string
+      suffix: string
+      thumbnail: string
+      token_num: number
+      type: string
+      update_date: string
+      update_time: number
+    }
+    UploadDto: {
+      files: string[]
+    }
+    UpdateDocumentDto: {
+      /**
+       * @description 文档名称
+       * @example 文档1
+       */
+      name?: string
+      /**
+       * @description 解析方法
+       * @default naive
+       * @example naive
+       */
+      chunk_method: string
+    }
+    DeleteDocumentDto: {
+      /**
+       * @description 文件ID
+       * @example [
+       *       "78e5ae6691db11f084d3fa341edb7c4d",
+       *       "78e5ae6691db11f084d3fa341edb7c4e"
+       *     ]
+       */
+      document_ids: string[]
+    }
+    ParseDocumentDto: {
+      /**
+       * @description 文件ID
+       * @example [
+       *       "78e5ae6691db11f084d3fa341edb7c4d",
+       *       "78e5ae6691db11f084d3fa341edb7c4e"
+       *     ]
+       */
+      document_ids: string[]
     }
   }
   responses: never
@@ -3326,872 +1807,6 @@ export interface operations {
           [name: string]: unknown
         }
         content?: never
-      }
-    }
-  }
-  FactoryController_findAll: {
-    parameters: {
-      query?: {
-        filterId?: number
-        /** @description 工厂名称 */
-        name?: string
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': Record<string, never>[]
-        }
-      }
-    }
-  }
-  FactoryController_create: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateFactoryDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['FactoryEntity']
-        }
-      }
-    }
-  }
-  FactoryController_importValveData: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ImportValveDataDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  FactoryController_generateReport: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['ReportDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['ReportDto']
-        }
-      }
-    }
-  }
-  FactoryController_findChartData: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['FactoryEntity']
-        }
-      }
-    }
-  }
-  FactoryController_removeAll: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  FactoryController_findOne: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['FactoryEntity']
-        }
-      }
-    }
-  }
-  FactoryController_remove: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  FactoryController_update: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateFactoryDto']
-      }
-    }
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['FactoryEntity']
-        }
-      }
-    }
-  }
-  UnitController_findAll: {
-    parameters: {
-      query?: {
-        /** @description 装置名称 */
-        name?: string
-        /** @description 工厂id */
-        factoryId?: number
-        /** @description 页码 */
-        current?: number
-        /** @description 每页数量 */
-        pageSize?: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['PaginateResponse'] & {
-            /** @default 0 */
-            total: number
-            /** @default [] */
-            list: components['schemas']['UnitEntity'][]
-          }
-        }
-      }
-    }
-  }
-  UnitController_create: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateUnitDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['UnitEntity']
-        }
-      }
-    }
-  }
-  UnitController_removeAll: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  UnitController_findOne: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['UnitEntity']
-        }
-      }
-    }
-  }
-  UnitController_remove: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  UnitController_update: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateUnitDto']
-      }
-    }
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['UnitEntity']
-        }
-      }
-    }
-  }
-  ValveController_findAll: {
-    parameters: {
-      query?: {
-        /** @description 阀门位号 */
-        tag?: string
-        /** @description 工厂id */
-        factoryId?: number
-        /** @description 装置id */
-        unitId?: number
-        /** @description 分析任务id */
-        analysisTaskId?: number
-        /** @description 页码 */
-        current?: number
-        /** @description 每页数量 */
-        pageSize?: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['PaginateResponse'] & {
-            /** @default 0 */
-            total: number
-            /** @default [] */
-            list: components['schemas']['ValveEntity'][]
-          }
-        }
-      }
-    }
-  }
-  ValveController_create: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateValveDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['ValveEntity']
-        }
-      }
-    }
-  }
-  ValveController_exportValveList: {
-    parameters: {
-      query?: {
-        /** @description 阀门位号 */
-        tag?: string
-        /** @description 工厂id */
-        factoryId?: number
-        /** @description 装置id */
-        unitId?: number
-        /** @description 分析任务id */
-        analysisTaskId?: number
-        /** @description 页码 */
-        current?: number
-        /** @description 每页数量 */
-        pageSize?: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['PaginateResponse'] & {
-            /** @default 0 */
-            total: number
-            /** @default [] */
-            list: components['schemas']['ValveEntity'][]
-          }
-        }
-      }
-    }
-  }
-  ValveController_findHistoryDataList: {
-    parameters: {
-      query: {
-        valveId: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['ValveHistoryDataEntity'][]
-        }
-      }
-    }
-  }
-  ValveController_findHistoryData: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': Record<string, never>
-        }
-      }
-    }
-  }
-  ValveController_findScoreList: {
-    parameters: {
-      query: {
-        valveId: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': Record<string, never>[]
-        }
-      }
-    }
-  }
-  ValveController_findScore: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': Record<string, never>
-        }
-      }
-    }
-  }
-  ValveController_removeAll: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  ValveController_findOne: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['ValveEntity']
-        }
-      }
-    }
-  }
-  ValveController_remove: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  ValveController_update: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateValveDto']
-      }
-    }
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['ValveEntity']
-        }
-      }
-    }
-  }
-  AnalysisTaskController_findAll: {
-    parameters: {
-      query?: {
-        /** @description 任务名称 */
-        name?: string
-        /** @description 状态 (0: 待执行, 1: 执行中, 2: 已完成, 3: 失败) */
-        status?: number
-        /** @description 工厂ID */
-        factoryId?: number
-        /** @description 页码 */
-        current?: number
-        /** @description 每页数量 */
-        pageSize?: number
-        /** @description 开始时间 */
-        beginTime?: string
-        /** @description 结束时间 */
-        endTime?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['PaginateResponse'] & {
-            /** @default 0 */
-            total: number
-            /** @default [] */
-            list: components['schemas']['AnalysisTaskEntity'][]
-          }
-        }
-      }
-    }
-  }
-  AnalysisTaskController_create: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateAnalysisTaskDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['AnalysisTaskEntity']
-        }
-      }
-    }
-  }
-  AnalysisTaskController_execute: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  AnalysisTaskController_upload: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    /** @description 上传PDF文件 */
-    requestBody: {
-      content: {
-        'multipart/form-data': components['schemas']['UploadDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string[]
-        }
-      }
-    }
-  }
-  AnalysisTaskController_result: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': Record<string, never>
-        }
-      }
-    }
-  }
-  AnalysisTaskController_removeAll: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  AnalysisTaskController_findOne: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['AnalysisTaskEntity']
-        }
-      }
-    }
-  }
-  AnalysisTaskController_remove: {
-    parameters: {
-      query?: never
-      header: {
-        'X-Real-IP': string
-      }
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': string
-        }
-      }
-    }
-  }
-  AnalysisTaskController_update: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateAnalysisTaskDto']
-      }
-    }
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['AnalysisTaskEntity']
-        }
       }
     }
   }
@@ -5135,323 +2750,6 @@ export interface operations {
       }
     }
   }
-  KnowledgeBaseController_findAll: {
-    parameters: {
-      query?: {
-        /** @description 知识库名称 */
-        name?: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['KnowledgeBaseEntity'][]
-        }
-      }
-    }
-  }
-  KnowledgeBaseController_create: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['CreateKnowledgeBaseDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['KnowledgeBaseEntity']
-        }
-      }
-    }
-  }
-  KnowledgeBaseController_findOne: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['KnowledgeBaseEntity']
-        }
-      }
-    }
-  }
-  KnowledgeBaseController_remove: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-    }
-  }
-  KnowledgeBaseController_update: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateKnowledgeBaseDto']
-      }
-    }
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['KnowledgeBaseEntity']
-        }
-      }
-    }
-  }
-  KnowledgeBaseController_uploadDocument: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: string
-      }
-      cookie?: never
-    }
-    /** @description 上传文件 */
-    requestBody: {
-      content: {
-        'multipart/form-data': components['schemas']['UploadDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentEntity'][]
-        }
-      }
-    }
-  }
-  KnowledgeBaseController_downloadDocument: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: string
-        document_id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-    }
-  }
-  KnowledgeBaseController_removeDocument: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: string
-        document_id: string
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': Record<string, never>
-        }
-      }
-    }
-  }
-  KnowledgeBaseController_updateDocument: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: string
-        document_id: string
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateDocumentDto']
-      }
-    }
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentEntity']
-        }
-      }
-    }
-  }
-  DocumentController_upload: {
-    parameters: {
-      query?: never
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    /** @description 上传文件 */
-    requestBody: {
-      content: {
-        'multipart/form-data': components['schemas']['UploadDto']
-      }
-    }
-    responses: {
-      201: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentEntity'][]
-        }
-      }
-    }
-  }
-  DocumentController_findAll: {
-    parameters: {
-      query: {
-        /** @description 文件名称 */
-        name?: string
-        /** @description 知识库ID */
-        kb_id: string
-      }
-      header?: never
-      path?: never
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentEntity'][]
-        }
-      }
-    }
-  }
-  DocumentController_download: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentEntity']
-        }
-      }
-    }
-  }
-  DocumentController_remove: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody?: never
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content?: never
-      }
-    }
-  }
-  DocumentController_update: {
-    parameters: {
-      query?: never
-      header?: never
-      path: {
-        id: number
-      }
-      cookie?: never
-    }
-    requestBody: {
-      content: {
-        'application/json': components['schemas']['UpdateDocumentDto']
-      }
-    }
-    responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['DocumentEntity']
-        }
-      }
-    }
-  }
   OperationLogController_findAll: {
     parameters: {
       query?: {
@@ -5580,6 +2878,285 @@ export interface operations {
         content: {
           'application/json': components['schemas']['InfoEntity']
         }
+      }
+    }
+  }
+  KnowledgeBaseController_findAll: {
+    parameters: {
+      query?: {
+        /** @description 知识库名称 */
+        name?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity'][]
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_create: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateKnowledgeBaseDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_findOne: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_remove: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  KnowledgeBaseController_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateKnowledgeBaseDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['KnowledgeBaseEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_findAllDocument: {
+    parameters: {
+      query?: {
+        /** @description 文档名称 */
+        name?: string
+      }
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity'][]
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_uploadDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    /** @description 上传文件 */
+    requestBody: {
+      content: {
+        'multipart/form-data': components['schemas']['UploadDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity'][]
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_removeDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DeleteDocumentDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_downloadDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+        document_id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  KnowledgeBaseController_updateDocument: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+        document_id: string
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateDocumentDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['DocumentEntity']
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_parseChunks: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ParseDocumentDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
+  KnowledgeBaseController_stopParseChunks: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ParseDocumentDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
       }
     }
   }

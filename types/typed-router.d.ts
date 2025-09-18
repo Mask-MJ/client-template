@@ -20,7 +20,11 @@ declare module 'vue-router/auto-routes' {
   export interface RouteNamedMap {
     '/[...all]': RouteRecordInfo<'/[...all]', '/:all(.*)', { all: ParamValue<true> }, { all: ParamValue<false> }>,
     '/403': RouteRecordInfo<'/403', '/403', Record<never, never>, Record<never, never>>,
+    '/assistant/': RouteRecordInfo<'/assistant/', '/assistant', Record<never, never>, Record<never, never>>,
+    '/assistant/chat/[id]': RouteRecordInfo<'/assistant/chat/[id]', '/assistant/chat/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/dashboard/analytics': RouteRecordInfo<'/dashboard/analytics', '/dashboard/analytics', Record<never, never>, Record<never, never>>,
+    '/knowledgeBase/': RouteRecordInfo<'/knowledgeBase/', '/knowledgeBase', Record<never, never>, Record<never, never>>,
+    '/knowledgeBase/detail/[id]': RouteRecordInfo<'/knowledgeBase/detail/[id]', '/knowledgeBase/detail/:id', { id: ParamValue<true> }, { id: ParamValue<false> }>,
     '/login/': RouteRecordInfo<'/login/', '/login', Record<never, never>, Record<never, never>>,
     '/monitor/info/': RouteRecordInfo<'/monitor/info/', '/monitor/info', Record<never, never>, Record<never, never>>,
     '/monitor/loginLog/': RouteRecordInfo<'/monitor/loginLog/', '/monitor/loginLog', Record<never, never>, Record<never, never>>,
