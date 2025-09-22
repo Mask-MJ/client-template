@@ -559,6 +559,42 @@ export interface paths {
     patch?: never
     trace?: never
   }
+  '/api/assistant': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取聊天助手列表 */
+    get: operations['AssistantController_findAll']
+    put?: never
+    /** 创建聊天助手 */
+    post: operations['AssistantController_create']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/assistant/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取聊天助手详情 */
+    get: operations['AssistantController_findOne']
+    put?: never
+    post?: never
+    delete: operations['AssistantController_remove']
+    options?: never
+    head?: never
+    /** 更新聊天助手 */
+    patch: operations['AssistantController_update']
+    trace?: never
+  }
 }
 export type webhooks = Record<string, never>
 export interface components {
@@ -1719,6 +1755,206 @@ export interface components {
        *     ]
        */
       document_ids: string[]
+    }
+    CreateAssistantDto: {
+      /**
+       * @description 助手名称
+       * @example 助手1
+       */
+      name: string
+      /**
+       * @description 助手头像
+       * @example https://example.com/avatar.png
+       */
+      avatar?: string
+      /**
+       * @description LLM
+       * @default deepseek-r1@Tongyi-Qianwen
+       * @example gpt-3.5-turbo
+       */
+      model_name: string
+      /**
+       * @description 温度
+       * @default 0.1
+       * @example 0.7
+       */
+      temperature: number
+      /**
+       * @description 最大生成长度
+       * @default 512
+       * @example 512
+       */
+      max_tokens: number
+      /**
+       * @description 核心采样
+       * @default 0.3
+       * @example 0.3
+       */
+      top_p: number
+      /**
+       * @description 存在惩罚
+       * @default 0.4
+       * @example 0.4
+       */
+      presence_penalty: number
+      /**
+       * @description 频率惩罚
+       * @default 0.7
+       * @example 0.7
+       */
+      frequency_penalty: number
+      /**
+       * @description 加权关键字相似度
+       * @default 0.2
+       * @example 0.2
+       */
+      similarity_threshold: number
+      /**
+       * @description 关键词相似度权重
+       * @default 0.7
+       * @example 0.7
+       */
+      keywords_similarity_weight: number
+      /**
+       * @description 生成的回复数量
+       * @default 6
+       * @example 6
+       */
+      top_n: number
+      /**
+       * @description 重新排序或选择前 k 个项目
+       * @default 1024
+       * @example 1024
+       */
+      top_k: number
+      /**
+       * @description 空响应返回内容
+       * @example 无
+       */
+      empty_response?: string
+      /**
+       * @description 开场问候语
+       * @example 你好，我是你的助手。
+       */
+      opener?: string
+      /**
+       * @description 提示词模板
+       * @example <prompt>
+       */
+      prompt?: string
+    }
+    AssistantEntity: {
+      id: number
+      name: string
+      avatar: string | null
+      model_name: string
+      temperature: number
+      top_p: number
+      presence_penalty: number
+      frequency_penalty: number
+      similarity_threshold: number
+      keywords_similarity_weight: number
+      top_n: number
+      top_k: number
+      empty_response: string | null
+      opener: string | null
+      prompt: string | null
+      assistantId: string | null
+      max_tokens: number
+      description: string | null
+      /** Format: date-time */
+      createdAt: string
+      /** Format: date-time */
+      updatedAt: string
+      userId: number
+    }
+    UpdateAssistantDto: {
+      /**
+       * @description 助手名称
+       * @example 助手1
+       */
+      name: string
+      /**
+       * @description 助手头像
+       * @example https://example.com/avatar.png
+       */
+      avatar?: string
+      /**
+       * @description LLM
+       * @default deepseek-r1@Tongyi-Qianwen
+       * @example gpt-3.5-turbo
+       */
+      model_name: string
+      /**
+       * @description 温度
+       * @default 0.1
+       * @example 0.7
+       */
+      temperature: number
+      /**
+       * @description 最大生成长度
+       * @default 512
+       * @example 512
+       */
+      max_tokens: number
+      /**
+       * @description 核心采样
+       * @default 0.3
+       * @example 0.3
+       */
+      top_p: number
+      /**
+       * @description 存在惩罚
+       * @default 0.4
+       * @example 0.4
+       */
+      presence_penalty: number
+      /**
+       * @description 频率惩罚
+       * @default 0.7
+       * @example 0.7
+       */
+      frequency_penalty: number
+      /**
+       * @description 加权关键字相似度
+       * @default 0.2
+       * @example 0.2
+       */
+      similarity_threshold: number
+      /**
+       * @description 关键词相似度权重
+       * @default 0.7
+       * @example 0.7
+       */
+      keywords_similarity_weight: number
+      /**
+       * @description 生成的回复数量
+       * @default 6
+       * @example 6
+       */
+      top_n: number
+      /**
+       * @description 重新排序或选择前 k 个项目
+       * @default 1024
+       * @example 1024
+       */
+      top_k: number
+      /**
+       * @description 空响应返回内容
+       * @example 无
+       */
+      empty_response?: string
+      /**
+       * @description 开场问候语
+       * @example 你好，我是你的助手。
+       */
+      opener?: string
+      /**
+       * @description 提示词模板
+       * @example <prompt>
+       */
+      prompt?: string
+      id: number
     }
   }
   responses: never
@@ -3157,6 +3393,114 @@ export interface operations {
           [name: string]: unknown
         }
         content?: never
+      }
+    }
+  }
+  AssistantController_findAll: {
+    parameters: {
+      query?: {
+        /** @description 助手名称 */
+        name?: string
+      }
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['AssistantEntity'][]
+        }
+      }
+    }
+  }
+  AssistantController_create: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateAssistantDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  AssistantController_findOne: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['AssistantEntity']
+        }
+      }
+    }
+  }
+  AssistantController_remove: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  AssistantController_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateAssistantDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['AssistantEntity']
+        }
       }
     }
   }
