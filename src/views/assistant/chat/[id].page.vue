@@ -1,11 +1,18 @@
 <script setup lang="ts">
+import type {
+  ConversationItem,
+  ConversationMenuCommand,
+} from 'vue-element-plus-x/./types/Conversations'
+
+import { Conversations } from 'vue-element-plus-x'
+
 import { createProDrawerForm } from 'pro-naive-ui'
 
 import Chat from './chat.vue'
 
 const loading = ref(false)
 const searchName = ref('')
-const activeId = ref<null | string>(null)
+const activeId = ref<string>()
 const title = computed(() => {
   const active = sessionList.value.find((item) => item.id === activeId.value)
   return active ? active.name : 'Chat'
@@ -34,6 +41,21 @@ const sessionList = ref([
   },
 ])
 
+// 内置菜单点击方法
+function handleMenuCommand(command: ConversationMenuCommand, item: ConversationItem) {
+  // 直接修改 item 是否生效
+  if (command === 'delete') {
+    // if (index !== -1) {
+    //   menuTestItems.value.splice(index, 1)
+    window.$message.success('删除成功')
+    // }
+  }
+  if (command === 'rename') {
+    item.label = '已修改'
+    window.$message.success('重命名成功')
+  }
+}
+
 const drawerForm = createProDrawerForm({
   onSubmit: async (values) => {
     loading.value = true
@@ -51,7 +73,7 @@ const edit = () => {
 <template>
   <n-card content-style="height: calc(100vh - 85px)">
     <div class="h-full flex gap-4">
-      <div class="w-60 flex flex-col">
+      <div class="w-70 flex flex-col">
         <div class="mb-4 flex-between py-2">
           <div class="text-xl font-bold">Conversations</div>
           <n-button size="small">
@@ -65,7 +87,7 @@ const edit = () => {
             <i class="i-ant-design:search-outlined"></i>
           </template>
         </n-input>
-        <n-scrollbar class="mb-4 flex-1 space-y-4">
+        <!-- <n-scrollbar class="mb-4 flex-1 space-y-4">
           <div
             v-for="item in sessionList"
             :key="item.id"
@@ -84,7 +106,20 @@ const edit = () => {
               </n-button>
             </div>
           </div>
-        </n-scrollbar>
+        </n-scrollbar> -->
+        <Conversations
+          v-model:active="activeId"
+          class="mb-4"
+          :items="sessionList"
+          :label-max-width="200"
+          :show-tooltip="true"
+          label-key="name"
+          tooltip-placement="right"
+          :tooltip-offset="35"
+          show-to-top-btn
+          show-built-in-menu
+          @menu-command="handleMenuCommand"
+        />
         <n-button block @click="edit">聊天设置</n-button>
       </div>
       <n-card
