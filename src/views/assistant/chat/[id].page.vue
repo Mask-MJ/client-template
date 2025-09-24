@@ -87,26 +87,7 @@ const edit = () => {
             <i class="i-ant-design:search-outlined"></i>
           </template>
         </n-input>
-        <!-- <n-scrollbar class="mb-4 flex-1 space-y-4">
-          <div
-            v-for="item in sessionList"
-            :key="item.id"
-            class="mb-2 cursor-pointer border-b-1 pb-2"
-          >
-            <div
-              class="group flex-between items-center rounded p-2 hover:bg-gray-100"
-              :class="{ 'bg-gray-100': activeId === item.id }"
-              @click="activeId = item.id"
-            >
-              <div>{{ item.name }}</div>
-              <n-button quaternary class="opacity-0 group-hover:opacity-100" size="small">
-                <template #icon>
-                  <i class="i-ant-design:delete-outlined"></i>
-                </template>
-              </n-button>
-            </div>
-          </div>
-        </n-scrollbar> -->
+
         <Conversations
           v-model:active="activeId"
           class="mb-4"

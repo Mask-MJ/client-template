@@ -38,7 +38,7 @@ async function handleSend() {
 </script>
 
 <template>
-  <div class="relative h-full max-w-200 w-full flex flex-col items-center">
+  <div class="relative h-full w-full flex flex-col items-center">
     <BubbleList ref="bubbleListRef" :list="bubbleItems" max-height="calc(100vh - 240px)">
       <template #header="{ item }">
         <Thinking
@@ -74,6 +74,28 @@ async function handleSend() {
       clearable
       allow-speech
       @submit="handleSend"
-    />
+    >
+      <template #prefix>
+        <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap">
+          <el-button round plain color="#626aef">
+            <el-icon><Paperclip /></el-icon>
+          </el-button>
+
+          <n-button round>
+            <template #icon>
+              <i class="i-ant-design:global-outlined"></i>
+            </template>
+            <span>联网查询</span>
+          </n-button>
+
+          <n-button round>
+            <template #icon>
+              <i class="i-ant-design:node-index-outlined"></i>
+            </template>
+            <span>深度思考</span>
+          </n-button>
+        </div>
+      </template>
+    </Sender>
   </div>
 </template>
