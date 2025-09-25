@@ -595,6 +595,91 @@ export interface paths {
     patch: operations['AssistantController_update']
     trace?: never
   }
+  '/api/assistant/{id}/sessions': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    /** 获取与聊天助手的会话列表 */
+    get: operations['AssistantController_findAllSessions']
+    put?: never
+    /** 创建与聊天助手的会话 */
+    post: operations['AssistantController_createSession']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/assistant/{id}/sessions/{sessionId}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    post?: never
+    /** 删除与聊天助手的会话 */
+    delete: operations['AssistantController_removeSession']
+    options?: never
+    head?: never
+    /** 更新与聊天助手的会话 */
+    patch: operations['AssistantController_updateSession']
+    trace?: never
+  }
+  '/api/assistant/{id}/completions': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get?: never
+    put?: never
+    /** 向指定的聊天助手提问以开始 AI 驱动的对话 */
+    post: operations['AssistantController_completions']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/chat': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: operations['ChatController_findAll']
+    put?: never
+    post: operations['ChatController_create']
+    delete?: never
+    options?: never
+    head?: never
+    patch?: never
+    trace?: never
+  }
+  '/api/chat/{id}': {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    get: operations['ChatController_findOne']
+    put?: never
+    post?: never
+    delete: operations['ChatController_remove']
+    options?: never
+    head?: never
+    patch: operations['ChatController_update']
+    trace?: never
+  }
 }
 export type webhooks = Record<string, never>
 export interface components {
@@ -1956,6 +2041,55 @@ export interface components {
       prompt?: string
       id: number
     }
+    CreateSessionDto: {
+      /**
+       * @description * 会话名称
+       * @example 会话1
+       */
+      name?: string
+    }
+    SessionEntity: {
+      id: string
+      name: string
+      chat_id: string
+      assistantId: number
+      /** Format: date-time */
+      createdAt: string
+      /** Format: date-time */
+      updatedAt: string
+      userId: number
+      messages: {
+        content: string
+        role: string
+      }[]
+    }
+    UpdateSessionDto: {
+      /**
+       * @description * 会话名称
+       * @example 会话1
+       */
+      name?: string
+      id: string
+    }
+    CreateCompletionsDto: {
+      /**
+       * @description 开始人工智能对话的问题
+       * @example 你好
+       */
+      question: string
+      /**
+       * @description 是否开启流式响应
+       * @example true
+       */
+      stream?: boolean
+      /**
+       * @description 会话ID
+       * @example 会话1
+       */
+      session_id: string
+    }
+    CreateChatDto: Record<string, never>
+    UpdateChatDto: Record<string, never>
   }
   responses: never
   parameters: never
@@ -3500,6 +3634,248 @@ export interface operations {
         }
         content: {
           'application/json': components['schemas']['AssistantEntity']
+        }
+      }
+    }
+  }
+  AssistantController_findAllSessions: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['SessionEntity'][]
+        }
+      }
+    }
+  }
+  AssistantController_createSession: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateSessionDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['SessionEntity']
+        }
+      }
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': Record<string, never>
+        }
+      }
+    }
+  }
+  AssistantController_removeSession: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+        sessionId: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['SessionEntity']
+        }
+      }
+    }
+  }
+  AssistantController_updateSession: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+        sessionId: string
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateSessionDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['SessionEntity']
+        }
+      }
+    }
+  }
+  AssistantController_completions: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: number
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateCompletionsDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': components['schemas']['SessionEntity']
+        }
+      }
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content?: never
+      }
+    }
+  }
+  ChatController_findAll: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': string
+        }
+      }
+    }
+  }
+  ChatController_create: {
+    parameters: {
+      query?: never
+      header?: never
+      path?: never
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CreateChatDto']
+      }
+    }
+    responses: {
+      201: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': string
+        }
+      }
+    }
+  }
+  ChatController_findOne: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': string
+        }
+      }
+    }
+  }
+  ChatController_remove: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody?: never
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': string
+        }
+      }
+    }
+  }
+  ChatController_update: {
+    parameters: {
+      query?: never
+      header?: never
+      path: {
+        id: string
+      }
+      cookie?: never
+    }
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['UpdateChatDto']
+      }
+    }
+    responses: {
+      200: {
+        headers: {
+          [name: string]: unknown
+        }
+        content: {
+          'application/json': string
         }
       }
     }

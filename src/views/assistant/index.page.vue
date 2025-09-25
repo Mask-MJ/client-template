@@ -4,6 +4,7 @@ import type { AssistantInfo } from '@/api/assistant'
 import { createAssistant, getAssistantList } from '@/api/assistant'
 import { createProModalForm } from 'pro-naive-ui'
 
+const router = useRouter()
 const loading = ref(false)
 const assistantList = ref<AssistantInfo[]>([])
 const searchQuery = ref('')
@@ -23,6 +24,10 @@ const getData = async () => {
     name: searchQuery.value,
   })
   assistantList.value = data || []
+}
+
+const goToChat = (id: number) => {
+  router.push(`/assistant/chat/${id}`)
 }
 
 watchEffect(() => {
@@ -45,7 +50,7 @@ watchEffect(() => {
 
     <n-grid x-gap="12" :cols="4">
       <n-gi v-for="item in assistantList" :key="item.id">
-        <n-card :title="item.name" hoverable class="cursor-pointer">
+        <n-card :title="item.name" hoverable class="cursor-pointer" @click="goToChat(item.id)">
           <div>
             {{ item.description || '无描述' }}
           </div>

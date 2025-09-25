@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { SessionInfo } from '@/api/assistant'
+
 import type {
   ConversationItem,
   ConversationMenuCommand,
@@ -6,40 +8,24 @@ import type {
 
 import { Conversations } from 'vue-element-plus-x'
 
+import { getChatSessionList } from '@/api/assistant'
+import { find } from 'lodash-es'
 import { createProDrawerForm } from 'pro-naive-ui'
 
 import Chat from './chat.vue'
 
+const router = useRouter()
 const loading = ref(false)
 const searchName = ref('')
 const activeId = ref<string>()
-const title = computed(() => {
-  const active = sessionList.value.find((item) => item.id === activeId.value)
-  return active ? active.name : 'Chat'
+
+const activeSession = computed(() => find(sessionList.value, (item) => item.id === activeId.value))
+const assistantId = computed(() => {
+  const params = router.currentRoute.value.params as { id: string }
+  return Number(params.id)
 })
 
-const sessionList = ref([
-  {
-    chat: '2ca4b22e878011ef88fe0242ac120005',
-    create_date: 'Fri, 11 Oct 2024 08:46:43 GMT',
-    create_time: 1_728_636_403_974,
-    id: '578d541e87ad11ef96b90242ac120006',
-    messages: [{ content: 'Hi! I am your assistant, can I help you?', role: 'assistant' }],
-    name: 'new session 1',
-    update_date: 'Fri, 11 Oct 2024 08:46:43 GMT',
-    update_time: 1_728_636_403_974,
-  },
-  {
-    chat: '2ca4b22e878011ef88fe0242ac120005',
-    create_date: 'Fri, 11 Oct 2024 08:46:43 GMT',
-    create_time: 1_728_636_403_974,
-    id: '578d541e87ad11ef96b90242ac120007',
-    messages: [{ content: 'Hi! I am your assistant, can I help you?', role: 'assistant' }],
-    name: 'new session 2',
-    update_date: 'Fri, 11 Oct 2024 08:46:43 GMT',
-    update_time: 1_728_636_403_974,
-  },
-])
+const sessionList = ref<SessionInfo[]>([])
 
 // 内置菜单点击方法
 function handleMenuCommand(command: ConversationMenuCommand, item: ConversationItem) {
@@ -68,6 +54,12 @@ const drawerForm = createProDrawerForm({
 const edit = () => {
   drawerForm.open()
 }
+
+onMounted(async () => {
+  const { data } = await getChatSessionList(assistantId.value)
+  sessionList.value = data || []
+  // console.log('sessionList', sessionList.value)
+})
 </script>
 
 <template>
@@ -103,14 +95,8 @@ const edit = () => {
         />
         <n-button block @click="edit">聊天设置</n-button>
       </div>
-      <n-card
-        :title="title"
-        :segmented="{
-          content: true,
-          footer: 'soft',
-        }"
-      >
-        <Chat :id="activeId" />
+      <n-card :title="activeSession?.name || ''" :segmented="{ content: true, footer: 'soft' }">
+        <Chat :id="activeId" :messages="activeSession?.messages || []" />
       </n-card>
     </div>
     <pro-drawer-form :form="drawerForm" :loading="loading">

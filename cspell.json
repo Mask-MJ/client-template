@@ -19,7 +19,8 @@
     "unplugin",
     "VITE",
     "vuejs",
-    "vueuse"
+    "vueuse",
+    "xmarkdown"
   ],
   "ignorePaths": [
     "**/node_modules/**",
