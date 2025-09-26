@@ -8,9 +8,14 @@ import type {
 
 import { Conversations } from 'vue-element-plus-x'
 
-import { getChatSessionList } from '@/api/assistant'
+import {
+  createChatSession,
+  deleteChatSession,
+  getChatSessionList,
+  updateChatSession,
+} from '@/api/assistant'
 import { find } from 'lodash-es'
-import { createProDrawerForm } from 'pro-naive-ui'
+import { createProDrawerForm, createProModalForm } from 'pro-naive-ui'
 
 import Chat from './chat.vue'
 
@@ -28,17 +33,15 @@ const assistantId = computed(() => {
 const sessionList = ref<SessionInfo[]>([])
 
 // 内置菜单点击方法
-function handleMenuCommand(command: ConversationMenuCommand, item: ConversationItem) {
+async function handleMenuCommand(command: ConversationMenuCommand, item: ConversationItem) {
   // 直接修改 item 是否生效
   if (command === 'delete') {
-    // if (index !== -1) {
-    //   menuTestItems.value.splice(index, 1)
+    await deleteChatSession(assistantId.value, item.id)
     window.$message.success('删除成功')
-    // }
   }
   if (command === 'rename') {
-    item.label = '已修改'
-    window.$message.success('重命名成功')
+    modalForm.values.value = { id: item.id, name: item.label }
+    modalForm.show.value = true
   }
 }
 
@@ -51,14 +54,45 @@ const drawerForm = createProDrawerForm({
   },
 })
 
+const modalForm = createProModalForm({
+  onSubmit: async (values) => {
+    if (!activeSession.value) return
+    loading.value = true
+    await updateChatSession(assistantId.value, values.id, values)
+    modalForm.close()
+    loading.value = false
+    getData()
+  },
+})
+
+const addSession = async () => {
+  const { data } = await createChatSession(assistantId.value, { name: '新会话' })
+  if (data) {
+    sessionList.value.unshift(data)
+    activeId.value = data.id
+  }
+}
+
+const getData = async () => {
+  const { data = [] } = await getChatSessionList(assistantId.value, {
+    // 不支持搜索 name ,前端做过滤
+    name: searchName.value,
+  })
+  sessionList.value = data.filter((item) =>
+    item.name?.toLowerCase().includes(searchName.value.toLowerCase()),
+  )
+
+  if (sessionList.value.length > 0 && !activeId.value) {
+    activeId.value = sessionList.value[0]?.id
+  }
+}
+
 const edit = () => {
   drawerForm.open()
 }
 
-onMounted(async () => {
-  const { data } = await getChatSessionList(assistantId.value)
-  sessionList.value = data || []
-  // console.log('sessionList', sessionList.value)
+watchEffect(() => {
+  getData()
 })
 </script>
 
@@ -68,7 +102,7 @@ onMounted(async () => {
       <div class="w-70 flex flex-col">
         <div class="mb-4 flex-between py-2">
           <div class="text-xl font-bold">Conversations</div>
-          <n-button size="small">
+          <n-button size="small" @click="addSession">
             <template #icon>
               <i class="i-ant-design:plus-outlined"></i>
             </template>
@@ -167,5 +201,16 @@ onMounted(async () => {
         />
       </pro-drawer-content>
     </pro-drawer-form>
+    <pro-modal-form
+      :title="$t('page.assistant.chat.rename')"
+      :form="modalForm"
+      :loading="loading"
+      label-width="100"
+      preset="card"
+      label-placement="left"
+    >
+      <pro-input v-show="false" path="id" required />
+      <pro-input :title="$t('page.assistant.chat.newName')" path="name" required />
+    </pro-modal-form>
   </n-card>
 </template>

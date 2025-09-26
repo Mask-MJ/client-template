@@ -5,6 +5,8 @@ import { client } from '@/utils'
 export type AssistantInfo = components['schemas']['AssistantEntity']
 export type SearchParams = operations['AssistantController_findAll']['parameters']['query']
 export type SessionInfo = components['schemas']['SessionEntity']
+export type SearchSessionParams =
+  operations['AssistantController_findAllSessions']['parameters']['query']
 
 // 获取助手列表
 export function getAssistantList(query?: SearchParams) {
@@ -42,8 +44,8 @@ export function updateChatSession(
   })
 }
 // 获取与聊天助手的会话列表
-export function getChatSessionList(id: number) {
-  return client.GET('/api/assistant/{id}/sessions', { params: { path: { id } } })
+export function getChatSessionList(id: number, query: SearchSessionParams) {
+  return client.GET('/api/assistant/{id}/sessions', { params: { path: { id }, query } })
 }
 // 删除与聊天助手的会话
 export function deleteChatSession(id: number, sessionId: string) {

@@ -32,8 +32,7 @@ const bubbleItems = computed<MessageItem[]>(() => {
     avatarSize: '32px',
     avatarGap: '12px', // 头像与气泡之间的距离
     isMarkdown: item.role === 'assistant', // 是否是 markdown 格式
-    noStyle: item.role === 'user', // user 走纯文本
-    avatar: item.role === 'assistant' ? avatar.value : undefined,
+    thinkingStatus: 'end',
   }))
 })
 
@@ -84,10 +83,12 @@ async function handleSend() {
       >
         <!-- 自定义头像 -->
         <template #avatar="{ item }">
-          <div class="avatar-wrapper">
-            <i v-if="item.role === 'assistant'" class="i-ant-design:robot-outlined"></i>
-            <img v-else :src="avatar" alt="avatar" />
-          </div>
+          <n-avatar v-if="item.role === 'assistant'" round size="small">
+            <n-icon>
+              <i class="i-ant-design:robot-outlined"></i>
+            </n-icon>
+          </n-avatar>
+          <n-avatar v-else round size="small" :src="avatar" />
         </template>
         <template #header="{ item }">
           <Thinking
@@ -145,35 +146,37 @@ async function handleSend() {
   </div>
 </template>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .thinking-chain-warp {
   margin-bottom: 12px;
 }
-:deep() .el-bubble-list {
-  padding-top: 24px;
-}
-:deep() .el-bubble {
-  padding: 0 12px;
-  padding-bottom: 24px;
-}
-:deep() .el-typewriter {
-  overflow: hidden;
-  border-radius: 12px;
-}
-:deep() .user-content {
-  white-space: pre-wrap;
-}
-:deep() .markdown-body {
-  background-color: transparent;
-}
-:deep() .markdown-elxLanguage-header-div {
-  top: -25px !important;
-}
+:deep() {
+  .el-bubble-list {
+    padding-top: 24px;
+  }
+  .el-bubble {
+    padding: 0 12px;
+    padding-bottom: 24px;
+  }
+  .el-typewriter {
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  .user-content {
+    white-space: pre-wrap;
+  }
+  .markdown-body {
+    background-color: transparent;
+  }
+  .markdown-elxLanguage-header-div {
+    top: -25px !important;
+  }
 
-:deep() .elx-xmarkdown-container {
-  padding: 8px 4px;
-}
-:deep() .el-bubble-content {
-  max-width: 100% !important;
+  .elx-xmarkdown-container {
+    padding: 8px 4px;
+  }
+  .el-bubble-content {
+    max-width: 100% !important;
+  }
 }
 </style>

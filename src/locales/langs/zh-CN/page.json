@@ -83,7 +83,9 @@
       "frequencyPenalty": "频率惩罚",
       "maxResponseTokens": "最大响应Token数",
       "model": "模型",
-      "knowledgeBase": "知识库"
+      "knowledgeBase": "知识库",
+      "rename": "重命名",
+      "newName": "新名称"
     }
   },
   "system": {

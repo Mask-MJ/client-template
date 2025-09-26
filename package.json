@@ -86,6 +86,7 @@
     "openapi-typescript": "^7.8.0",
     "prettier": "3.5.3",
     "pro-naive-ui-resolver": "^1.0.2",
+    "sass": "^1.93.2",
     "type-fest": "^4.41.0",
     "typescript": "~5.8.0",
     "unocss": "^66.2.3",

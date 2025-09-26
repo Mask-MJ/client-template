@@ -3569,7 +3569,9 @@ export interface operations {
         headers: {
           [name: string]: unknown
         }
-        content?: never
+        content: {
+          'application/json': components['schemas']['AssistantEntity']
+        }
       }
     }
   }
@@ -3640,7 +3642,10 @@ export interface operations {
   }
   AssistantController_findAllSessions: {
     parameters: {
-      query?: never
+      query?: {
+        /** @description * 会话名称 */
+        name?: string
+      }
       header?: never
       path: {
         id: number
@@ -3674,20 +3679,12 @@ export interface operations {
       }
     }
     responses: {
-      200: {
-        headers: {
-          [name: string]: unknown
-        }
-        content: {
-          'application/json': components['schemas']['SessionEntity']
-        }
-      }
       201: {
         headers: {
           [name: string]: unknown
         }
         content: {
-          'application/json': Record<string, never>
+          'application/json': components['schemas']['SessionEntity']
         }
       }
     }
