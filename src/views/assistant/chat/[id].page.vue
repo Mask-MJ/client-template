@@ -130,7 +130,11 @@ watchEffect(() => {
         <n-button block @click="edit">聊天设置</n-button>
       </div>
       <n-card :title="activeSession?.name || ''" :segmented="{ content: true, footer: 'soft' }">
-        <Chat :id="activeId" :messages="activeSession?.messages || []" />
+        <Chat
+          :assistant-id="assistantId"
+          :session-id="activeId"
+          :messages="activeSession?.messages || []"
+        />
       </n-card>
     </div>
     <pro-drawer-form :form="drawerForm" :loading="loading">

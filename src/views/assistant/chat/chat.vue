@@ -5,6 +5,8 @@ import type { ThinkingStatus } from 'vue-element-plus-x/./types/Thinking'
 
 import { BubbleList, Sender, Thinking, XMarkdown } from 'vue-element-plus-x'
 
+import { completions } from '@/api/assistant'
+
 type MessageItem = BubbleProps & {
   collapse?: boolean
   content?: string
@@ -14,8 +16,9 @@ type MessageItem = BubbleProps & {
 }
 
 const props = defineProps<{
-  id: string | undefined
+  assistantId: number
   messages: MessageItem[]
+  sessionId: string | undefined
 }>()
 
 const userStore = useUserStore()
@@ -60,7 +63,17 @@ const replaceWithoutThink = (content: string) => {
 }
 
 async function handleSend() {
+  if (!props.sessionId) {
+    window.$message.error('会话不存在，请重新选择会话')
+    return
+  }
   // console.log('发送内容', senderValue.value)
+  const { data } = await completions(props.assistantId, {
+    stream: true,
+    session_id: props.sessionId,
+    question: senderValue.value,
+  })
+  console.warn('返回数据', data)
   // console.log(bubbleItems.value)
   // localStorage.setItem('chatContent', senderValue.value)
   // await sessionStore.createSessionList({
