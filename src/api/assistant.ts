@@ -55,5 +55,9 @@ export function deleteChatSession(id: number, sessionId: string) {
 }
 // 向指定的聊天助手提问以开始 AI 驱动的对话
 export function completions(id: number, body: components['schemas']['CreateCompletionsDto']) {
-  return client.POST('/api/assistant/{id}/completions', { params: { path: { id } }, body })
+  return client.POST('/api/assistant/{id}/completions', {
+    params: { path: { id } },
+    body,
+    parseAs: 'stream',
+  })
 }

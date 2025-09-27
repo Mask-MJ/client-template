@@ -3,7 +3,7 @@ import type { BubbleProps } from 'vue-element-plus-x/./types/Bubble'
 import type { BubbleListInstance } from 'vue-element-plus-x/./types/BubbleList'
 import type { ThinkingStatus } from 'vue-element-plus-x/./types/Thinking'
 
-import { BubbleList, Sender, Thinking, XMarkdown } from 'vue-element-plus-x'
+import { BubbleList, Sender, Thinking, useXStream, XMarkdown } from 'vue-element-plus-x'
 
 import { completions } from '@/api/assistant'
 
@@ -11,6 +11,7 @@ type MessageItem = BubbleProps & {
   collapse?: boolean
   content?: string
   key?: number
+  reasoning_content?: string
   role: 'assistant' | 'system' | 'user' | String
   thinkingStatus?: ThinkingStatus
 }
@@ -26,23 +27,29 @@ const userStore = useUserStore()
 const senderValue = ref('')
 const senderRef = ref()
 const bubbleListRef = ref<BubbleListInstance | null>(null)
-const bubbleItems = computed<MessageItem[]>(() => {
-  return props.messages.map((item, index) => ({
-    role: item.role,
-    key: index,
-    content: item.content,
-    placement: item.role === 'assistant' ? 'start' : 'end',
-    avatarSize: '32px',
-    avatarGap: '12px', // 头像与气泡之间的距离
-    isMarkdown: item.role === 'assistant', // 是否是 markdown 格式
-    thinkingStatus: 'end',
-  }))
-})
+const bubbleItems = ref<MessageItem[]>([])
 
 const avatar = computed(() => {
   const userInfo = userStore.userInfo
   return userInfo?.avatar || '/src/assets/logo.png'
 })
+
+// 添加消息 - 维护聊天记录
+function addMessage(message: string, role: string) {
+  const i = bubbleItems.value.length
+  const obj: MessageItem = {
+    key: i,
+    avatarSize: '32px',
+    role,
+    placement: role === 'user' ? 'end' : 'start',
+    isMarkdown: role === 'assistant',
+    loading: role === 'assistant',
+    content: message || '',
+    thinkingStatus: 'start',
+    collapse: false,
+  }
+  bubbleItems.value.push(obj)
+}
 
 // 提取 <think></think> 之间的内容返回, 其余的内容去掉
 function replaceThink(text: string = '') {
@@ -61,28 +68,70 @@ function replaceThink(text: string = '') {
 const replaceWithoutThink = (content: string) => {
   return content.replaceAll(/<think>[\s\S]*?<\/think>/g, '').trim()
 }
-
+const { startStream, data } = useXStream()
 async function handleSend() {
   if (!props.sessionId) {
     window.$message.error('会话不存在，请重新选择会话')
     return
   }
-  // console.log('发送内容', senderValue.value)
-  const { data } = await completions(props.assistantId, {
+  // 清空输入框
+  addMessage(senderValue.value, 'user')
+  addMessage('', 'assistant')
+  bubbleListRef.value?.scrollToBottom()
+  const { response } = await completions(props.assistantId, {
     stream: true,
     session_id: props.sessionId,
     question: senderValue.value,
   })
-  console.warn('返回数据', data)
-  // console.log(bubbleItems.value)
-  // localStorage.setItem('chatContent', senderValue.value)
-  // await sessionStore.createSessionList({
-  //   userId: userStore.userInfo?.userId as number,
-  //   sessionContent: senderValue.value,
-  //   sessionTitle: senderValue.value.slice(0, 10),
-  //   remark: senderValue.value.slice(0, 10),
-  // })
+  senderValue.value = ''
+  const readableStream = response.body!
+  await startStream({ readableStream })
 }
+
+watch(
+  data,
+  (newData) => {
+    const bubbleItem = bubbleItems.value[bubbleItems.value.length - 1]
+    if (bubbleItem) {
+      if (newData.length === 0) {
+        bubbleItem.content = ''
+      } else {
+        const parsedChunk = JSON.parse(newData[newData.length - 1]?.data)
+        if (parsedChunk.data === true) {
+          // 结束 思考链状态
+          const text = JSON.parse(newData[newData.length - 2]?.data).data.answer
+          bubbleItem.thinkingStatus = 'end'
+          bubbleItem.loading = false
+          bubbleItem.content = replaceWithoutThink(text || '')
+          bubbleItem.collapse = false
+          bubbleListRef.value?.scrollToBottom()
+          return
+        }
+        const text = parsedChunk.data.answer
+        bubbleItem.reasoning_content = replaceThink(text)
+        bubbleItem.content = replaceWithoutThink(text)
+        bubbleItem.collapse = true
+        bubbleItem.loading = true
+        bubbleItem.thinkingStatus = 'thinking'
+      }
+    }
+  },
+  { deep: true },
+)
+
+watchEffect(() => {
+  bubbleItems.value = props.messages.map((item, index) => ({
+    role: item.role,
+    key: index,
+    content: replaceWithoutThink(item.content || ''),
+    placement: item.role === 'assistant' ? 'start' : 'end',
+    avatarSize: '32px',
+    avatarGap: '12px', // 头像与气泡之间的距离
+    isMarkdown: item.role === 'assistant', // 是否是 markdown 格式
+    thinkingStatus: 'end',
+    reasoning_content: replaceThink(item.content || ''),
+  }))
+})
 </script>
 
 <template>
@@ -105,11 +154,11 @@ async function handleSend() {
         </template>
         <template #header="{ item }">
           <Thinking
-            v-if="item.content && item.role === 'assistant' && item.content.includes('<think>')"
+            v-if="item.reasoning_content"
             v-model="item.collapse"
-            :content="replaceThink(item.content)"
+            :content="item.reasoning_content"
             :status="item.thinkingStatus"
-            class="thinking-chain-warp mb-2"
+            class="!mb-2"
             max-width="100%"
           />
         </template>
@@ -118,7 +167,7 @@ async function handleSend() {
           <!-- chat 内容走 markdown -->
           <XMarkdown
             v-if="item.content && item.role === 'assistant'"
-            :markdown="replaceWithoutThink(item.content)"
+            :markdown="item.content"
             class="w-full"
           />
           <!-- user 内容 纯文本 -->
@@ -160,9 +209,6 @@ async function handleSend() {
 </template>
 
 <style scoped lang="scss">
-.thinking-chain-warp {
-  margin-bottom: 12px;
-}
 :deep() {
   .el-bubble-list {
     padding-top: 24px;

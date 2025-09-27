@@ -59,7 +59,7 @@ const authMiddleware: Middleware = {
       }
     }
     const kbDocRegex = /\/knowledge-base\/[^/]+\/documents\/[^/]+$/
-    if (kbDocRegex.test(response.url)) {
+    if (kbDocRegex.test(response.url) || response.url.endsWith('completions')) {
       return undefined // 不要修改某些路径的请求
     }
     const data = await response.clone().json()
